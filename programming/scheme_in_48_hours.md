@@ -22,8 +22,10 @@ $ cabal install parsec
 ````
 
 ## simple_parser.hs
+コードが長くなってきました
+
 ````haskell
--- compile: $ ghc -package parsec -o simple_parser simple_parser.hs
+-- compile: $ ghc -package parsec simple_parser.hs
 
 module Main where
 
@@ -44,6 +46,35 @@ main :: IO ()
 main = do
   args <- getArgs
   putStrLn (readExpr (args !! 0))
+````
+
+## simple_parser2.hs 
+````haskell
+-- compile: $ ghc -package parsec simple_parser2.hs
+
+module Main where
+
+import System.Environment
+import Text.ParserCombinators.Parsec hiding (spaces)
+
+-- symbol parser
+symbol :: Parser Char
+symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
+
+-- spaces parser
+spaces :: Parser ()
+spaces = skipMany1 space
+
+-- parser
+readExpr :: String -> String
+readExpr input = case parse (spaces >> symbol) "lisp" input of
+  Left err -> "No match: " ++ show err
+  Right val -> "Found value"
+
+main :: IO ()
+main = do
+  args <- getArgs
+  putStrLn (readExpr (args !! 0))
 ````
 
 # 2017.12.19
