@@ -1,4 +1,6 @@
 ## インストール
+インストールされるサイズは 1GB!
+
 ````bash
 $ brew install ghc
 $ brew install cabal-install
