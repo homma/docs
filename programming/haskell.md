@@ -14,6 +14,8 @@ Arr !! index で配列の要素にアクセスできる
 ````
 
 ## プログラムの基本構造
+コンパイルする場合は module を定義する必要がある
+
 ````haskell
 module Main where
 
