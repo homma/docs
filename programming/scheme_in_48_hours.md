@@ -1,5 +1,70 @@
+# 2017.12.20
+
+## Setup
+コンパイルをすると parsec がないと言われるので、パッケージマネージャと Parsec パッケージをインストールします
+````
+$ ghc -package parsec -o simple_parser simple_parser.hs
+<command line>: cannot satisfy -package parsec
+    (use -v for more information)
+````
+
+Haskell のバイナリは 1GB もあるのに、パッケージマネージャもパッケージも入っていなかったみたい。
+
+Cabal をインストール
+````
+$ brew install cabal-install
+$ cabal update
+````
+
+Parsec をインストール
+````
+$ cabal install parsec
+````
+
+## simple_parser.hs
+````haskell
+-- compile: $ ghc -package parsec -o simple_parser simple_parser.hs
+
+module Main where
+
+import System.Environment
+import Text.ParserCombinators.Parsec hiding (spaces)
+
+-- symbol parser
+symbol :: Parser Char
+symbol = oneOf "!#$%&|*+-/:<=>?@^_~"
+
+-- parser
+readExpr :: String -> String
+readExpr input = case parse symbol "lisp" input of
+  Left err -> "No match: " ++ show err
+  Right val -> "Found value"
+
+main :: IO ()
+main = do
+  args <- getArgs
+  putStrLn (readExpr (args !! 0))
+````
 
 # 2017.12.19
+
+## Setup
+Haskell をインストール
+
+````
+$ brew install ghc
+````
+
+## hello.hs
+````haskell
+module Main where
+import System.Environment
+
+main :: IO ()
+main = do
+  args <- getArgs
+  putStrLn ("Hello, " ++ args !! 0)
+````
 
 ## exercise 1
 
