@@ -1,3 +1,5 @@
+[48時間でSchemeを書こう](https://ja.wikibooks.org/wiki/48時間でSchemeを書こう)
+
 # 2017.12.20
 
 ## Setup
