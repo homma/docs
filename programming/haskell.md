@@ -48,8 +48,11 @@ main = ...
 
 ## ghci の使い方
 
+:h でヘルプ
+
 :t で型を調べられる
 ````
 Prelude> :t show
 show :: Show a => a -> String
 ````
+
