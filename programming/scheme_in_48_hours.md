@@ -1,4 +1,16 @@
-[48時間でSchemeを書こう](https://ja.wikibooks.org/wiki/48時間でSchemeを書こう)
+[48時間でSchemeを書こう](https://ja.wikibooks.org/wiki/48時間でSchemeを書こう) を読みます
+
+# 2017.12.21
+($ args) はセクション（中置演算子の部分適用）でした
+
+````haskell
+Prelude> :t ($ 0)
+($ 0) :: Num a => (a -> b) -> b
+Prelude> :t (+ 0)
+(+ 0) :: Num a => a -> a
+Prelude> :t (++ "a")
+(++ "a") :: [Char] -> [Char]
+````
 
 # 2017.12.20
 
