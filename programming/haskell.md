@@ -81,4 +81,4 @@ show :: Show a => a -> String
 ## Camel Case
 - https://wiki.haskell.org/Camel_case
 - これは好みの問題ですが、大文字が多くなるので、ソースコードが読みにくい
-- Miranda は Snake Case っぽい
+- [Miranda](https://en.wikipedia.org/wiki/Miranda_(programming_language)) は Snake Case っぽい
