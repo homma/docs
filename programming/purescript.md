@@ -70,6 +70,9 @@ $ bower install purescript-strings
 
 [Reference](https://pursuit.purescript.org/packages/purescript-strings/3.3.0/docs/Data.String)
 
+## REPL で DOM を操作する
+- jsdom のラッパーを作成し、それを通して操作することはできそう
+
 # PureScript の問題点
 
 ## 基本的な処理でもパッケージの追加インストールが必要
@@ -92,7 +95,6 @@ $ bower install purescript-strings
 
 ## その他
 - REPL で FFI を定義できない（外部で定義しいた FFI を REPL から呼び出すことは可能）  
-  - そもそも JS で書きたいコード（DOM の操作）は REPL では使用できないので問題とならないかもしれない
 - DOM の操作は外部ライブラリが必要
 - 基本的に全てをカリー化するので実行速度にペナルティがある
   - 生成された JavaScript では、foo(a, b, c) ではなく foo(a)(b)(c) になるので関数呼び出しが増える
