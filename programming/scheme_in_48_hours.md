@@ -1,7 +1,25 @@
 [48時間でSchemeを書こう](https://ja.wikibooks.org/wiki/48時間でSchemeを書こう) を読みます
 
+# 2017.12.23
+
+## liftM と return
+間違っているかも。
+
+liftM f m はモナドに対して関数を適用する  
+apply のモナド版みたいな感じ  
+関数はそのままモナドに適用できないので liftM を必要とする  
+関数を持ち上げて (lift) モナド (M) に適用するので、liftM
+
+return は値をモナドに変換して返す
+
+````haskell
+return $ liftM f m
+````
+
 # 2017.12.21
-($ args) はセクション（中置演算子の部分適用）でした
+
+## セクション
+($ args) はセクション（中置演算子の部分適用）
 
 ````haskell
 Prelude> :t ($ 0)
