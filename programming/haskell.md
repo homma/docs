@@ -18,9 +18,9 @@ a : [arr] で cons
 
 [a] ++ [b] で append
 
-length Arr で配列のサイズを確認
+length arr で配列のサイズを確認
 
-Arr !! index で配列の要素にアクセス（括弧を避けるスタイル）
+arr !! index で配列の要素にアクセス（括弧を避けるスタイル）
 
 ````haskell
 "日本語" !! 0
@@ -81,3 +81,4 @@ show :: Show a => a -> String
 ## Camel Case
 - https://wiki.haskell.org/Camel_case
 - これは好みの問題ですが、大文字が多くなるので、ソースコードが読みにくい
+- Miranda は Snake Case っぽい
