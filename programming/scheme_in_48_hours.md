@@ -12,6 +12,7 @@ apply のモナド版みたいな感じ
 
 return は値をモナドに変換して返す
 
+以下のコードは、関数 f をモナド m に適用して、モナドを返す
 ````haskell
 return $ liftM f m
 ````
