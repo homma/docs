@@ -30,8 +30,11 @@ $ rustup self update
 # ドキュメント
 
 ## 学習リソース
-* [関数型プログラマのための Rust](http://postd.cc/rust-for-functional-programmers/)
-* [Rust by Example](http://rust-lang-ja.org/rust-by-example/)
+- [関数型プログラマのための Rust](http://postd.cc/rust-for-functional-programmers/)
+- [Rust by Example](http://rust-lang-ja.org/rust-by-example/)
+
+# 関連サイト
+- [rustup](https://github.com/rust-lang-nursery/rustup.rs)
 
 # ツールの使い方
 
