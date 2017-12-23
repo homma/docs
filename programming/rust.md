@@ -53,6 +53,19 @@ rustc 1.22.1 (05e2e1c41 2017-11-22)
 
 ## その他
 
+### Hello World
+
+hello.rs
+````rust
+fn main() { println!("こんにちは"); }
+````
+
+````sh
+$ rustc hello.rs
+$ ./hello
+こんにちは
+````
+
 ### メソッドの追加
 JavaScript でよく書くこれは、
 ````javascript
