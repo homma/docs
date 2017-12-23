@@ -48,7 +48,7 @@ number.js
 ````javascript
 const fs = require('fs');
 var buf = fs.readFileSync('./number.wasm').buffer;
-WebAssembly.instantiate(buf, {}).then(res => console.log(res.instance.exports.number()));
+WebAssembly.instantiate(buf).then(res => console.log(res.instance.exports.number()));
 ````
 
 実行結果
