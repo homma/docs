@@ -30,12 +30,16 @@ let _ = <main program>
 ````
 
 ## 配列アクセス
+
 配列アクセスのリテラルはないみたい
+
 ````ocaml
 String.get "foo" 0;;
 ````
 
 ## 数値表現
+
+数値にも何種類かある
 
 ````ocaml
 # 0,0n,0l,0L;;
@@ -43,6 +47,8 @@ String.get "foo" 0;;
 ````
 
 ## 数値演算
+
+関数を使用する場合
 ````ocaml
 # Int32.add 1l 2l;;
 - : int32 = 3l
@@ -65,6 +71,7 @@ Exception: Division_by_zero.
 - OCaml's exponential operator uses float for its arguments.
 
 ## n 進数
+
 2 進数、8 進数、16 進数の表記方法が用意されている
 ````ocaml
 # 0b1, 0o7, 0xF;;
