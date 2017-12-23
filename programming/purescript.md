@@ -1,14 +1,3 @@
-# ドキュメント
-
-## PureScript Langage Reference
-- https://github.com/purescript/documentation/tree/master/language
-
-## PureScript by Example
-- https://leanpub.com/purescript/read
-- [実例によるPureScript](https://aratama.github.io/purescript/purescript-book-ja.html)
-
-# 使い方
-
 ## インストール
 
 プロジェクト単位でインストールする
@@ -22,7 +11,18 @@ $ pulp init
 $ pulp repl
 ````
 
-## 配列操作
+## ドキュメント
+
+### PureScript Langage Reference
+- https://github.com/purescript/documentation/tree/master/language
+
+### PureScript by Example
+- https://leanpub.com/purescript/read
+- [実例によるPureScript](https://aratama.github.io/purescript/purescript-book-ja.html)
+
+## 言語仕様
+
+### 配列操作
 
 パッケージのインストールが必要
 
@@ -44,7 +44,7 @@ $ bower install purescript-arrays
 
 [Reference](https://pursuit.purescript.org/packages/purescript-arrays/4.2.2/docs/Data.Array)
 
-## 文字列操作
+### 文字列操作
 
 パッケージのインストールが必要
 
@@ -70,16 +70,18 @@ $ bower install purescript-strings
 
 [Reference](https://pursuit.purescript.org/packages/purescript-strings/3.3.0/docs/Data.String)
 
-## REPL で DOM を操作する
+## その他
+
+### REPL で DOM を操作する
 - jsdom のラッパーを作成し、それを通して操作することはできそう
 
-# PureScript の問題点
+## PureScript の問題点
 
-## 基本的な処理でもパッケージの追加インストールが必要
+### 基本的な処理でもパッケージの追加インストールが必要
 - 配列操作や文字列操作などもパッケージのインストールが必要
 - 生成される JavaScript コードをなるべく小さくするためにそうしているのかもしれない
 
-## スクリプト単体で実行できない
+### スクリプト単体で実行できない
 - pulp 経由で実行する必要があるみたい
 - プロジェクトの作成が必須っぽい
 
@@ -87,13 +89,13 @@ $ bower install purescript-strings
 
 - パッケージのディレクトリはあらかじめ .gitignore で指定してある
 
-## モジュールを作成する必要がある
+### モジュールを作成する必要がある
 - Haskell と同じ感じ
 
-## 依存パッケージが多い
+### 依存パッケージが多い
 - npm モジュールや bower コンポーネントが大量にインストールされる
 
-## その他
+### その他
 - REPL で FFI を定義できない（外部で定義しいた FFI を REPL から呼び出すことは可能）  
 - DOM の操作は外部ライブラリが必要
 - 基本的に全てをカリー化するので実行速度にペナルティがある
