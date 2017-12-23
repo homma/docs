@@ -1,3 +1,14 @@
+# インストール
+- https://ocaml.org/docs/install.html#macOS
+
+````sh
+$ brew install ocaml
+$ brew install opam
+$ opam init
+$ echo 'eval `opam config env`' >> ~/.profile
+$ . ~/.profile
+````
+
 # ドキュメント
 
 ## 学習リソース
@@ -250,17 +261,6 @@ string_of_int 0 |> print_endline;;
 
 # ツール情報
 
-## インストール
-- https://ocaml.org/docs/install.html#macOS
-
-````sh
-$ brew install ocaml
-$ brew install opam
-$ opam init
-$ echo 'eval `opam config env`' >> ~/.profile
-$ . ~/.profile
-````
-
 ## コンパイル情報
 S 式的なものが出力される
 ````ocaml
@@ -287,7 +287,7 @@ rlwrap
 ledit
 - 開発終了している模様
 
-### utop
+## utop
 - https://github.com/diml/utop
 - https://github.com/realworldocaml/book/wiki/Installation-Instructions
 - rlwrap よりも utop を使用することが推奨されているみたい
@@ -303,10 +303,10 @@ $ utop
 
 - utop は微妙な感じ。センス！
 
-#### 良いところ
+### 良いところ
 - キーワードや変数を補完してくれる
 
-#### ダメなところ
+### ダメなところ
 - macOS だとメタキーが使えない
   - Terminal.app の設定で「メタキーとして Option キーを使用」にチェックを入れると、Option キーがメタキーになる
 - Ctrl-P で上の行に移動できるけど、一番上の行にいる時に、一つ前のコードに移動できない
@@ -317,7 +317,7 @@ $ utop
 - 不要な情報が表示される
   - 時刻が入っている行は不要
 
-### rlwrap
+## rlwrap
 インストール
 ````sh
 $ brew install rlwrap
