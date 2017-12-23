@@ -1,6 +1,6 @@
 ## インストール
 
-プロジェクト単位でインストールする
+プロジェクト単位でインストールします
 ````sh
 $ mkdir -p ~/Programming/PureScript/my_proj; cd $_
 $ npm install purescript pulp bower
