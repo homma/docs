@@ -1,10 +1,10 @@
 # インストール
 
-rustup を使用することが推奨されています  
+rustup を使用することが推奨されています  
 [Rustのインストール](https://www.rust-lang.org/ja-JP/install.html)  
 [rustup](https://github.com/rust-lang-nursery/rustup.rs/blob/master/README.md)
 
-rustup をインストールすると、rustc や cargo もインストールされる
+rustup をインストールすると、rustc や cargo もインストールされます
 
 ````sh
 $ curl https://sh.rustup.rs -sSf | sh
