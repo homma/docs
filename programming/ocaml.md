@@ -1,4 +1,4 @@
-# インストール
+## インストール
 - https://ocaml.org/docs/install.html#macOS
 
 ````sh
@@ -9,18 +9,18 @@ $ echo 'eval `opam config env`' >> ~/.profile
 $ . ~/.profile
 ````
 
-# ドキュメント
+## ドキュメント
 
-## 学習リソース
+### 学習リソース
 - [OCaml チュートリアル](https://ocaml.org/learn/tutorials/index.ja.html)
 - [お気楽 OCaml プログラミング入門](http://www.geocities.jp/m_hiroi/func/ocaml.html)
 - [Real World OCaml](https://realworldocaml.org/v1/en/html/index.html)
 - [User's Manual](https://caml.inria.fr/pub/docs/manual-ocaml/)
 - [Developing application with Objective Caml](https://caml.inria.fr/pub/docs/oreilly-book/html/index.html)
 
-# 文法
+## 文法
 
-## コードのエントリーポイント
+### コードのエントリーポイント
 エントリーポイントが必要なのか、という気もしますが...  
 "let () = " でも "let _ = " でも、どちらでも良い
 
@@ -29,7 +29,7 @@ let () = <main program>
 let _ = <main program>
 ````
 
-## 配列アクセス
+### 配列アクセス
 
 配列アクセスのリテラルはないみたい
 
@@ -37,7 +37,7 @@ let _ = <main program>
 String.get "foo" 0;;
 ````
 
-## 数値表現
+### 数値表現
 
 数値にも何種類かある
 
@@ -46,7 +46,7 @@ String.get "foo" 0;;
 - : int * nativeint * int32 * int64 = (0, 0n, 0l, 0L)
 ````
 
-## 数値演算
+### 数値演算
 
 関数を使用する場合
 ````ocaml
@@ -62,7 +62,7 @@ String.get "foo" 0;;
 Exception: Division_by_zero.
 ````
 
-## 2.0 は 2. と書ける
+### 2.0 は 2. と書ける
 ````ocaml
 # 2. ** 8.
   ;;
@@ -70,7 +70,7 @@ Exception: Division_by_zero.
 ````
 - OCaml's exponential operator uses float for its arguments.
 
-## n 進数
+### n 進数
 
 2 進数、8 進数、16 進数の表記方法が用意されている
 ````ocaml
@@ -82,7 +82,7 @@ Exception: Division_by_zero.
 
 便利
 
-## ターミナル出力
+### ターミナル出力
 
 参考 : [Input / Output](http://www2.lib.uchicago.edu/keith/ocaml-class/io.html)
 
@@ -159,7 +159,7 @@ Printf.printf
 - : unit = ()
 ````
 
-## ターミナル入力
+### ターミナル入力
 
 input_char
 ````ocaml
@@ -193,11 +193,11 @@ hello
 val ln : string = "hello"
 ````
 
-## リテラル
+### リテラル表現
 - [Built-In Data Types](http://www2.lib.uchicago.edu/keith/ocaml-class/data.html)
   - 配列は使わないのかな（書きづらそうな記法が割り当てられている）
 
-## 複数行文字列
+### 複数行文字列
 何も考えなくとも、複数行文字列を作成できる。  
 一行にまとめる時は \n でつなぐ。
 
@@ -218,7 +218,7 @@ val ln : string = "hello"
 - : string = "\nfoo\nbar\nbaz\n"
 ````
 
-## Quoted String
+### Quoted String
 [Quoted String](http://caml.inria.fr/distrib/ocaml-4.04/ocaml-4.04-refman.html#sec250) は、ヒアドキュメント的な機能のようです
 
 ````ocaml
@@ -233,7 +233,7 @@ val ln : string = "hello"
 - : string = "foo|};;"
 ````
 
-## 文字コード
+### 文字コード
 - OCaml をカジュアルに使いづらい原因の一つ
   - 今の時代に、Latin-1 決め打ちの文字列は辛い
   - 普通の言語なら、Modernization の名の下に一番最初に修正される箇所
@@ -243,7 +243,7 @@ val ln : string = "hello"
 - [OCaml プログラムで欧文以外の文字を使う方法](https://github.com/camlspotter/ocaml-zippy-tutorial-in-japanese/blob/master/ocaml_i18n.md)
   - ありがたい情報
 
-## 日本語出力
+### 日本語出力
 参考 : [OCaml プログラムで欧文以外の文字を使う方法](https://github.com/camlspotter/ocaml-zippy-tutorial-in-japanese/blob/master/ocaml_i18n.md)
 
 ````sh
@@ -252,7 +252,7 @@ let printer ppf = Format.fprintf ppf "\"%s\"";;
 #install_printer printer
 ````
 
-## 関数合成
+### 関数合成
 - [Pervasives](https://caml.inria.fr/pub/docs/manual-ocaml/libref/Pervasives.html)
 
 - fun1 @@ fun2 @@ fun3 arg で、fun1 (fun2 (fun3 arg)) の意味
@@ -266,9 +266,9 @@ string_of_int 0 |> print_endline;;
 - @@ は ML の o や Haskell の . に相当
 - 良い感じ
 
-# ツール情報
+## ツール情報
 
-## コンパイル情報
+### コンパイル情報
 S 式的なものが出力される
 ````ocaml
 $ ocaml -dlambda
@@ -277,7 +277,7 @@ $ ocaml -dlambda
 val foo : string = "foo"
 ````
 
-## REPL
+### REPL
 ocaml toplevel
 - そもそも行編集機能がない
 
@@ -294,7 +294,7 @@ rlwrap
 ledit
 - 開発終了している模様
 
-## utop
+### utop
 - https://github.com/diml/utop
 - https://github.com/realworldocaml/book/wiki/Installation-Instructions
 - rlwrap よりも utop を使用することが推奨されているみたい
@@ -310,10 +310,10 @@ $ utop
 
 - utop は微妙な感じ。センス！
 
-### 良いところ
+#### 良いところ
 - キーワードや変数を補完してくれる
 
-### ダメなところ
+#### ダメなところ
 - macOS だとメタキーが使えない
   - Terminal.app の設定で「メタキーとして Option キーを使用」にチェックを入れると、Option キーがメタキーになる
 - Ctrl-P で上の行に移動できるけど、一番上の行にいる時に、一つ前のコードに移動できない
@@ -324,7 +324,7 @@ $ utop
 - 不要な情報が表示される
   - 時刻が入っている行は不要
 
-## rlwrap
+### rlwrap
 インストール
 ````sh
 $ brew install rlwrap
