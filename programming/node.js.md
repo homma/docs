@@ -47,7 +47,7 @@ $ rustc +nightly --target wasm32-unknown-unknown -O number.rs --crate-type=cdyli
 number.js
 ````javascript
 const fs = require('fs');
-var buf = fs.readFileSync('./number.wasm').buffer;
+const buf = fs.readFileSync('./number.wasm').buffer;
 WebAssembly.instantiate(buf).then(res => console.log(res.instance.exports.number()));
 ````
 
