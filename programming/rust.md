@@ -6,15 +6,11 @@ rustup を使用することが推奨されています  
 
 rustup をインストールすると、rustc や cargo もインストールされます
 
+インストール
 ````sh
 $ curl https://sh.rustup.rs -sSf | sh
 $ echo 'export PATH="${HOME}/.cargo/bin:$PATH"' >> ~/.profile
 $ rustc --version
-````
-
-rustup の削除は rustup self uninstall
-````sh
-$ rustup self uninstall
 ````
 
 rust 環境の更新は rust update
@@ -25,6 +21,11 @@ $ rust update
 rustup の更新は rustup self update
 ````sh
 $ rustup self update
+````
+
+rustup の削除は rustup self uninstall
+````sh
+$ rustup self uninstall
 ````
 
 # ドキュメント
