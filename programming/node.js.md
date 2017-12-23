@@ -29,6 +29,35 @@ $ npm -v
 {}
 ````
 
+### 実行例
+文字列を渡すのはコードが大きくなるので、シンプルに数値を返す例
+
+number.rs
+````rust
+#[no_mangle]
+pub fn number() -> i32 { 42 }
+````
+
+コンパイル
+````sh
+$ rustc +nightly --target wasm32-unknown-unknown -O number.rs --crate-type=cdylib
+````
+
+number.js
+````javascript
+const fs = require('fs');
+var buf = fs.readFileSync('./number.wasm').buffer;
+WebAssembly.instantiate(buf, {}).then(res => console.log(res.instance.exports.number()));
+````
+
+実行結果
+````sh
+$ node number.js
+42
+````
+
+これでサーバを立てなくても WebAssembly のテストを実行できます
+
 ## util
 - https://nodejs.org/api/util.html
 
