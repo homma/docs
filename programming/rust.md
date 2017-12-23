@@ -97,6 +97,43 @@ JavaScript いいなと思ってしまいますが、Rust もそのうち慣れ�
 ### ウェブブラウザで実行する
 Emscripten を使用せず、[直接 wasm を生成できるようになりました](https://www.hellorust.com/news/native-wasm-target.html)
 
+#### Rust から直接 Wasm を作成する
+
+- [ガイド](https://www.hellorust.com/setup/wasm-target/)
+
+````sh
+$ rustup toolchain list
+stable-x86_64-apple-darwin (default)
+$ rustup toolchain install nightly
+$ rustup toolchain list
+stable-x86_64-apple-darwin (default)
+nightly-x86_64-apple-darwin
+$ rustup target list | grep wasm
+wasm32-unknown-emscripten
+$ rustup target add wasm32-unknown-unknown --toolchain nightly
+````
+
+コンパイル
+````sh
+$ cat hello.rs 
+fn main() { println!("こんにちは"); }
+$ rustc +nightly --target wasm32-unknown-unknown -O hello.rs
+$ file hello.wasm 
+hello.wasm: WebAssembly (wasm) binary module version 0x1 (MVP)
+````
+
+ファイルサイズの縮小は wasm-gc などで可能（ここでは実行しません）
+````sh
+$ ls -lh hello.wasm 
+-rw-r--r--  1 daisuke  staff    68K 12 23 14:43 hello.wasm
+````
+
+アンインストール方法は以下でいいのかな（要確認）
+````sh
+$ rustup target remove wasm32-unknown-unknown --toolchain nightly
+$ rustup toolchain uninstall nightly
+````
+
 #### Emscripten を使用する方法
 Emscripten で Rust のコードから JavaScript のコードを生成できます。  
 ただし、Rust のコードがそのまま JavaScript に変換されるわけではありません。  
