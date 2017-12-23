@@ -115,23 +115,35 @@ $ rustup target add wasm32-unknown-unknown --toolchain nightly
 
 コンパイル
 ````sh
-$ cat hello.rs 
-fn main() { println!("こんにちは"); }
-$ rustc +nightly --target wasm32-unknown-unknown -O hello.rs
-$ file hello.wasm 
-hello.wasm: WebAssembly (wasm) binary module version 0x1 (MVP)
+$ cat number.rs
+#[no_mangle]
+pub fn number() -> i32 { 42 }
+rustc +nightly --target wasm32-unknown-unknown -O number.rs --crate-type=cdylib
+$ file number.wasm 
+number.wasm: WebAssembly (wasm) binary module version 0x1 (MVP)
 ````
 
 ファイルサイズの縮小は wasm-gc などで可能（ここでは実行しません）
 ````sh
-$ ls -lh hello.wasm 
--rw-r--r--  1 daisuke  staff    68K 12 23 14:43 hello.wasm
+$ stat -f %z number.wasm 
+16558
 ````
 
 アンインストール方法は以下でいいのかな（要確認）
 ````sh
 $ rustup target remove wasm32-unknown-unknown --toolchain nightly
 $ rustup toolchain uninstall nightly
+````
+
+アンインストール実行結果
+````
+$ rustup target remove wasm32-unknown-unknown --toolchain nightly
+info: removing component 'rust-std' for 'wasm32-unknown-unknown'
+$ rustup toolchain uninstall nightly
+info: uninstalling toolchain 'nightly-x86_64-apple-darwin'
+info: toolchain 'nightly-x86_64-apple-darwin' uninstalled
+$ rustup toolchain list
+stable-x86_64-apple-darwin (default)
 ````
 
 #### Emscripten を使用する方法
