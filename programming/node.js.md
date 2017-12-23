@@ -1,8 +1,8 @@
 Node.js 固有の情報をまとめます
 
-# インストール
+## インストール
 
-## nodebrew を使用したインストール
+### nodebrew を使用したインストール
 - インストール手順
 ````sh
 $ brew install nodebrew
@@ -21,15 +21,15 @@ $ npm -v
 - nodebrew use すると、~/.nodebrew/current にシンボリックリンクが作成される
 - バイナリは nodejs.org から取得されている感じ
 
-# 使い方
+## 使い方
 
-## WebAssembly
+### WebAssembly
 ````javascript
 > WebAssembly
 {}
 ````
 
-### 実行例
+#### 実行例
 
 文字列を渡すのはコードが大きくなるので、シンプルに数値を返す例  
 wasm ファイルは Rust で作成しました
@@ -60,10 +60,10 @@ $ node number.js
 
 これでサーバを立てなくても WebAssembly のテストを実行できます
 
-## util
+### util
 - https://nodejs.org/api/util.html
 
-## Node.js で JSON をパースする
+### Node.js で JSON をパースする
 ````javascript
 $ JSON='{"foo": "foo", "bar": "bar"}'
 $ echo ${JSON} | \
@@ -85,7 +85,7 @@ bar
 
 - デフォルトでは YAML は扱えない（パッケージのインストールが必要）
 
-## Node.js で標準入力を扱う
+### Node.js で標準入力を扱う
 - stdin はバイナリなので、stdout.write で書き出す、toString() で文字列に直す、setEncoding でエンコードするなどが必要
 ````sh
 $ echo "foo" | node -e "process.stdin.on('data', d => process.stdout.write(d))"
@@ -99,9 +99,9 @@ foo
 
 ````
 
-# ツール情報
+## ツール情報
 
-## Node.js のバージョンアップ
+### Node.js のバージョンアップ
 
 バイナリインストールは install-binary サブコマンドを使用
 ````sh
@@ -114,7 +114,7 @@ $ node -v
 $ nodebrew uninstall <old-version>
 ````
 
-## npm のバージョンアップ
+### npm のバージョンアップ
 Nodebrew でインストールした場合もこの方法で OK
 
 ````
@@ -124,7 +124,7 @@ $ npm i -g npm
 i は install  
 ちゃんと ~/.nodebrew 配下の npm が更新されました  
 
-## Nodebrew で Node.js をソースからインストールする
+### Nodebrew で Node.js をソースからインストールする
 - 最新の Node.js をインストールしようとして、間違ってソースからビルドしてしまったので記録
 
 ソースコードからインストールする場合は install サブコマンドを使用
@@ -144,7 +144,7 @@ $ nodebrew install latest
 $ nodebrew clean <version>
 ````
 
-## Node.js のインストールおよびバージョン管理方法
+### Node.js のインストールおよびバージョン管理方法
 
 Node.js のインストールと複数バージョンの管理には色々なツールが存在している
 
@@ -189,9 +189,9 @@ Node.js のインストールと複数バージョンの管理には色々なツ
   - 最新バージョンが使えればよく、複数プロジェクトでバージョンを切り替える必要はない
   - Perl で実装されているものの、何か問題があったら自分で調査できそう
 
-# その他
+## その他
 
-## Glitch
+### Glitch
 - https://glitch.com
 - Node.js アプリの無料ホスティングサービス
 - データはローカルファイルに保存できる
