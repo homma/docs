@@ -1,6 +1,7 @@
 # インストール
-rustup を使用することが推奨されている  
-[Rustのインストール](https://www.rust-lang.org/ja-JP/install.html)  
+
+rustup を使用することが推奨されています  
+[Rustのインストール](https://www.rust-lang.org/ja-JP/install.html)  
 [rustup](https://github.com/rust-lang-nursery/rustup.rs/blob/master/README.md)
 
 rustup をインストールすると、rustc や cargo もインストールされる
@@ -13,7 +14,7 @@ $ rustc --version
 
 rustup の削除は rustup self uninstall
 ````sh
- $ rustup self uninstall
+$ rustup self uninstall
 ````
 
 rust 環境の更新は rust update
@@ -31,6 +32,20 @@ $ rustup self update
 ## 学習リソース
 * [関数型プログラマのための Rust](http://postd.cc/rust-for-functional-programmers/)
 * [Rust by Example](http://rust-lang-ja.org/rust-by-example/)
+
+# ツールの使い方
+
+## Rust のバージョンアップ
+rustup update でバージョンアップできます
+
+````sh
+$ rustc --version
+rustc 1.20.0 (f3d6973f4 2017-08-27)
+$ rustup update
+...
+$ rustc --version
+rustc 1.22.1 (05e2e1c41 2017-11-22)
+````
 
 # その他
 
