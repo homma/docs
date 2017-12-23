@@ -89,7 +89,11 @@ struct MyObj {name: String}
 impl MyObj { fn about(&self) { println!("This is my object.") } }
 impl MyObj { fn name(&self) { println!("{}", self.name) } }
 
-fn main() { let m = MyObj{name: "myobj".to_string()}; m.about(); m.name(); }
+fn main() {
+  let m = MyObj{name: "myobj".to_string()};
+  m.about();
+  m.name();
+}
 ````
 
 JavaScript いいなと思ってしまいますが、Rust もそのうち慣れるでしょう
