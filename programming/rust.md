@@ -150,7 +150,9 @@ $ rustup toolchain list
 stable-x86_64-apple-darwin (default)
 ````
 
-#### Emscripten を使用する方法
+#### Emscripten を使用する
+rustc で直接 wasm を作成できるようになったので、Emscripten を使用する必要はなさそうです。
+
 Emscripten で Rust のコードから JavaScript のコードを生成できます。  
 ただし、Rust のコードがそのまま JavaScript に変換されるわけではありません。  
 asm.js については詳しくないので、詳細は要確認。  
