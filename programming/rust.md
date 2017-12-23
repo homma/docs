@@ -60,6 +60,7 @@ hello.rs
 fn main() { println!("こんにちは"); }
 ````
 
+コンパイル
 ````sh
 $ rustc hello.rs
 $ ./hello
