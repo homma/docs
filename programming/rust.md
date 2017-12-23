@@ -1,4 +1,4 @@
-# インストール
+## インストール
 
 rustup を使用することが推奨されています  
 - [Rustのインストール](https://www.rust-lang.org/ja-JP/install.html)
@@ -28,18 +28,18 @@ rustup の削除は rustup self uninstall
 $ rustup self uninstall
 ````
 
-# ドキュメント
+## ドキュメント
 
-## 学習リソース
+### 学習リソース
 - [関数型プログラマのための Rust](http://postd.cc/rust-for-functional-programmers/)
 - [Rust by Example](http://rust-lang-ja.org/rust-by-example/)
 
-# 関連サイト
+## 関連サイト
 - [rustup](https://github.com/rust-lang-nursery/rustup.rs)
 
-# ツールの使い方
+## ツールの使い方
 
-## Rust のバージョンアップ
+### Rust のバージョンアップ
 rustup update でバージョンアップできます
 
 ````sh
@@ -51,9 +51,9 @@ $ rustc --version
 rustc 1.22.1 (05e2e1c41 2017-11-22)
 ````
 
-# その他
+## その他
 
-## メソッドの追加
+### メソッドの追加
 JavaScript でよく書くこれは、
 ````javascript
 function myobj() {
@@ -80,10 +80,10 @@ fn main() { let m = MyObj{name: "myobj".to_string()}; m.about(); m.name(); }
 
 JavaScript いいなと思ってしまいますが、Rust もそのうち慣れるでしょう
 
-## ウェブブラウザで実行する
+### ウェブブラウザで実行する
 - Emscripten を使用せず、直接 wasm を生成できるようになりました
 
-### Emscripten を使用する方法
+#### Emscripten を使用する方法
 Emscripten で Rust のコードから JavaScript のコードを生成できます。  
 ただし、Rust のコードがそのまま JavaScript に変換されるわけではありません。  
 asm.js については詳しくないので、詳細は要確認。  
