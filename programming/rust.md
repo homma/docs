@@ -81,7 +81,7 @@ fn main() { let m = MyObj{name: "myobj".to_string()}; m.about(); m.name(); }
 JavaScript いいなと思ってしまいますが、Rust もそのうち慣れるでしょう
 
 ### ウェブブラウザで実行する
-- Emscripten を使用せず、[直接 wasm を生成できるようになりました](https://www.hellorust.com/news/native-wasm-target.html)
+Emscripten を使用せず、[直接 wasm を生成できるようになりました](https://www.hellorust.com/news/native-wasm-target.html)
 
 #### Emscripten を使用する方法
 Emscripten で Rust のコードから JavaScript のコードを生成できます。  
