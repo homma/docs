@@ -105,6 +105,13 @@ Emscripten を使用せず、[直接 wasm を生成できるようになりま�
 
 - [ガイド](https://www.hellorust.com/setup/wasm-target/)
 
+インストール
+````sh
+$ rustup toolchain install nightly
+$ rustup target add wasm32-unknown-unknown --toolchain nightly
+````
+
+インストール実行ログ
 ````sh
 $ rustup toolchain list
 stable-x86_64-apple-darwin (default)
@@ -122,7 +129,7 @@ $ rustup target add wasm32-unknown-unknown --toolchain nightly
 $ cat number.rs
 #[no_mangle]
 pub fn number() -> i32 { 42 }
-rustc +nightly --target wasm32-unknown-unknown -O number.rs --crate-type=cdylib
+$ rustc +nightly --target wasm32-unknown-unknown -O number.rs --crate-type=cdylib
 $ file number.wasm 
 number.wasm: WebAssembly (wasm) binary module version 0x1 (MVP)
 ````
