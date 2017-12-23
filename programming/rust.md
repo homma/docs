@@ -134,6 +134,12 @@ $ file number.wasm
 number.wasm: WebAssembly (wasm) binary module version 0x1 (MVP)
 ````
 
+アセンブラ出力
+````sh
+$ rustc +nightly --target wasm32-unknown-unknown -O number.rs --crate-type=cdylib --emit asm
+````
+[.wat ファイル](https://developer.mozilla.org/ja/docs/WebAssembly/Text_format_to_wasm) ではなく、Rust 固有のファイル形式なのかも
+
 ファイルサイズの縮小は wasm-gc などで可能（ここでは実行しません）
 ````sh
 $ stat -f %z number.wasm 
