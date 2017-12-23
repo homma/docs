@@ -10,7 +10,7 @@
 ## 別の実装
 - Miranda は商標なので、注意が必要かも
 
-### Miranda Implementation
+### Miranda
 - https://github.com/aneeshdurg/miranda-compiler
 
 ### Amanda
