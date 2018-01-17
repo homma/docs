@@ -5,7 +5,7 @@
 - [List of video game console palettes](https://en.wikipedia.org/wiki/List_of_video_game_console_palettes)
 
 ## ドット絵用グレースケールパターン
-深い意味はありませんが、00 00 00 と ff ff ff は空けておきます。  
+深い意味はありませんが、00 00 00 と ff ff ff は空けておきます。  
 スプライトとして使用するときに、マスクしやすくなるかもしれないので。  
 
 ### 4 色グレイスケール
