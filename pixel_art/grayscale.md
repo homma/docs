@@ -4,6 +4,23 @@
 - [List of monochrome and RGB palettes](https://en.wikipedia.org/wiki/List_of_monochrome_and_RGB_palettes)
 - [List of video game console palettes](https://en.wikipedia.org/wiki/List_of_video_game_console_palettes)
 
+## グレイスケールパターン
+
+### 4 色グレイスケール
+````rgb
+00 00 00
+55 55 55
+aa aa aa
+ff ff ff
+````
+
+````javascript
+let k = 255 / 3
+// 85
+Array(4).fill().map( (v, i) => i * k ).map(v => v.toString(16) )
+// [ '0', '55', 'aa', 'ff' ]
+````
+
 ## ドット絵用グレースケールパターン
 スプライトとして使用するときに、マスクしやすくなるかもしれないので、00 00 00 と ff ff ff は空けておきます。
 
