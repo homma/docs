@@ -28,5 +28,7 @@ f0 f0 f0
 ````
 
 ````javascript
-[ 1, 3, 5, 7, 9, 11, 13, 15 ].map(v => (v * 16).toString(16)).forEach(v => console.log(v, v, v))
+a1 = Array(8).fill().map( (v, i) => i * 2 + 1)
+// [ 1, 3, 5, 7, 9, 11, 13, 15 ]
+a1.map(v => (v * 16).toString(16)).forEach(v => console.log(v, v, v))
 ````
