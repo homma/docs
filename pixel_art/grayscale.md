@@ -1,6 +1,10 @@
 グレイスケールは 256 色が標準的みたい。
 
-## グレースケールパターン
+## 資料
+- [List of monochrome and RGB palettes](https://en.wikipedia.org/wiki/List_of_monochrome_and_RGB_palettes)
+- [List of video game console palettes](https://en.wikipedia.org/wiki/List_of_video_game_console_palettes)
+
+## ドット絵用グレースケールパターン
 00 00 00 と ff ff ff は空けておきます。
 
 ### 4 色グレイスケール
