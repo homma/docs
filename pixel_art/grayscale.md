@@ -5,22 +5,23 @@
 - [List of video game console palettes](https://en.wikipedia.org/wiki/List_of_video_game_console_palettes)
 
 ## ドット絵用グレースケールパターン
-深い意味はありませんが 00 00 00 と ff ff ff は空けておきます。
+深い意味はありませんが、00 00 00 と ff ff ff は空けておきます。  
+スプライトとして使用するときに、マスクしやすくなるかもしれないので。  
 
 ### 4 色グレイスケール
-````
+````rgb
 08 08 08
 58 58 58
 a8 a8 a8
 f8 f8 f8
 ````
 
-````
+````javascript
 [0, 5, 10, 15].map(v => v * 16 + 8).map(v => v.toString(16)).forEach(v => console.log(v, v, v))
 ````
 
 ### 8 色グレイスケール
-````
+````rgb
 10 10 10
 30 30 30
 50 50 50
