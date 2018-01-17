@@ -17,7 +17,7 @@ ff ff ff
 ````javascript
 let k = 255 / 3
 // 85
-Array(4).fill().map( (v, i) => i * k ).map(v => v.toString(16) )
+Array(4).fill().map( (v, i) => i * k ).map( v => v.toString(16) )
 // [ '0', '55', 'aa', 'ff' ]
 ````
 
