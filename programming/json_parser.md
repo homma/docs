@@ -168,7 +168,7 @@ oneOf: d is not in ab
 ### 条件に合う限り読み続ける
 
 - StringWriter を実装
-- isDigit はないので、isInteger で代用
+- isDigit を実装
 
 ````javascript
 const StringWriter = function() {
