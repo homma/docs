@@ -126,4 +126,21 @@ const many = f => tr => {
 }
 
 // Test
-parseTest(many(isDigit), "123abc");
+// parseTest(many(isDigit), "123abc");
+
+const isSpace = ch => " \r\n\t".indexOf(ch) >= 0
+
+const spaces = tr => {
+  const ch = tr.peek();
+  if( ch >= 0 && isSpace(String.fromCharCode(ch)) ) {
+    tr.read();
+    spaces(tr);
+  }
+}
+
+const skipAndTake = (a, b) => tr => { a(tr); return b(tr) }
+const takeAndSkip = (a, b) => tr => { const ret = a(tr); b(tr); return ret }
+
+// Test
+parseTest( skipAndTake(spaces, anyChar), "   123");
+parseTest( plist([takeAndSkip(anyChar, spaces), anyChar]), "1   23");
