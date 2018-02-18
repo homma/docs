@@ -142,5 +142,90 @@ const skipAndTake = (a, b) => tr => { a(tr); return b(tr) }
 const takeAndSkip = (a, b) => tr => { const ret = a(tr); b(tr); return ret }
 
 // Test
-parseTest( skipAndTake(spaces, anyChar), "   123");
-parseTest( plist([takeAndSkip(anyChar, spaces), anyChar]), "1   23");
+// parseTest( skipAndTake(spaces, anyChar), "   123");
+// parseTest( plist([takeAndSkip(anyChar, spaces), anyChar]), "1   23");
+
+const codePoint = c => c.codePointAt(0);
+
+const jsonHex = tr => {
+
+  const ch = codePoint(anyChar(tr));
+
+  if( codePoint("0") <= ch && ch <= codePoint("9") ) {
+    return ch - codePoint("0");
+  }
+
+  if( codePoint("A") <= ch && ch <= codePoint("F") ) {
+    return ch - codePoint("A") + 10;  // F = F - A + 10
+  }
+
+  if( codePoint("a") <= ch && ch <= codePoint("f") ) {
+    return ch - codePoint("a") + 10;
+  }
+
+  throw `hexChar: ${ch} is not hex char`;
+}
+
+const stringAt = ch => String.fromCodePoint(ch);
+
+const jsonUnescape = tr => {
+
+  const ch = anyChar(tr);
+  switch(ch) {
+
+    case 'b': return "\b";
+    case 't': return "\t";
+    case 'n': return "\n";
+    case 'v': return "\v";
+    case 'f': return "\f";
+    case 'r': return "\r";
+    case 'x': return stringAt( (jsonHex(tr) << 4) | (jsonHex(tr)) );
+                                // 0x42 == ((4<<4)|2)
+    case 'u': return stringAt( (jsonHex(tr) << 12) | (jsonHex(tr) << 8) |
+                               (jsonHex(tr) << 4)  | (jsonHex(tr)) );
+    default: return ch;
+
+  }
+
+}
+
+const jsonString = tr => {
+
+  const start = oneOf("'\"")(tr);
+  const sw = new StringWriter();
+
+  const f = () => {
+    const ch = anyChar(tr);
+    if(ch == start) { return };
+    if(ch == "\\") {
+      sw.write(jsonUnescape(tr)); f();
+    } else {
+      sw.write(ch); f();
+    }
+  }
+  f();
+  return sw.toString();
+
+}
+
+// Test
+// parseTest(jsonString, "\"abc\"");
+// parseTest(jsonString, "'a\\\\b\\\\c'");
+// parseTest(jsonString, "'A\\x42\\u0043'");
+
+const jsonNumber = tr => {
+  if( isOneOf("-")(tr) ) {
+    return "-" + jsonNumber(tr);
+  } else {
+    const n1 = many(isDigit)(tr);
+    if( isOneOf(".")(tr) ) {
+      return n1 + "." + many(isDigit)(tr);
+    } else {
+      return n1;
+    }
+  }
+}
+
+// Test
+// parseTest(jsonNumber, "123");
+// parseTest(jsonNumber, "-3.14");
