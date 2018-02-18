@@ -216,7 +216,30 @@ parseTest(many(isDigit), "123abc");
 ````
 
 ### 空白の読み飛ばし
-- To Be Implemented
+````javascript
+const isSpace = ch => " \r\n\t".indexOf(ch) >= 0
+
+const spaces = tr => {
+  const ch = tr.peek();
+  if( ch >= 0 && isSpace(String.fromCharCode(ch)) ) {
+    tr.read();
+    spaces(tr);
+  }
+}
+
+const skipAndTake = (a, b) => tr => { a(tr); return b(tr) }
+const takeAndSkip = (a, b) => tr => { const ret = a(tr); b(tr); return ret }
+
+// Test
+parseTest( skipAndTake(spaces, anyChar), "   123");
+parseTest( plist([takeAndSkip(anyChar, spaces), anyChar]), "1   23");
+````
+
+実行結果
+````javascript
+1
+[ '1', '2' ]
+````
 
 ## JSON パーサー
 
@@ -237,7 +260,6 @@ parseTest(many(isDigit), "123abc");
 - JavaScript の文字列に合わせた実装にする
   - codePointAt, fromCodePoint は使用しない
 - try/catch は使用しない
-- カリー化はしない
 - 再帰もしない
 
 ## 簡易パーサー
