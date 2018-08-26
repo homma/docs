@@ -16,7 +16,9 @@
 ### JavaScript
 - [Parsimmon](https://github.com/jneen/parsimmon)
 - [Parjs - Parser Combinator Library](https://github.com/GregRos/parjs)
+- [Masala Parser: Javascript Parser Combinators](https://github.com/d-plaindoux/masala-parser)
 - [μparse](https://github.com/jimf/uparse)
+- [Bennu](https://github.com/mattbierner/bennu)
 
 ### Standard ML
 - [PARSER COMBINATORS](https://github.com/kfl/mosml/tree/master/examples/parsercomb) // Moscow ML
