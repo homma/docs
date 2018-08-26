@@ -9,6 +9,9 @@
 - [48時間でSchemeを書こう](https://ja.wikibooks.org/wiki/48時間でSchemeを書こう)
 
 ### F#
+- [Understanding Parser Combinators](https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/)
+- [Building a useful set of parser combinators](https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-2/)
+- [Improving the parser library](https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-3/)
 - [Writing a JSON parser from scratch](https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-4/)
 - [JSONパーサーを作る](https://qiita.com/7shi/items/04c2991239894687ef2f)
 
