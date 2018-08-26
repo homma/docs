@@ -1,3 +1,9 @@
+//
+// derived from:
+//   https://qiita.com/7shi/items/04c2991239894687ef2f
+//   http://ideone.com/4V8oNB
+//
+
 const StringReader = function(str) {
   this.string = str;
   this.position = 0;
@@ -229,3 +235,30 @@ const jsonNumber = tr => {
 // Test
 // parseTest(jsonNumber, "123");
 // parseTest(jsonNumber, "-3.14");
+
+const isLetter = ch => { // valid JSON character
+
+}
+
+const isLetterOrDigit = ch => {
+
+}
+
+const jsonValue = tr => {
+
+  const ch = peek(tr);
+
+  if(ch == "'" || ch == "\"") {
+    return jsonString(tr);
+  }
+
+  if(ch == "-") {
+    return jsonNumber(tr);
+  }
+
+  if(isDigit(ch)) {
+    return jsonNumber(tr);
+  }
+
+}
+
