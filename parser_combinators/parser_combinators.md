@@ -1,5 +1,5 @@
 
-## Implementing Parser Generators
+## Implementing Parser Combinators
 
 ### JavaScript
 - [You could have invented Parser Combinators](http://theorangeduck.com/page/you-could-have-invented-parser-combinators)
@@ -15,7 +15,7 @@
 - [Writing a JSON parser from scratch](https://fsharpforfunandprofit.com/posts/understanding-parser-combinators-4/)
 - [JSONパーサーを作る](https://qiita.com/7shi/items/04c2991239894687ef2f)
 
-## Parser Implimentations
+## Parser Combinators Implimentations
 
 ### JavaScript
 - [Parsimmon](https://github.com/jneen/parsimmon)
