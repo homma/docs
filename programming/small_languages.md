@@ -1,7 +1,7 @@
 ## ドキュメント
 
 ### OCaml - Compiling Mini-ML to Javascript
-- http://www.lexicallyscoped.com/2015/06/28/miniml-compiler-to-js.html)
+- http://www.lexicallyscoped.com/2015/06/28/miniml-compiler-to-js.html
 - PLZoo の Mini-ML についての記事
 
 - [A simple applicative language: Mini-ML](https://hal.inria.fr/inria-00076025/file/RR-0529.pdf)

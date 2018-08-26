@@ -2,6 +2,7 @@
 ## Implementing Parser Generators
 
 ### JavaScript
+- [You could have invented Parser Combinators](http://theorangeduck.com/page/you-could-have-invented-parser-combinators)
 - [JavaScriptでパーサコンビネータのコンセプトを理解する](http://blog.anatoo.jp/entry/2015/04/26/220026)
 
 ### Haskell
