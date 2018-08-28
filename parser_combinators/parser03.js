@@ -1,5 +1,5 @@
 /*
- * A translation of the following parsers from Java to JavaScript
+ * A port of the following parser implemented in Java into JavaScript
  * 
  * http://kmizu.hatenablog.com/entry/20090225/1235576560
  * 
@@ -127,6 +127,10 @@ const test = str => {
   console.log();
 };
 
-test("abc");
-test("aaabbbccc");
-test("aaabbbcc");
+const run_test = () => {
+  test("abc");
+  test("aaabbbccc");
+  test("aaabbbcc");
+};
+
+// run_test();
