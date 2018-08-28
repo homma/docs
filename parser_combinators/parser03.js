@@ -81,7 +81,7 @@ const opt = parser => or(parser, apply(string(""), param => null));
 
 const rep1 = parser =>
   apply(seq(parser, rep(parser)), param => {
-    param[1].push(param[0]);
+    param[1].unshift(param[0]);
     return param[1];
   });
 
