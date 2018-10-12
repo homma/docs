@@ -5,6 +5,9 @@ emacs のマニュアルを使って lem の勉強をします。
 
 間違っていたらごめんなさい。
 
+## マニュアル
+- https://ayatakesi.github.io/emacs/26.1/html/index.html
+
 ## ディストリビューション
 
 - lem はオープンソースで開発・提供されている
