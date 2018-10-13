@@ -1,7 +1,7 @@
 ## Lem のキーバインド
 
 ### キーバインドの実装
-- https://github.com/cxxxr/lem/search?q=*global-keymap*&unscoped_q=*global-keymap*
+- [*global-keymap*](https://github.com/cxxxr/lem/search?q=*global-keymap*&unscoped_q=*global-keymap*)
 
 ### キーバインドのヘルプ
 
