@@ -18,6 +18,22 @@
 | `M-:` | `self-lisp-eval-string` | 指定した Lisp プログラムを実行する | プログラムはミニバッファで指定する |
 | `C-x C-e` | `self-lisp-eval-last-expression` | カーソル直前の Lisp プログラムの評価 | 実行結果はミニバッファに出力される |
 
+#### S 式の操作
+
+| キーバインド | コマンド | 意味 | 補足 |
+| --- | --- | --- | --- |
+| `M-C-f` | `forward-sexp` | 次の S 式へ移動する | |
+| `M-C-b` | `backward-sexp` | 前の S 式へ移動する | |
+| `M-C-n` | `forward-list` | 次のリストへ移動する | |
+| `M-C-p` | `backward-list` | 前のリストへ移動する | |
+| `M-C-d` | `down-list` | 内側のリストへ移動する | |
+| `M-C-u` | `backward-up-list` | 外側のリストへ移動する | |
+| `C-M-@` | `mark-sexp` | S 式にマークを設定する | 英語キーボードでは使用できない |
+| `M-C-k` | `kill-sexp` | S 式を消去する | `kill` |
+| `M-C-t` | `transpose-sexps` | 前の S 式と入れ替える | |
+
+- `M-C-@` は英語キーボードでは `M-2` と重複しているため、実行することができない
+
 ### カーソルの移動
 
 | キーバインド | コマンド | 意味 | 補足 |
@@ -29,8 +45,8 @@
 | `C-b` | `backward-char` | 一文字左に移動する | `←` |
 | `C-a` | `move-to-beginning-of-line` | 行頭に移動する | `Home` |
 | `C-e` | `move-to-end-of-line` | 行末に移動する | `End` |
-| `M-f` | `forward-word` | 次の単語に移動する | |
-| `M-b` | `previous-word` | 前の単語に移動する | |
+| `M-f` | `forward-word` | 次の単語に移動する | `C-Right` は動作確認できず |
+| `M-b` | `previous-word` | 前の単語に移動する | `C-Left` は動作確認できず |
 | `C-v` | `next-page` | 次のページに移動する | `PageDown` |
 | `M-v` | `previous-page` | 前のページに移動する | `PageUp` |
 | `C-x ]` | `next-page-char` | 次の改ページへ移動 | 次の `^L` へ移動 |
@@ -78,7 +94,7 @@
 | `C-x C-o` | `delete-blank-lines` | 連続する空行をまとめて消去 | `kill` |
 | `M-k` | `kill-paragraph` | カーソル位置以降のパラグラフを削除 | |
 | `M-C-h` | `backward-delete-word` | カーソル直前の単語を消去 | `kill` |
-| `M-d` | `delete-word` | カーソルの後ろの単語を消去 | `kill` |
+| `M-d` | `delete-word` | カーソルの後ろの単語を消去 | `kill` `C-Delete` は動作確認できず |
 | `C-m` | `newline` | 改行 | `Return` |
 | `C-o` | `open-line` | カーソルの後ろに改行を入力する | |
 | `Tab` | `indent-line-and-complete-symbol` | インデントを挿入 | シンボルの補完については不明 |
@@ -130,7 +146,6 @@
 | `C-u -` | `universal-argument-minus` | 回数にマイナスを指定する | |
 | `M-<n>` | `universal-argument-0` | n 回繰り返し | n は 0 ~ 9 |
 
-
 - `C-u` を連続して入力すると、繰り返す回数が増えます
 
 #### 検索
@@ -139,17 +154,35 @@
 | --- | --- | --- | --- |
 | `C-s` | `isearch-forward` | 前方検索 | 大文字小文字を区別しない |
 | `C-r` | `isearch-backward` | 後方検索 | 大文字小文字を区別しない |
+| `C-M-s` | `isearch-forward-regexp` | 正規表現で前方検索 | |
+| `C-M-r` | `isearch-backward-regexp` | 正規表現で後方検索 | |
+| `M-s _` | `isearch-forward-symbol` | 前方へのシンボル検索 | プログラミングで使用 |
+| `M-s M-_` | `isearch-backward-symbol` | 後方へのシンボル検索 | プログラミングで使用 |
+| `M-s .` | `isearch-forward-symbol-at-point` | カーソルの近くにあるシンボルを前方検索 | |
+
+### キーボードマクロ
+- 一連の操作をマクロとして記録し、再実行することができる
+
+| キーバインド | コマンド | 意味 | 補足 |
+| --- | --- | --- | --- |
+| `C-x (` | `kbdmacro-start` | キーボードマクロの記録開始 | |
+| `C-x )` | `kbdmacro-end` | キーボードマクロの記録終了 | |
+| `C-x e` | `kbdmacro-execute` | キーボードマクロの実行 | |
 
 ### バッファの操作
 
 | キーバインド | コマンド | 意味 | 補足 |
 | --- | --- | --- | --- |
 | `C-x C-f` | `find-file` | ファイルを開く | 後述 |
-| `C-x C-s` | `save-buffer` | バッファを保存する | |
+| `C-x C-r` | `read-file` | ファイルを読み込み専用で開く | |
+| `C-x C-q` | `toggle-read-only` | 読み込み専用・書き込み可能の切り替え | |
+| `C-x Tab` | `insert-file` | 現在のバッファに指定したファイルの中身を挿入する | |
 | `C-x C-b` | `list-buffers` | `*Buffer Menu*` を表示する | |
 | `C-x b` | `select-buffer` | ウィンドウに表示するバッファを変更する | |
 | `C-x k` | `kill-buffer` | バッファを閉じる | |
-| `C-x C-q` | `toggle-read-only` | 読み込み専用・書き込み可能の切り替え | |
+| `C-x C-s` | `save-buffer` | バッファを保存する | |
+| `C-x C-w` | `write-file` | 指定したファイル名でバッファを保存する | |
+| `C-x s` | `save-some-buffers` | 保存が必要なファイルを保存するか順番に確認する | |
 
 #### `C-x C-f` の動作
 - 存在しないファイル名を指定すると新規にファイルを作成できる
@@ -216,6 +249,19 @@
 | `M-p` |
 | `M-n` |
 
+### 入力ができないキー
+
+- macOS で確認
+
+| キーバインド | コマンド | 動き |
+| --- | --- | --- |
+| `C-M-@` | `mark-sexp` | `M-2` `universal-argument-2` になってしまう |
+| `C-Right` | `forward-word` | 次の単語に移動する | |
+| `C-Left` | `previous-word` | 前の単語に移動する | |
+| `C-Delete` | `delete-word` | カーソルの後ろの単語を消去 | |
+
+- `C-M-@` は英語キーボードでは入力ができない
+
 ### 不明なキー
 
 | キーバインド | コマンド | 動き |
@@ -224,6 +270,15 @@
 | `M-~` | `unmark-buffer` | |
 | `C-x #` | `filter-buffer` | |
 | `C-x @` | `pipe-command` | 外部コマンドの実行 |
+
+#### ソースリスト
+
+| キーバインド | コマンド | 動き |
+| --- | --- | --- |
+| `C-x n` | `sourcelist-next` | `--` |
+| `C-x C-n` | `sourcelist-next` | `--` |
+| `C-x p` | `sourcelist-previous` | `--` |
+| `C-x C-p` | `sourcelist-previous` | `--` |
 
 ### Lem には存在しないキー
 - 一部です
