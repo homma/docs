@@ -10,7 +10,7 @@
 
 | キーバインド | コマンド | 意味 | 補足 |
 | --- | --- | --- | --- |
-| `C-x C-e` | self-lisp-eval-last-expression | カーソル直前の Lisp プログラムの評価 | 実行結果はミニバッファに出力される |
+| `C-x C-e` | `self-lisp-eval-last-expression` | カーソル直前の Lisp プログラムの評価 | 実行結果はミニバッファに出力される |
 
 ### カーソルの移動
 
