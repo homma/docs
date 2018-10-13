@@ -5,6 +5,8 @@
 
 ## 関数を探す
 - `M-x lisp-apropos` でキーワード検索
+- `lisp-apropos` からは `q` キーで抜けられます
+
 - `M-x lisp-describe-symbol` でリファレンス参照
 
 - 実装を読む
