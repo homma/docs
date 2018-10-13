@@ -47,6 +47,8 @@
 | `C-e` | `move-to-end-of-line` | 行末に移動する | `End` |
 | `M-f` | `forward-word` | 次の単語に移動する | `C-Right` は動作確認できず |
 | `M-b` | `previous-word` | 前の単語に移動する | `C-Left` は動作確認できず |
+| `M-}` | `forward-paragraph` | 次のパラグラフに移動する | |
+| `M-{` | `backward-paragraph` | 前のパラグラフに移動する | |
 | `C-v` | `next-page` | 次のページに移動する | `PageDown` |
 | `M-v` | `previous-page` | 前のページに移動する | `PageUp` |
 | `C-x ]` | `next-page-char` | 次の改ページへ移動 | 次の `^L` へ移動 |
@@ -80,7 +82,11 @@
 #### 文字変換
 
 | `C-t` | `transpose-characters` | 前後の文字を入れ替える | |
-| `M-u` | `uppercase-word` | 単語を大文字に置換する | |
+| `M-u` | `uppercase-word` | 単語を大文字に変換する | |
+| `M-l` | `lowercase-word` | 単語を小文字に変換する | |
+| `C-x C-u` | `uppercase-region` | 選択範囲の文字列を大文字に変換する | |
+| `C-x C-l` | `downcase-region` | 選択範囲の文字列を小文字に変換する | |
+| `M-c` | `capitalize-word` | 先頭の文字を大文字に、後続の文字を小文字に変換する | |
 | `M-Space` | `just-one-space` | 複数の連続した空白文字を一つの空白文字にまとめる | |
 
 #### 文字編集
@@ -93,7 +99,7 @@
 | `C-u <n> C-k` | `--` | n 行削除 | |
 | `C-x C-o` | `delete-blank-lines` | 連続する空行をまとめて消去 | `kill` |
 | `M-k` | `kill-paragraph` | カーソル位置以降のパラグラフを削除 | |
-| `M-C-h` | `backward-delete-word` | カーソル直前の単語を消去 | `kill` |
+| `M-C-h` | `backward-delete-word` | カーソル直前の単語を消去 | `kill` `M-Backspace` |
 | `M-d` | `delete-word` | カーソルの後ろの単語を消去 | `kill` `C-Delete` は動作確認できず |
 | `C-m` | `newline` | 改行 | `Return` |
 | `C-o` | `open-line` | カーソルの後ろに改行を入力する | |
@@ -173,12 +179,15 @@
 
 | キーバインド | コマンド | 意味 | 補足 |
 | --- | --- | --- | --- |
+| `M-=` | `count-words` | バッファの行数、単語数、文字数を集計する | |
 | `C-x C-f` | `find-file` | ファイルを開く | 後述 |
-| `C-x C-r` | `read-file` | ファイルを読み込み専用で開く | |
-| `C-x C-q` | `toggle-read-only` | 読み込み専用・書き込み可能の切り替え | |
+| `C-x C-r` | `read-file` | ファイルを読み取り専用で開く | |
+| `C-x C-q` | `toggle-read-only` | 読み取り専用・書き込み可能の切り替え | |
 | `C-x Tab` | `insert-file` | 現在のバッファに指定したファイルの中身を挿入する | |
 | `C-x C-b` | `list-buffers` | `*Buffer Menu*` を表示する | |
 | `C-x b` | `select-buffer` | ウィンドウに表示するバッファを変更する | |
+| `C-x Left` | `previous-buffer` | 前のバッファに移動する | |
+| `C-x Right` | `next-buffer` | 次のバッファに移動する | |
 | `C-x k` | `kill-buffer` | バッファを閉じる | |
 | `C-x C-s` | `save-buffer` | バッファを保存する | |
 | `C-x C-w` | `write-file` | 指定したファイル名でバッファを保存する | |
@@ -202,6 +211,13 @@
 | `C-x 2` | `split-active-window-vertically` | 上下にウィンドウを分割する | |
 | `C-x 3` | `split-active-window-horizontally` | 左右にウィンドウを分割する | || `C-x o` | `other-window` | 他のウィンドウに移動する | |
 | `M-o` | `other-window` | 他のウィンドウに移動する | |
+| `C-x ^` | `grow-window` | ウィンドウサイズを上下に大きくする | |
+| `C-x C-z` | `shrink-window` | ウィンドウサイズを上下に小さくする | |
+| `C-x }` | `grow-window-horizontally` | ウィンドウサイズを左右に大きくする | |
+| `C-x {` | `shrink-window-horizontally` | ウィンドウサイズを左右に小さくする | |
+| `C-x 4 f` | `find-file-other-window` | 指定したファイルを新規ウィンドウで開く | |
+| `C-x 4 r` | `read-file-other-window` | 指定したファイルを読み取り専用で新規ウィンドウで開く | |
+| `C-x 4 b` | `select-buffer-other-window` | 指定したバッファを新規ウィンドウで開く | |
 
 #### 画面スクロール
 
@@ -251,14 +267,17 @@
 
 ### 入力ができないキー
 
-- macOS で確認
+- 以下のキーバインドは macOS では使用できませんでした
+- OS の設定の変更を行った場合や他の OS では使用可能かもしれません
 
 | キーバインド | コマンド | 動き |
 | --- | --- | --- |
 | `C-M-@` | `mark-sexp` | `M-2` `universal-argument-2` になってしまう |
-| `C-Right` | `forward-word` | 次の単語に移動する | |
-| `C-Left` | `previous-word` | 前の単語に移動する | |
-| `C-Delete` | `delete-word` | カーソルの後ろの単語を消去 | |
+| `C-Right` | `forward-word` | 次の単語に移動する |
+| `C-Left` | `previous-word` | 前の単語に移動する |
+| `C-Delete` | `delete-word` | カーソルの後ろの単語を消去 |
+| `C-Down` | `scroll-down` | macOS のショートカットと衝突 |
+| `C-Up` | `scroll-up` | macOS のショートカットと衝突 |
 
 - `C-M-@` は英語キーボードでは入力ができない
 
