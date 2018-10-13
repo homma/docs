@@ -69,6 +69,7 @@
 `a` の後ろにカーソルを配置して `C-x /` を入力すると `active` や `apropos` が候補として表示されます。
 
 #### 文字の削除
+
 削除系のキーバインドは以下の通りです。
 
 | キーバインド | コマンド | 意味 | 補足 |
@@ -76,15 +77,16 @@
 | `C-h` | `delete-previous-char` | カーソル直前の文字を削除 | `delete` |
 | `C-d` | `delete-next-char` | カーソル位置の文字を削除 | `delete`
 | `C-k` | `kill-line` | カーソル位置から行末までを消去 | `kill` 連続で実行すると複数行をコピー |
-| `C-u <n> C-k` | `--` | n 行削除 | |
+| `C-u <n> C-k` | `--` | n 行削除 | `kill` |
 | `C-x C-o` | `delete-blank-lines` | 連続する空行をまとめて消去 | `kill` |
 | `M-k` | `kill-paragraph` | カーソル位置以降のパラグラフを削除 | `kill` |
 | `M-C-h` | `backward-delete-word` | カーソル直前の単語を消去 | `kill` `M-Backspace` |
 | `M-d` | `delete-word` | カーソルの後ろの単語を消去 | `kill` `C-Delete` は動作確認できず |
 
+`kill` した内容は `yank` で回復することができます。  
+`delete` した内容は `yank` できないので、必要な場合は `undo` します。
+
 #### ペースト
-`kill` した内容は `yank` することができます。  
-`delete` した内容は `yank` できません。
 
 | キーバインド | コマンド | 意味 | 補足 |
 | --- | --- | --- | --- |
