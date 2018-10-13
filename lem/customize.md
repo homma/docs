@@ -1,4 +1,5 @@
 ## Common Lisp を使用した Lem のカスタマイズ
+- 主に Lem 固有のプログラムについてまとめます
 
 ## 設定ファイル
 - `~/.lem/init.lisp`
@@ -17,6 +18,14 @@
 
 ````lisp
 (lem-base:current-point)
+````
+
+### 現在のポイントに文字列を挿入する
+
+````lisp
+;; insert-here
+(defun insert-here (str) (lem-base:insert-string (lem-base:current-point) str))
+(insert-here "foobarbaz")
 ````
 
 ## モードライン
