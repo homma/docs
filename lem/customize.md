@@ -6,9 +6,10 @@
 
 ## 関数を探す
 - `M-x lisp-apropos` でキーワード検索
-- `lisp-apropos` からは `q` キーで抜けられます
+  - `lisp-apropos` からは `q` キーで抜けられます
 
 - `M-x lisp-describe-symbol` でリファレンス参照
+  - lisp-mode では `C-c C-d d` で `lisp-describe-symbol` を実行できます
 
 - 実装を読む
 
