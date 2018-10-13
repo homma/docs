@@ -6,7 +6,7 @@
 
 ### インストール
 
-- macOS の場合は brew で Roswell をインストールして ros で lem をインストールする
+- macOS の場合は brew で Roswell をインストールし、ros コマンドで lem をインストールする
 ````sh
 $ brew install roswell
 $ ros install cxxxr/lem
