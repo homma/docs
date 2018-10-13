@@ -13,3 +13,7 @@
 ````lisp
 (lem-base:current-point)
 ````
+
+## モードライン
+
+`(lem:modeline-name lem::*current-window*)` でバッファ名を取得できる
