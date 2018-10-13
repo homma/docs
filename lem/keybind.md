@@ -100,7 +100,7 @@
 | --- | --- | --- | --- |
 | `C-m` | `newline` | 改行 | `Return` |
 | `C-o` | `open-line` | カーソルの後ろに改行を入力する | |
-| `Tab` | `indent-line-and-complete-symbol` | インデントを挿入 | シンボルの補完については不明 |
+| `Tab` | `indent-line-and-complete-symbol` | インデントの挿入とシンボルの補完 | シンボルの補完はモードに依存 |
 | `C-j` | `newline-and-indent` | 改行とインデント | プログラミングで使用する |
 | `M-^` | `delete-indentation` | インデントを削除 | |
 
