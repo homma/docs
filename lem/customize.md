@@ -30,4 +30,9 @@
 
 ## モードライン
 
-`(lem:modeline-name lem::*current-window*)` でバッファ名を取得できる
+### バッファ名の取得
+
+````lisp
+(lem:modeline-name lem::*current-window*)
+````
+
