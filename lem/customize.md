@@ -23,10 +23,17 @@ lisp-mode では `C-c C-d d` で `lisp-describe-symbol` を実行できます。
 
 ### Lem の実装を読む
 
+- [ソースコード](https://github.com/cxxxr/lem)
+- [キーワード検索](https://github.com/cxxxr/lem/search)
+
 ### Emacs の例を探す
 
 Lem の関数と Emacs の関数は非常に似ているため、参考になります。  
 Lem は Common Lisp なので名前空間を意識する必要があります。
+
+### ドキュメントを参照する
+
+- https://github.com/cxxxr/lem/blob/master/document/text.md
 
 ## ポイント
 
