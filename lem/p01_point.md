@@ -192,10 +192,10 @@
 ;; remove string between points
 (let* ((to (lem-base:current-point))
        (from (lem-base:copy-point to)))
-  (lem:forward-char 1)
+  (lem:next-line 1)
   (lem-base:line-end to)
   (lem-base:delete-between-points from to))
-;; remove this line
+;; remove this line ............................
 ````
 
 #### ポイントの位置にマークを設定する
