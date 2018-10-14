@@ -106,11 +106,20 @@
 
 #### ポイントの位置にある文字を確認する
 
-`character-at` でポイントの位置にある文字を確認します。
+`character-at` でポイントの位置にある文字を取得します。
 
 ````lisp
 ;; check the char at the point
 (lem-base:character-at (lem-base:current-point))
+````
+
+#### ポイントのある行の文字列を確認する
+
+`line-string` でポイントのある行の文字列を取得します。
+
+````lisp
+;; obtain string of the point
+(lem-base:line-string (lem-base:current-point))
 ````
 
 #### 文字を挿入する
