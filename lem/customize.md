@@ -1,18 +1,32 @@
 ## Common Lisp を使用した Lem のカスタマイズ
-- 主に Lem 固有のプログラムについてまとめます
+
+主に Lem 固有のプログラムについてまとめます。
+
+Lem の実装や Emacs の例を参考にしてまとめていますが、内容に間違いがある可能性があります。  
+ご注意ください。
 
 ## 設定ファイル
-- `~/.lem/init.lisp`
 
-## 関数を探す
-- `M-x lisp-apropos` でキーワード検索
-  - `lisp-apropos` からは `q` キーで抜けられます
+設定ファイルは `~/.lem/init.lisp` です。
 
-- `M-x lisp-describe-symbol` でリファレンス参照
-  - lisp-mode では `C-c C-d d` で `lisp-describe-symbol` を実行できます
+## 関数を探す方法
 
-- 実装を読む
-- Emacs の例を探す
+### lisp-apropos
+
+`M-x lisp-apropos` でキーワードを検索できます。  
+`lisp-apropos` からは `q` キーで抜けられます。
+
+#### lisp-describe-symbol
+
+`M-x lisp-describe-symbol` でリファレンスを参照できます。  
+lisp-mode では `C-c C-d d` で `lisp-describe-symbol` を実行できます。
+
+### Lem の実装を読む
+
+### Emacs の例を探す
+
+Lem の関数と Emacs の関数は非常に似ているため、参考になります。  
+Lem は Common Lisp なので名前空間を意識する必要があります。
 
 ## ポイント
 
@@ -44,7 +58,7 @@
 
 #### 現在のポイントに文字列を挿入する
 
-ポイントの位置を保持する
+ポイントの位置を保持する:
 ````lisp
 ;; insert-here
 (defun insert-here (str)
@@ -53,7 +67,7 @@
 (insert-here "foobarbaz")
 ````
 
-ポイントの位置を挿入した文字の後ろに移動する
+ポイントの位置を挿入した文字の後ろに移動する:
 ````lisp
 ;; insert-here-and-move
 (defun insert-here-and-move (str)
@@ -65,7 +79,7 @@
 
 `line-end` で行末に移動します。
 
-ポイントの位置を保持する
+ポイントの位置を保持する:
 ````lisp
 ;; insert-next-line
 (defun insert-nextline (str)
@@ -77,7 +91,7 @@
 (insert-nextline "foobarbaz")
 ````
 
-ポイントの位置を挿入した文字の後ろに移動する
+ポイントの位置を挿入した文字の後ろに移動する:
 ````lisp
 ;; insert-next-line
 (defun insert-nextline-and-move (str)
