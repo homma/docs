@@ -8,6 +8,10 @@ Lem の画面上でキーボードを使用して操作するのと同じ処理�
 扱っている関数の実装は主に以下のファイルにあります。
 
 - [command.lisp](https://github.com/cxxxr/lem/blob/master/lib/core/command.lisp)
+- [help-command.lisp](https://github.com/cxxxr/lem/blob/master/lib/core/help-command.lisp)
+- [file-command.lisp](https://github.com/cxxxr/lem/blob/master/lib/core/file-command.lisp)
+- [word-command.lisp](https://github.com/cxxxr/lem/blob/master/lib/core/word-command.lisp)
+- [window-command.lisp](https://github.com/cxxxr/lem/blob/master/lib/core/window-command.lisp)
 
 ## Lem のプログラムの実行方法
 
@@ -109,15 +113,6 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 (lem:open-line 5)
 ````
 
-### raw input を読み込んで出力する
-
-`quote-insert` を使用すると `Ctrl-v` を入力した時のように、raw input を読んで出力することができます。
-
-````lisp
-;; read raw input and write it
-(lem:quoted-insert)
-````
-
 ### 文字を削除する
 
 `delete-previous-char` と `delete-next-char` は指定した数の文字を削除します。
@@ -162,6 +157,17 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 ````
 
 再び書き込み可能にするには、再度 `toggle-read-only` を実行するか、`C-x C-q` を入力します。
+
+## その他の例
+
+### raw input を読み込んで出力する
+
+`quote-insert` を使用すると `Ctrl-v` を入力した時のように、raw input を読んで出力することができます。
+
+````lisp
+;; read raw input and write it
+(lem:quoted-insert)
+````
 
 ## 注記
 
