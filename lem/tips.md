@@ -1,5 +1,15 @@
 ## Lem の Tips
 
+### Lem について
+- Emacs 系のエディタ
+- 起動が高速なため、常駐させる必要がない
+- Common Lisp で実装されており、拡張も Common Lisp で書ける
+- Common Lisp はプログラムをネイティブコンパイルするので、プラグインの実行速度も高速
+- vi 互換モードも実装されている
+
+- Lem の意味は不明
+  - Lisp Editor Macros?
+
 ### ウェブサイト
 - 開発ページ
   - https://github.com/cxxxr/lem
