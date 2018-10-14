@@ -71,6 +71,7 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 (defun insert-here (str)
   (lem-base:save-excursion
    (lem-base:insert-string (lem-base:current-point) str)))
+
 (insert-here "foobarbaz")
 ````
 
@@ -79,6 +80,7 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 ;; insert-here-and-move
 (defun insert-here-and-move (str)
   (lem-base:insert-string (lem-base:current-point) str)) 
+
 (insert-here-and-move "foobarbaz")
 ````
 
@@ -108,6 +110,10 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 
 (insert-nextline-and-move "foobarbaz")
 ````
+
+## バッファ
+
+## ウィンドウ 
 
 ## モードライン
 
