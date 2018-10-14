@@ -41,7 +41,7 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 
 ポイント（カーソル位置の情報）を使用したプログラム。
 
-### よく使用する関数
+### 基本的な関数とマクロ
 
 #### 現在のポイントを確認する
 
@@ -50,17 +50,28 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 ````lisp
 ;; current-point
 (let ((point (lem-base:current-point)))
-  (something-to-do))
+  (do-something-with-point))
+````
+
+#### ポイントの複製
+
+`copy-point` を使用してポイントを複製します。
+
+````lisp
+;; copy-point
+(let ((new (lem-base:copy-point (lem-base:current-point))))
+  (do-something-with-new-point))
 ````
 
 #### 現在のポイント情報を保存してから操作を行う
 
-`save-excursion` を使用します。
+`save-excursion` マクロを使用します。
 
 ````lisp
 ;; save-excursion
 (lem-base:save-excursion
- (something-to-do))
+  (do-something-1)
+  (do-something-2))
 ````
 
 ### 関数の作例
@@ -71,7 +82,7 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 移動先はバッファの中の絶対位置で指定します。
 
 ````lisp
-;; move-to-position を使ってポイントをバッファの先頭に移動する
+;; move to the beginnig of current buffer
 (lem-base:move-to-position (lem-base:current-point) 1)
 ````
 
@@ -81,7 +92,10 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 移動の量は文字数で指定します。
 
 ````lisp
+;; forward-char
 (lem:forward-char 10)
+
+;; backward-char
 (lem:backward-char 10)
 ````
 
@@ -217,17 +231,6 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 ;; set mark on current point
 (lem-base:set-current-mark (lem-base:current-point))
 ````
-
-#### ポイントの複製
-
-`copy-point` を使用してポイントを複製します。
-
-````lisp
-(let ((new (lem-base:copy-point (lem-base:current-point))))
-  (lem-base:move-to-position new 1))
-````
-
-
 
 ## バッファ
 
