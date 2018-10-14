@@ -1,10 +1,5 @@
 ## Lem のキーバインド
 
-以前から興味のあった [Lem](https://github.com/cxxxr/lem) に入門したので、キーバインドをまとめてみました。  
-
-普段は主に Vim を使用しているため、Emacs 系のエディタには詳しくありません。  
-もし間違い等がありましたらごめんなさい。
-
 ### キーバインドの実装
 キーバインドの実装は [global-keymap](https://github.com/cxxxr/lem/search?q=*global-keymap*&unscoped_q=*global-keymap*) から探すことができます。
 
