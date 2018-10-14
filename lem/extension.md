@@ -1,4 +1,4 @@
-## Common Lisp を使用した Lem のカスタマイズ
+## Common Lisp を使用した Lem の拡張
 
 主に Lem 固有のプログラムについてまとめます。
 
