@@ -1,4 +1,5 @@
-<!-- lisp -->
+<!-- (lem-lisp-mode:lisp-mode)
+-->
 
 ## Lem の基本的な操作
 

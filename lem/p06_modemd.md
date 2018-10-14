@@ -1,3 +1,5 @@
+<!-- (lem-lisp-mode:lisp-mode)
+-->
 
 ## モード
 
