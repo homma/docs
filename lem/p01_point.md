@@ -190,11 +190,11 @@
 
 ````lisp
 ;; remove string between points
-(let* ((point (lem-base:current-point))
-       (new (lem-base:copy-point point)))
+(let* ((to (lem-base:current-point))
+       (from (lem-base:copy-point to)))
   (lem:forward-char 1)
-  (lem-base:line-end point)
-  (lem-base:delete-between-points new point))
+  (lem-base:line-end to)
+  (lem-base:delete-between-points from to))
 ;; remove this line
 ````
 
