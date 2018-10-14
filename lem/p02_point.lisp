@@ -1,14 +1,21 @@
 ## ポイント
 
-ポイント（カーソル位置の情報）を使用したプログラムの書き方をまとめます。
+ポイント（カーソル位置の情報）を使用したプログラムの書き方をまとめます。  
 
-扱っている関数の実装は主に [basic.lisp](https://github.com/cxxxr/lem/blob/master/lib/base/basic.lisp) にあります。
+前回もポイントを操作する関数がありました。  
+今回は `current-point` を使用して明示的にポイントのデータを操作します。  
+また、新たにポイントを作成（複製）して、そのポイントに対して操作を行います。
+
+扱っている関数の実装は主に以下のファイルにあります。
+
+- [basic.lisp](https://github.com/cxxxr/lem/blob/master/lib/base/basic.lisp)
+- [point.lisp](https://github.com/cxxxr/lem/blob/master/lib/base/point.lisp)
 
 ### 基本的な関数とマクロ
 
 #### 現在のポイントを取得する
 
-`current-point` を使用します。
+`current-point` で現在のポイントを取得できます。
 
 ````lisp
 ;; current-point
@@ -23,7 +30,18 @@
 ````lisp
 ;; copy-point
 (let ((new (lem-base:copy-point (lem-base:current-point))))
-  (do-something-with-new-point))
+  (do-something-with-new-point)
+  (lem-base:delete-point new))
+````
+
+`copy-point` を使用してポイントを複製した際に、`:temporary` をつけて一時的な読み取りポイントを作成しなかった場合は、`delete-point` を使って明示的にポイントを削除する必要があります。
+
+`with-point` マクロを使用すると、コピーしたポイントを `delete-point` を使用して自動的に削除してくれます。
+
+````lisp
+;; with-point
+(with-point ((new (lem-base:current-point)))
+  (do-somthing-with-new-point))
 ````
 
 #### 現在のポイント情報を保存してから操作を行う
@@ -38,50 +56,6 @@
 ````
 
 ### 関数の作例
-
-#### 指定した位置にポイントを移動する
-
-`move-to-position` で指定した位置にポイントを移動させることができます。
-移動先はバッファの中の絶対位置で指定します。
-
-````lisp
-;; move to the beginnig of current buffer
-(lem-base:move-to-position (lem-base:current-point) 1)
-````
-
-#### 文字数を指定してポイントを移動する
-
-`forward-char` と `backward-char` でポイントを前後に移動します。
-移動の量は文字数で指定します。
-
-````lisp
-;; forward-char
-(lem:forward-char 10)
-
-;; backward-char
-(lem:backward-char 10)
-````
-
-#### 行を指定してポイントを移動する
-
-`move-to-line` を使用して、指定した行数に移動します。
-
-````lisp
-;; move to 90th line
-(lem-base:move-to-line (lem-base:current-point) 90)
-````
-
-#### 場所を指定してポイントを移動する
-
-`line-start` や `buffer-end` など、場所を指定してポイントを移動させます。
-
-````lisp
-;; move to the beginning of current line
-(lem-base:line-start (lem-base:current-point))
-
-;; move to the end of current buffer
-(lem-base:buffer-end (lem-base:current-point))
-````
 
 #### ポイントの位置を確認する
 
@@ -104,6 +78,53 @@
 (let ((point (lem-base:current-point)))
   (cons (lem-base:start-line-p point)
         (lem-base:end-line-p point)))
+````
+
+#### 指定した位置にポイントを移動する
+
+`move-to-position` で指定した位置にポイントを移動させることができます。
+移動先はバッファの中の絶対位置で指定します。
+
+````lisp
+;; move to the beginnig of current buffer
+(lem-base:move-to-position (lem-base:current-point) 1)
+````
+
+#### 移動する量を指定してポイントを移動する
+
+`character-offset` や `line-offset` を使用してポイントを移動します。  
+引数には移動させたいポイントと移動させる量を指定します。  
+移動する量がマイナスの場合は前方に移動します。
+
+````lisp
+;; character-offset
+(let ((point (lem-base:current-point)))
+  (lem-base:character-offset point 10))
+
+;; line-offset
+(let ((point (lem-base:current-point)))
+  (lem-base:line-offset point -1))
+````
+
+#### 行を指定してポイントを移動する
+
+`move-to-line` を使用して、指定した行数に移動します。
+
+````lisp
+;; move to 90th line
+(lem-base:move-to-line (lem-base:current-point) 90)
+````
+
+#### 場所を指定してポイントを移動する
+
+`line-start` や `buffer-end` など、場所を指定してポイントを移動させます。
+
+````lisp
+;; move to the beginning of current line
+(lem-base:line-start (lem-base:current-point))
+
+;; move to the end of current buffer
+(lem-base:buffer-end (lem-base:current-point))
 ````
 
 #### ポイントの位置にある文字を確認する
@@ -201,13 +222,15 @@
 
 ````lisp
 ;; remove string between points
-(let* ((to (lem-base:current-point))
-       (from (lem-base:copy-point to)))
-  (lem:next-line 1)
-  (lem-base:line-end to)
-  (lem-base:delete-between-points from to))
+(let ((start (lem-base:current-point)))
+  (lem-base:with-point ((end start))
+    (lem-base:line-offset end 1)
+    (lem-base:line-end end)
+    (lem-base:delete-between-points start end)))
 ;; remove this line ............................
 ````
+
+上記は `with-point` を使用してポイントを複製しています。
 
 #### ポイントの位置にマークを設定する
 
