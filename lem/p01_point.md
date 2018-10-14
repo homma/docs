@@ -81,7 +81,7 @@
 (lem-base:buffer-end (lem-base:current-point))
 ````
 
-#### ポインタの位置を確認する
+#### ポイントの位置を確認する
 
 `position-at-point` や `line-number-at-point` でポイントの位置を確認します。
 
