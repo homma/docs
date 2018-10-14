@@ -53,7 +53,7 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
   (something-to-do))
 ````
 
-#### 現在のポインタ情報を保存してから操作を行う
+#### 現在のポイント情報を保存してから操作を行う
 
 `save-excursion` を使用します。
 
@@ -118,9 +118,9 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 (lem-base:line-number-at-point (lem-base:current-point))
 ````
 
-#### ポインタの場所を確認する
+#### ポイントの場所を確認する
 
-`start-line-p` や `end-line-p` を使用して、ポインタの場所を確認します。
+`start-line-p` や `end-line-p` を使用して、ポイントの場所を確認します。
 
 ````lisp
 ;; check if the point is at the beginning of the line and the end of the line
@@ -129,9 +129,9 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
         (lem-base:end-line-p point)))
 ````
 
-#### ポインタの位置にある文字を確認する
+#### ポイントの位置にある文字を確認する
 
-`character-at` でポインタの位置にある文字を確認します。
+`character-at` でポイントの位置にある文字を確認します。
 
 ````lisp
 ;; check the char at the point
@@ -140,7 +140,7 @@ Lem は Common Lisp なので名前空間を意識する必要があります。
 
 #### 文字を挿入する
 
-`insert-char` でポインタの位置に文字を挿入します。
+`insert-char` でポイントの位置に文字を挿入します。
 
 ````lisp
 ;; insert "あ"
