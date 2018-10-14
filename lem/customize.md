@@ -16,7 +16,7 @@ Lem の実装や Emacs の例を参考にしてまとめていますが、内容
 `M-x lisp-apropos` でキーワードを検索できます。  
 `lisp-apropos` からは `q` キーで抜けられます。
 
-#### lisp-describe-symbol
+### lisp-describe-symbol
 
 `M-x lisp-describe-symbol` でリファレンスを参照できます。  
 lisp-mode では `C-c C-d d` で `lisp-describe-symbol` を実行できます。
