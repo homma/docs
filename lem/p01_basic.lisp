@@ -13,11 +13,12 @@ Lem のバッファに Lisp プログラムを記述すると、エディタ上�
 プログラムの実行は、最後の閉じ括弧の後ろで `C-x C-e` を入力します。
 通常、実行結果はミニバッファに出力されます。
 
-このドキュメントを Lem のバッファにピーして、`C-x C-e` を入力してください。
+このドキュメントを Lem のバッファにピーし、以下の場所で `C-x C-e` を入力してください。
 
 ````lisp
 ;; sample Lisp program
 ((lambda (x) x)  "this is a Lisp program")
+;;                                        ~~~ ここで C-x C-e
 ````
 ミニバッファに "this is a Lisp program" と出力されます。
 
