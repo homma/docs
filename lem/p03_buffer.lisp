@@ -7,6 +7,7 @@
 
 - [buffer.lisp](https://github.com/cxxxr/lem/blob/master/lib/base/buffer.lisp)
 - [buffers.lisp](https://github.com/cxxxr/lem/blob/master/lib/base/buffers.lisp)
+- [minibuffer.lisp](https://github.com/cxxxr/lem/blob/master/lib/core/minibuffer.lisp)
 
 ### 現在操作しているバッファの取得
 
