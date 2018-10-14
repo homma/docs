@@ -43,39 +43,42 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 
 ## プログラムの作例
 
-#### Lem を終了する
+### Lem を終了する
 
 `exit-lem` 関数を使用して Lem を終了します。
 
 ````lisp
+;; exit from the editor
 (lem:exit-lem)
 ````
 
 未保存のデータがある場合は、保存を行うか確認されます。  
 未保存のデータがない場合は、エディタが終了します。
 
-#### 移動する量を指定してポイントを移動する
+### ポイント（カーソル）を文字単位で移動する
 
-`forward-char` と `backward-char` でポイントを前後に移動します。
-移動の量は文字数で指定します。
+`forward-char` と `backward-char` はポイントを文字単位で移動します。
+移動回数は文字数で指定します。
 
 ````lisp
-;; forward-char
+;; move forward
 (lem:forward-char 10)
 
-;; backward-char
+;; move backward
 (lem:backward-char 10)
 ````
 
-`previous-line` と `next-lie` でポイントを他の行へ移動させます。
-移動の量は行数で指定します。
+### ポイント（カーソル）を行単位で移動する
+
+`previous-line` と `next-lie` はポイントを行単位で移動します。
+移動回数は行数で指定します。
 
 ````lisp
-;; previous-line
-(lem:previous-line 1)
+;; previous line
+(lem:previous-line 10)
 
-;; next-line
-(lem:next-line 1)
+;; next line
+(lem:next-line 10)
 ````
 
 ## 注記
