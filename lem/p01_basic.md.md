@@ -55,6 +55,13 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 未保存のデータがある場合は、保存を行うか確認されます。  
 未保存のデータがない場合は、エディタが終了します。
 
+`quick-exit` は保存の確認を行わずに終了します。
+
+````lisp
+;; exit withour confirmation
+(lem:quick-exit)  
+````
+
 ### ポイント（カーソル）を文字単位で移動する
 
 `forward-char` と `backward-char` はポイントを文字単位で移動します。
@@ -70,7 +77,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 
 ### ポイント（カーソル）を行単位で移動する
 
-`previous-line` と `next-lie` はポイントを行単位で移動します。
+`previous-line` と `next-line` はポイントを行単位で移動します。
 移動回数は行数で指定します。
 
 ````lisp
@@ -80,6 +87,81 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 ;; next line
 (lem:next-line 10)
 ````
+
+`goto-line` は指定した行番号にカーソルを移動します。
+
+````lisp
+(lem:goto-line 1)
+````
+
+### 改行する
+
+`newline` はカーソル位置に改行を追加します。
+
+````lisp
+;; insert a #\newline
+(lem:newline)
+````
+
+`open-line` を使用すると指定した数の改行を追加できます。
+
+````lisp
+(lem:open-line 5)
+````
+
+### raw input を読み込んで出力する
+
+`quote-insert` を使用すると `Ctrl-v` を入力した時のように、raw input を読んで出力することができます。
+
+````lisp
+;; read raw input and write it
+(lem:quoted-insert)
+````
+
+### 文字を削除する
+
+`delete-previous-char` と `delete-next-char` は指定した数の文字を削除します。
+
+````lisp
+;; delete preceeding n characters
+(lem:delete-previous-char 10)
+
+;; delete following n characters
+(lem:delete-next-char 10);;;;;;;;;;
+````
+
+### 空行を削除する
+
+`delete-blank-lines` は後続の空白行を削除します。
+
+````lisp
+;; delete following blank lines
+(lem:delete-blank-lines)
+
+
+
+
+````
+
+### バッファの名前を変更する
+
+`rename-buffer` でバッファの名前を変更できます。
+
+````lisp
+;; change buffer name
+(lem:rename-buffer "another-name")
+````
+
+### バッファを読み取り専用にする
+
+`toggle-read-only` を実行するとバッファが読み取り専用に設定され、バッファに対する変更ができなくなります。  
+バッファが読み取り専用になると、モードラインの表示が `%` になります。
+
+````lisp
+(lem:toggle-read-only)
+````
+
+再び書き込み可能にするには、再度 `toggle-read-only` を実行するか、`C-x C-q` を入力します。
 
 ## 注記
 

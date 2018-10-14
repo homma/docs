@@ -30,3 +30,9 @@
 
 - let* は recursive ではなく sequential なので、再帰関数定義には使用できない
   - http://www.lispworks.com/documentation/lw60/CLHS/Body/s_let_l.htm
+
+### 変数の型を確認する
+
+````lisp
+(type-of 'foo)
+````
