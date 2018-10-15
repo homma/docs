@@ -188,7 +188,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 完全修飾の場合はどのパッケージに含まれているか明確化されるというメリットもあります。
 
 ````lisp
-;; [fail]
+;; [NG]
 ;; cannot include lem package when we are in common-lisp-user package
 ;; since timer-name is already imported from sb-ext
 (use-package 'lem)
@@ -215,7 +215,14 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
   (in-package lem)
   (lem-version))
 
-;; [fail]
+;; [NG]
+(in-package "my-package" :use lem)
+
+;; [NG]
+(let ((*package* (find-package "LEM")))
+  (lem-version))
+
+;; [NG]
 ;; lem-version is evaluated at compile time into common-lisp-user package
 ;; import is only a function that is  evaluated at run time
 ;; where lem-version is already exists
