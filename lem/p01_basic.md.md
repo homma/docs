@@ -1,6 +1,3 @@
-<!-- (lem-lisp-mode:lisp-mode)
--->
-
 ## Lem の基本的な操作
 
 Lem の画面上でキーボードを使用して操作するのと同じ処理をプログラムから実行する方法をまとめます。
@@ -193,9 +190,18 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 ````lisp
 ;; [fail]
 ;; cannot include lem package when we are in common-lisp-user package
+;; since timer-name is already imported from sb-ext
 (use-package 'lem)
 ;; => name conflict
 ;; => lem:timer-name, sb-ext:timer-name
+
+;; timer-name is inherited
+(find-symbol (string 'timer-name))
+;; => timer-name, :inherited
+
+;; timer-name is in 'sb-ext
+(symbol-package 'timer-name)
+;; => #<package "SB-EXT">
 
 ;; [OK]
 ;; this succeeds
@@ -216,10 +222,15 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 
 ;; [OK]
 ;; this succeeds
-(import '(lem:lem-version)
+(import '(lem:lem-version))
 (lem-version)
 ;; => should evaluate for each line
 
 ;; check current package
-*package*
+(package-name *package*)
+;; => "COMMON-LISP-USER"
+
+;; check package list
+(mapcar #'package-name (package-use-list 'common-lisp-user))
+;; => ("COMMON-LISP" "SB-ALIEN" "SB-DEBUG" "SB-EXT" "SB-GRAY" "SB-PROFILE")
 ````
