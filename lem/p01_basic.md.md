@@ -206,7 +206,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 ;; [OK]
 ;; this succeeds
 (defpackage my-package (:use cl lem))
-(in-package my-package) ;; can be omitted
+(in-package my-package)  ;; can be ommited
 (lem-version)
 ;; => should evaluate for each line
 
@@ -233,4 +233,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 ;; check package list
 (mapcar #'package-name (package-use-list 'common-lisp-user))
 ;; => ("COMMON-LISP" "SB-ALIEN" "SB-DEBUG" "SB-EXT" "SB-GRAY" "SB-PROFILE")
+
+(mapcar #'package-name (package-use-list 'lem))
+;; => ("LEM-BASE" "COMMON-LISP")
 ````
