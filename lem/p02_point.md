@@ -1,6 +1,3 @@
-<!-- (lem-lisp-mode:lisp-mode)
--->
-
 ## ポイント
 
 ポイント（カーソル位置の情報）を使用したプログラムの書き方をまとめます。  
@@ -90,6 +87,14 @@
 
 ````lisp
 ;; move to the beginnig of current buffer
+
+;; using package
+(defpackage my-package (:use cl lem-base))
+(in-package my-package)
+
+(move-to-position (current-point) 1)
+
+;; with package prefix
 (lem-base:move-to-position (lem-base:current-point) 1)
 ````
 

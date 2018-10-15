@@ -45,7 +45,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 
 ````lisp
 (defpackage my-package (:use cl lem))
-(in-package my-package) ;; can be omitted
+(in-package my-package)
 
 (lem-version)
 ````
@@ -206,7 +206,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 ;; [OK]
 ;; this succeeds
 (defpackage my-package (:use cl lem))
-(in-package my-package)  ;; can be ommited
+(in-package my-package)
 (lem-version)
 ;; => should evaluate for each line
 
