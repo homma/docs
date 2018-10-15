@@ -210,6 +210,11 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 (lem-version)
 ;; => should evaluate for each line
 
+;; [OK]
+(progn
+  (in-package lem)
+  (lem-version))
+
 ;; [fail]
 ;; lem-version is evaluated at compile time into common-lisp-user package
 ;; import is only a function that is  evaluated at run time
