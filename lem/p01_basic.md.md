@@ -43,7 +43,19 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 (lem:lem-version)
 ````
 
-ここからは具体的なプログラムの例を見て行きます。
+まとまったプログラムを書く場合は、`defpackage` を使用して独自のパッケージを作成します。  
+パッケージを作成する際に、別のパッケージを `use` すると、そのパッケージに含まれる関数はパッケージ名なしで呼び出すことができます。
+
+````lisp
+(defpackage my-package (:use cl lem))
+(in-package my-package) ;; can be omitted
+
+(lem-version)
+````
+
+このドキュメントでは小さなプログラムしか扱わないのと、どのパッケージの関数かを明示するために、常にパッケージ名を使用して関数を呼び出すことにします。
+
+それでは、ここからは具体的なプログラムの例を見て行きます。
 
 ## プログラムの作例
 
@@ -171,22 +183,41 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 
 ## 注記
 
-エラーが発生するので、`use-package` や `import` は使用しません。
+`use-package` はエラーが発生するため使いません。  
+本来的には独自のパッケージを定義するべきですが、ここで紹介しているコード片ごとにパッケージ定義を行うのも大変なので、完全修飾した関数名を使用します。  
+
+完全修飾の場合はどのパッケージに含まれているか明確化されるというメリットもあります。
 
 ````lisp
+;; [fail]
+;; cannot include lem package when we are in common-lisp-user package
 (use-package 'lem)
 ;; => name conflict
 ;; => lem:timer-name, sb-ext:timer-name
 
+;; [OK]
+;; this succeeds
+(defpackage my-package (:use cl lem))
+(in-package my-package) ;; can be omitted
+(lem-version)
+;; => should evaluate for each line
+
+;; [fail]
+;; lem-version is evaluated at compile time into common-lisp-user package
+;; import is only a function that is  evaluated at run time
+;; where lem-version is already exists
 (progn
   (import '(lem:lem-version))
   (lem-version))
 ;; => name conflict
 ;; => lem:lem-version, common-lisp-user::lem-version
-;; => why?
 
+;; [OK]
 ;; this succeeds
 (import '(lem:lem-version)
 (lem-version)
 ;; => should evaluate for each line
+
+;; check current package
+*package*
 ````
