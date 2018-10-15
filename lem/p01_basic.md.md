@@ -174,9 +174,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 エラーが発生するので、`use-package` や `import` は使用しません。
 
 ````lisp
-(progn
-  (use-package "LEM")
-  (lem-version))
+(use-package 'lem)
 ;; => name conflict
 ;; => lem:timer-name, sb-ext:timer-name
 
@@ -186,4 +184,9 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 ;; => name conflict
 ;; => lem:lem-version, common-lisp-user::lem-version
 ;; => why?
+
+;; this succeeds
+(import '(lem:lem-version)
+(lem-version)
+;; => should evaluate for each line
 ````
