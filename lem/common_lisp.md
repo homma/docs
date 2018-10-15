@@ -127,3 +127,31 @@
 (find-symbol (string 'timer-name))
 ;; => timer-name, :inherited
 ````
+
+### 時間
+
+#### スリープする
+
+````lisp
+;; sleep
+(progn
+  (sleep 3)
+  (get-decoded-time))
+````
+
+#### 時刻を確認する
+
+````lisp
+;; time components
+(get-decoded-time)
+
+;; timestamp
+(get-universal-time)
+
+;; display time info
+(multiple-value-bind
+      (sec min hour day month year dow dst tz)
+    (get-decoded-time)
+  (declare (ignore dow dst))
+  (list year month day hour min sec tz))
+````

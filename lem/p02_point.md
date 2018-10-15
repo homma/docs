@@ -87,10 +87,8 @@
 
 ````lisp
 ;; move to the beginnig of current buffer
-
-;; using package
-(defpackage my-package (:use cl lem-base))
-(in-package my-package)
+(import '(lem-base:move-to-position
+          lem-base:current-point))
 
 (move-to-position (current-point) 1)
 
