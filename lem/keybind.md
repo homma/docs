@@ -78,7 +78,7 @@
 | <kbd>C-x C-o</kbd> | `delete-blank-lines` | 連続する空行をまとめて消去 | `kill` |
 | <kbd>M-k</kbd> | `kill-paragraph` | カーソル位置以降のパラグラフを削除 | `kill` |
 | <kbd>M-C-h</kbd> | `backward-delete-word` | カーソル直前の単語を消去 | `kill` <kbd>M-Backspace</kbd> |
-| <kbd>M-d</kbd> | `delete-word` | カーソルの後ろの単語を消去 | `kill` <kbd>C-Delete` は動作確認できず |
+| <kbd>M-d</kbd> | `delete-word` | カーソルの後ろの単語を消去 | `kill` <kbd>C-Delete</kbd> は動作確認できず |
 
 #### ペースト
 
