@@ -20,9 +20,10 @@ Lem のバッファに Lisp プログラムを記述すると、エディタ上�
 このドキュメントを Lem のバッファにコピーし、以下に示した場所で `C-x C-e` を入力してください。
 
 ````lisp
+;; これはコメント
 ;; sample Lisp program
 ((lambda (x) x)  "this is a Lisp program")
-;;                                        ~~~ ここで C-x C-e
+;;                                        ^^^^ ここで C-x C-e
 ````
 
 ミニバッファに "this is a Lisp program" と出力されます。
