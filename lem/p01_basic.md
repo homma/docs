@@ -53,7 +53,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 ;; making sure being in the default package to call defpackage 
 (in-package cl-user)
 
-;; create own package and import symbols in lem package
+;; create own package and import symbols in the lem package
 (defpackage my-package (:use cl lem))
 
 ;; move to my-package
