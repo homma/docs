@@ -9,7 +9,7 @@
 
 | キーバインド | コマンド | 意味 | 補足 |
 | --- | --- | --- | --- |
-| `C-x ?` | `describe-key` | キーバインドのヘルプ | `ctrl-x shift-/` |
+| <kbd>C-x ?</kbd> | `describe-key` | キーバインドのヘルプ | `ctrl-x shift-/` |
 
 ### カーソルの移動
 
