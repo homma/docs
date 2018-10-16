@@ -27,10 +27,10 @@ Lem のバッファに Lisp プログラムを記述すると、エディタ上�
 
 ミニバッファに "this is a Lisp program" と出力されます。
 
-## lisp-mode
+## Lisp Mode
 
-`M-x lisp-mode` を実行すると Lem のモードが lisp-mode に変わります。  
-lisp-mode では、Tab キーで関数名を補完できるなど、Lisp プログラムの作成・編集が効率的に行えるようになっています。
+`M-x lisp-mode` を実行すると Lem のモードが Lisp Mode に変わります。  
+Lisp Mode では、Tab キーで関数名を補完できるなど、Lisp プログラムの作成・編集が効率的に行えるようになっています。
 
 ## パッケージ
 
