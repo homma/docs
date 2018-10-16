@@ -74,7 +74,7 @@
 | <kbd>C-h</kbd> | `delete-previous-char` | カーソル直前の文字を削除 | `delete` |
 | <kbd>C-d</kbd> | `delete-next-char` | カーソル位置の文字を削除 | `delete`
 | <kbd>C-k</kbd> | `kill-line` | カーソル位置から行末までを消去 | `kill` 連続で実行すると複数行をコピー |
-| <kbd>C-u <n> C-k</kbd> | `--` | n 行削除 | `kill` |
+| <kbd>C-u \<n\> C-k</kbd> | `--` | n 行削除 | `kill` |
 | <kbd>C-x C-o</kbd> | `delete-blank-lines` | 連続する空行をまとめて消去 | `kill` |
 | <kbd>M-k</kbd> | `kill-paragraph` | カーソル位置以降のパラグラフを削除 | `kill` |
 | <kbd>M-C-h</kbd> | `backward-delete-word` | カーソル直前の単語を消去 | `kill` <kbd>M-Backspace</kbd> |
@@ -141,9 +141,9 @@
 
 | キーバインド | コマンド | 意味 | 補足 |
 | --- | --- | --- | --- |
-| <kbd>C-u <n></kbd> | `universal-argument` | 繰り返し実行 | <kbd>C-u <n></kbd> の後にキーを入力すると `n` 回実行される |
+| <kbd>C-u \<n\></kbd> | `universal-argument` | 繰り返し実行 | <kbd>C-u \<n\></kbd> の後にキーを入力すると `n` 回実行される |
 | <kbd>C-u -</kbd> | `universal-argument-minus` | 回数にマイナスを指定する | |
-| <kbd>M-<n></kbd> | `universal-argument-0` | n 回繰り返し | n は 0 ~ 9 |
+| <kbd>M-\<n\></kbd> | `universal-argument-0` | n 回繰り返し | n は 0 ~ 9 |
 
 <kbd>C-u</kbd> を連続して入力すると、繰り返す回数が増えます。
 
@@ -290,9 +290,9 @@ Emacs と同様、Lem も複数のバッファを扱うことができます。
 | --- | --- | --- | --- |
 | <kbd>C-l</kbd> | `recenter` | カーソル位置が中央になるようにスクロールする | |
 | <kbd>C-u C-v</kbd> | `--` | 4  行上にスクロールする | |
-| <kbd>C-u <n> C-v</kbd> | `--` | n  行上にスクロールする | |
+| <kbd>C-u \<n\> C-v</kbd> | `--` | n  行上にスクロールする | |
 | <kbd>C-u M-v</kbd> | `--` | 4  行下にスクロールする | |
-| <kbd>C-u <n> M-v</kbd> | `--` | n  行下にスクロールする | |
+| <kbd>C-u \<n\> M-v</kbd> | `--` | n  行下にスクロールする | |
 
 ### エディタの操作
 - <kbd>C-g</kbd> は非常に重要なキーです
