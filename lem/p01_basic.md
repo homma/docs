@@ -50,7 +50,7 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 最後の `(lem-version)` は `lem:` というパッケージ名無しで呼び出すことができています。
 
 ````lisp
-;; making sure for being in the default package to call defpackage 
+;; making sure being in the default package to call defpackage 
 (in-package cl-user)
 
 ;; create own package and import symbols in lem package
