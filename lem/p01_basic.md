@@ -110,13 +110,13 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 
 ````lisp
 ;; insert a #\newline
-(lem:newline)
+(newline)
 ````
 
 `open-line` を使用すると指定した数の改行を追加できます。
 
 ````lisp
-(lem:open-line 5)
+(open-line 5)
 ````
 
 ### 文字を削除する
@@ -125,10 +125,10 @@ Lem は Common Lisp で作成されているため、関数はパッケージに
 
 ````lisp
 ;; delete preceeding n characters
-(lem:delete-previous-char 10)
+(delete-previous-char 10)
 
 ;; delete following n characters
-(lem:delete-next-char 10);;;;;;;;;;
+(delete-next-char 10);;;;;;;;;;
 ````
 
 ### 空行を削除する
