@@ -1,5 +1,6 @@
 ## Commn Lisp プログラミング
-- Lem 固有ではない Common Lisp のプログラミングについてまとめます
+
+Lem 固有ではない Common Lisp のプログラミングについてまとめます。
 
 ### プログラム
 
