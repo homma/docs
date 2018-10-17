@@ -51,6 +51,15 @@ $ lem
                      (write-to-string (list-all-packages))))
 ````
 
+パッケージごとに改行を入れる場合はこうなります。
+
+````lisp
+(let ((point (lem:current-point)))
+  (dolist (package (list-all-packages))
+    (lem:insert-character point #\newline)
+    (lem:insert-string point (write-to-string package))))
+````
+
 ### vi-mode
 - `M-x vi-mode` で Vi Mode に入ります。
 - 初期設定ファイルに書くことで動作が高速化するようです。
