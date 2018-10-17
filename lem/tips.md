@@ -24,16 +24,43 @@ $ export PATH=${PATH}:${HOME}/.roswell/bin
 $ lem
 ````
 
+### プログラムの出力をバッファ内に書き込む
+
+`current-point` でカーソル位置を取得し、`insert-string` で書き込みます。
+
+````lisp
+(lem:insert-string (lem:current-point) "foo")
+````
+
+改行を入れてから出力する場合は `insert-character` で改行を先に出力しておきます。
+
+````lisp
+(let ((point (lem:current-point)))
+  (lem:insert-character point #\newline)
+  (lem:insert-string point "foo"))
+````
+
+### パッケージの一覧をバッファ内に出力する
+
+パッケージの一覧を `write-to-string` で文字列に変換し、`insert-string` でバッファ内に書き込みます。
+
+````lisp
+(let ((point (lem:current-point)))
+  (lem:insert-character point #\newline)
+  (lem:insert-string point
+                     (write-to-string (list-all-packages))))
+````
+
 ### vi-mode
-- `M-x vi-mode` で vi-mode に移行できる
-- 設定ファイルに書くことで高速化できる
+- `M-x vi-mode` で Vi Mode に入ります。
+- 初期設定ファイルに書くことで動作が高速化するようです。
 
-- 実装は完全ではない
+- 実装は完全ではないので、割り引いて考える必要があります。
 
-- `M-x emacs-mode` で元に戻せる
+- `M-x emacs-mode` で元に戻せます。
 
 ### バッファメニュー
-- 操作を行う前に必ず `g` でリフレッシュする
+- 操作を行う前に必ず `g` でリフレッシュします。
 
 ### ライブラリのインストール
 - Roswell でインストールする
