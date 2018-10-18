@@ -68,6 +68,20 @@ $ lem
 
 - `M-x emacs-mode` で元に戻せます。
 
+### OS コマンドの実行
+
+外部ライブラリですが `uiop:run-program` で OS コマンドを実行することができます。
+
+````lisp
+;; ls コマンドを実行し、結果をバッファに書く
+(lem:insert-string
+ (lem:current-point)
+ (uiop:run-program "ls" :OUTPUT :STRING))
+````
+
+ただしどうも実行速度が遅い。  
+`ls` コマンドの実行に 2 秒弱かかっている。
+
 ### バッファメニュー
 - 操作を行う前に必ず `g` でリフレッシュします。
 
