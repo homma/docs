@@ -76,11 +76,21 @@ $ lem
 ;; ls コマンドを実行し、結果をバッファに書く
 (lem:insert-string
  (lem:current-point)
- (uiop:run-program "ls" :OUTPUT :STRING))
+ (uiop:run-program "ls" :output :string))
 ````
 
 ただしどうも実行速度が遅い。  
 `ls` コマンドの実行に 2 秒弱かかっている。
+
+コマンドをリストにすると解消します。
+
+````lisp
+(uiop:run-program '("ls") :output :string)
+````
+
+### バッファの中身を macOS に渡したい　
+
+`C-x #` で `filter-buffer` を実行し、`pbcopy` を指定すればコピーできます。
 
 ### バッファメニュー
 - 操作を行う前に必ず `g` でリフレッシュします。
