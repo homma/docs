@@ -45,7 +45,7 @@ Making core for Roswell...
 building dump:/Users/me/.roswell/impls/x86-64/darwin/sbcl-bin/1.4.12/dump/lem-ncurses.core
 ````
 
-`ros dump executable` コマンドを使用して、スタンドアローンのバイナリを作成することも可能です。  
+`ros dump executable` コマンドを使用して、実行ファイルを作成することも可能です。  
 この場合も `.ros` ファイルを指定します。
 
 ````sh
