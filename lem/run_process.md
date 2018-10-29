@@ -40,48 +40,75 @@
     (lem-base:insert-character point #\newline)
     (lem-base:insert-string point str)))
 
-(let* ((stdout *standard-output*)
-       (p (uiop:launch-program "bc -lq"
-                               :input :stream
-                               :output :stream))
-       (p-in (uiop:process-info-input p))
-       (p-out (uiop:process-info-output p)))
-  (write-and-flush "1 * 2 * 3 * 4" p-in)
-  (print "foo" stdout)
-  (finish-output stdout)
-  (print (read-all p-out) stdout)
-  (finish-output stdout)
-  (write-and-flush "10+10" p-in)
-  (print (read-all p-out) stdout)
-  (finish-output stdout)
-  (write-and-flush "quit" p-in)
-  (uiop:close-streams p)
-  (uiop:wait-process p))
+(defvar proc)
+(defvar p-in)
+(defvar p-out)
+
+(defun create-proc (command)
+  (setq proc (uiop:launch-program command
+                                  :input :stream
+                                  :output :stream))
+  (setq p-in (uiop:process-info-input proc))
+  (setq p-out (uiop:process-info-output proc)))
+
+;; create sub process
+(create-proc "bc -lq")
+
+;; interact with it
+(write-and-flush "1 * 2 * 3 * 4" p-in)
+(print (read-all p-out))
+
+;; quit
+(write-and-flush "quit" p-in)
+(uiop:close-streams proc)
+(uiop:wait-process proc)
+
 ````
 
 ## メモ
 
 ### print
 
+出力に遅延が発生する。  
+これは `C-x C-e` で評価したプログラムが実行コンテクストを占有しているためであると思われる。  
+
+````lisp
+;; NG
 (prog ()
   (print "foo")
   (sleep 3))
 
+;; NG
 (prog ()
-  (print "foo" *standard-output*))
+  (print "foo")
+  (finish-output nil)
+  (sleep 3))
 
+;; NG
+(prog ()
+  (print "foo" *standard-output*)
+  (finish-output *standard-output*)
+  (sleep 3))
+
+;; NG
 (let* ((stdout *standard-output*))
   (print "foobar" stdout)
   (finish-output stdout)
   (sleep 3))
 
+;; NG
 ((lambda ()
    (prog ()
      (print "foo" *standard-output*)
      (finish-output *standard-output*)
      (sleep 3))))
 
+;; NG
+(prog () (print "foo") (lem:recenter (lem:current-point)) (sleep 3))
+````
+
 ### launch-program
+
 ````lisp
 (let* ((p (uiop:launch-program "bc -l"
                                :input :stream
@@ -116,3 +143,20 @@
     (read-all nil p-out)))
 ````
 
+````lisp
+(let* ((stdout *standard-output*)
+       (p (uiop:launch-program "bc -lq"
+                               :input :stream
+                               :output :stream))
+       (p-in (uiop:process-info-input p))
+       (p-out (uiop:process-info-output p)))
+  (write-and-flush "1 * 2 * 3 * 4" p-in)
+  (print (read-all p-out) stdout)
+  (finish-output stdout)
+  (write-and-flush "10+10" p-in)
+  (print (read-all p-out) stdout)
+  (finish-output stdout)
+  (write-and-flush "quit" p-in)
+  (uiop:close-streams p)
+  (uiop:wait-process p))
+````
