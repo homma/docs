@@ -2,7 +2,7 @@ Title: git clone した Lem を実行する
 
 ### git clone した Lem を実行する方法
 
-以下のコマンドで GitHub から Lem を `git clone` して実行することができます。
+以下のコマンドで GitHub から Lem を `git clone` して、実行することができます。
 
 ````lisp
 $ git clone https://github.com/cxxxr/lem.git
