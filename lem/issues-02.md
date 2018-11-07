@@ -7,58 +7,76 @@
 
 ## 状況
 
-遅い:
+- コマンドを文字列で渡すと遅い
+- コマンドをリストで渡すと速い
+
+- 遅いのは、
+  - バッファ上の S 式を `C-x C-e` で評価した場合
+  - `start-lisp-repl` で REPL を起動して評価した場合
+
+- `:force-shell t` オプションを設定すると、コマンドをリストで渡しても遅い
+
+- Lem を使用せず、`ros run -e` で実行すると、コマンドを文字列で渡しても速い
+
+## 実装
+- [run-program.lisp](https://github.com/fare/asdf/blob/master/uiop/run-program.lisp)
+- [launch-program.lisp](https://github.com/fare/asdf/blob/master/uiop/launch-program.lisp)
+
+### run-program.lisp
+- 遅いケースでは `%use-system` が実行される
+  - コマンドが文字列で渡された
+  - `:force-shell t` オプションが設定された
+
+- 速いケースでは、`%use-launch-program` が実行される
+
+### %use-system
+- `%system` を呼んでいる
+- `%system` は `launch-program` を呼んでいる
+- `wait-process` で結果を待っている
+
+### %use-launch-program
+- `launch-program` を呼んでいる
+
+### launch-program.lisp
+
+## テスト結果
+
+### コマンドを文字列で渡すと遅い
+
 ````lisp
 (time (uiop:run-program "date" :output :string))
-;; Evaluation took: 1.008 seconds of real time
+;;  1.008 seconds of real time
 ````
 
-`start-lisp-repl` の REPL から実行しても遅い
-````lisp
-cl-user> (time (uiop:run-program "date" :output :string)) 
-Evaluation took:
-  1.004 seconds of real time
-  0.006484 seconds of total run time (0.002302 user, 0.004182 system)
-  0.60% CPU
-  4,025,911,340 processor cycles
-  149,760 bytes consed
-
-"2018年 11月 2日 金曜日 18時11分38秒 JST
-"
-nil
-0
-````
-
-コマンドをリストで渡すと速い:
+### コマンドをリストで渡すと速い
 ````lisp
 (time (uiop:run-program '("date") :output :string))
-;; Evaluation took: 0.005 seconds of real time
+;;  0.005 seconds of real time
 ````
 
-`start-lisp-repl` の REPL から実行しても速い:
+### `start-lisp-repl` の REPL から実行しても遅い
+
+````lisp
+cl-user> (time (uiop:run-program "date" :output :string)) 
+;;  1.004 seconds of real time
+````
+
+### `start-lisp-repl` の REPL から実行しても速い:
 ````lisp
 cl-user> (time (uiop:run-program '("date") :output :string))
-Evaluation took:
-  0.003 seconds of real time
-  0.001056 seconds of total run time (0.000192 user, 0.000864 system)
-  33.33% CPU
-  13,778,526 processor cycles
-  31,696 bytes consed
-
-"2018年 11月 2日 金曜日 18時12分40秒 JST
-"
-nil
-0
+;;  0.003 seconds of real time
 ````
 
-Lem を経由しないで実行すると速い:
+### `:force-shell t` を付けると遅い
+
+````lisp
+(uiop:run-program '("date") :output :string :force-shell t)
+;;   1.008 seconds of real time
+````
+
+### Lem を経由しないで実行すると速い
 ````lisp
 % ros run -e '(time (uiop:run-program "date" :output :string))(quit)'
-Evaluation took:
-  0.006 seconds of real time
-  0.001842 seconds of total run time (0.000349 user, 0.001493 system)
-  33.33% CPU
-  22,144,553 processor cycles
-  59,904 bytes consed
+;;  0.006 seconds of real time
 ````
 
