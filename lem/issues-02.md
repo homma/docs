@@ -18,6 +18,9 @@
 
 - Lem を使用せず、`ros run -e` で実行すると、コマンドを文字列で渡しても速い
 
+## 予想
+- `wait-process` が遅いのかもしれない
+
 ## 実装
 - [run-program.lisp](https://github.com/fare/asdf/blob/master/uiop/run-program.lisp)
 - [launch-program.lisp](https://github.com/fare/asdf/blob/master/uiop/launch-program.lisp)
