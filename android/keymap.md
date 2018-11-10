@@ -10,7 +10,7 @@
 
 [Keyboard Layout Files](https://source.android.com/devices/input/key-layout-files) (`KL ファイル`) のインストールには root 権限が必要なため、KL ファイルは直接設定せず、KCM ファイルで設定することにします。
 
-追加で別のキーに `LANGUAGE_SWITCH` と `ZENKAKU_HANKAKU` も割り当ててみます。  
+追加で、別のキーに `LANGUAGE_SWITCH` と `ZENKAKU_HANKAKU` も割り当ててみます。  
 上手くすれば `Termux` で `iWnn` が使用できるかもしれません。
 
 ### 環境
