@@ -2,16 +2,16 @@
 
 ### はじめに
 
-iClever IC-BK03 の `Caps Lock` キーを `Ctrl` キーに変更します。  
-`Caps Lock` は使用しないため、キーのスワップはしません。
+`iClever IC-BK03` の `Caps Lock` キーを `Ctrl` キーに変更します。  
+（`Caps Lock` は使用しないため、キーのスワップはしません。）
 
-Android 4.1 以降で使用可能な [User-installable keymaps](https://developer.android.com/about/versions/jelly-bean) を使用します。  
-カスタマイズした [Key Character Map Files](https://source.android.com/devices/input/key-character-map-files) (KCM ファイル) を格納したアプリケーションを作成し、それを Android 端末にインストールします。  
+キーの変更には、Android 4.1 以降で使用可能な [User-installable keymaps](https://developer.android.com/about/versions/jelly-bean) を使用します。  
+手順としては、カスタマイズした [Key Character Map Files](https://source.android.com/devices/input/key-character-map-files) (`KCM ファイル`) を格納したアプリケーションを作成し、それを Android 端末にインストールします。  
 
-[Keyboard Layout Files](https://source.android.com/devices/input/key-layout-files) (LK ファイル) のインストールには root 権限が必要なので、KL ファイルは直接設定せず、KCM ファイルで設定することにします。
+[Keyboard Layout Files](https://source.android.com/devices/input/key-layout-files) (`LK ファイル`) のインストールには root 権限が必要なので、KL ファイルは直接設定せず、KCM ファイルで設定することにします。
 
-ついでに右 `Alt` キーに `ZENKAKU_HANKAKU` を割り当ててみます。  
-上手くすれば `Termux` で `iWnn` が使用できるかも。
+追加で別のキーに `LANGUAGE_SWITCH` と `ZENKAKU_HANKAKU` も割り当ててみます。  
+上手くすれば `Termux` で `iWnn` が使用できるかもしれません。
 
 ### 環境
 
@@ -19,7 +19,7 @@ Android 4.1 以降で使用可能な [User-installable keymaps](https://develope
 - iClever IC-BK03
 - Termux
 
-Fire Tablet は以下のドキュメントを参照して、開発者オプションを有効にしておきます。
+Fire Tablet は以下のドキュメントを参照して、開発者オプションを有効にしてあります。
 
 - https://developer.amazon.com/docs/fire-tablets/connecting-adb-to-device.html
 
@@ -40,7 +40,7 @@ Fire Tablet は以下のドキュメントを参照して、開発者オプシ�
 - https://blog.8796.jp/8796kanri/2018/06/gemini-pda用user-installable-keymapsのまとめ.html
 - http://ayati.cocolog-nifty.com/blog/2018/06/gemini-pdaroot-.html
 
-キーボードの Vendor ID と Product ID の確認方法は以下のページを参考にします。
+キーボードの `Vendor ID` と `Product ID` の確認方法は以下のページを参考にします。
 
 - http://www.cory.jp/android/kbd_hid.html
 
@@ -208,3 +208,4 @@ key SPACE {
 
 ### パッケージを作成する
 
+Android Studio で APK ファイルを作成します。
