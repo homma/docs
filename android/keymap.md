@@ -6,9 +6,9 @@
 （`Caps Lock` は使用しないため、キーのスワップはしません。）
 
 キーの変更には、Android 4.1 以降で使用可能な [User-installable keymaps](https://developer.android.com/about/versions/jelly-bean) を使用します。  
-手順としては、カスタマイズした [Key Character Map Files](https://source.android.com/devices/input/key-character-map-files) (`KCM ファイル`) を格納したアプリケーションを作成し、それを Android 端末にインストールします。  
+手順としては、カスタマイズした [Key Character Map Files](https://source.android.com/devices/input/key-character-map-files) (`KCM ファイル`) を作成し、それをアプリケーションにパッケージングして Android 端末にインストールします。  
 
-[Keyboard Layout Files](https://source.android.com/devices/input/key-layout-files) (`LK ファイル`) のインストールには root 権限が必要なので、KL ファイルは直接設定せず、KCM ファイルで設定することにします。
+[Keyboard Layout Files](https://source.android.com/devices/input/key-layout-files) (`KL ファイル`) のインストールには root 権限が必要なので、KL ファイルは直接設定せず、KCM ファイルで設定することにします。
 
 追加で別のキーに `LANGUAGE_SWITCH` と `ZENKAKU_HANKAKU` も割り当ててみます。  
 上手くすれば `Termux` で `iWnn` が使用できるかもしれません。
