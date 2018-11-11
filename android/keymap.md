@@ -308,7 +308,13 @@ res/xml/keyboard_layouts.xml:
 - `Connected Devices` で Android 端末が選択されていることを確認
 - `[OK]` をクリック
 
+### テスト
+- キーボードの設定で作成したキーレイアウトを選択し、動作を確認します。
+
 ### リリースビルドの作成
+
+デバッグビルドでも動作に問題ありませんが、リリースビルドを作成してみます。  
+リリースビルドには署名が必要となります。
 
 メニューから `Build >> Generate Signed Bundle / APK` を選択します。
 
@@ -342,6 +348,16 @@ Error: The apk for your currently selected variant (app-release.apk) is not sign
 - `[OK]` をクリック
 
 ## メモ
+
+### Ctrl キーを入れ替えるだけなのにアプリケーションの作成が必要なのは大変
+
+設定で変更できるようにして欲しいところ。
+
+ただ、変更できるだけマシなのかもしれない。
+
+### adb コマンド
+
+今回は使用しませんでしたが、adb コマンドは `~/Library/Android/sdk/platform-tools/adb` にあります。
 
 ### Vendor ID と Product ID を取得する（未使用）
 今回 `Vendor ID` と `Product ID` は使用しなかったため、この手順は実施しませんでした。
