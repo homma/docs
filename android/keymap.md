@@ -252,7 +252,7 @@ Company domain : homma.github.com
 
 res/raw/caps_as_ctrl_plus_ime.kcm:
 ````
-type FULL
+type OVERLAY
 
 # CAPS_LOCK
 map key 58 CTRL_LEFT
