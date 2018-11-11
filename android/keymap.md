@@ -12,9 +12,6 @@
 
 [Keyboard Layout Files](https://source.android.com/devices/input/key-layout-files) (`KL ファイル`) のインストールには root 権限が必要なため、KL ファイルは直接設定せず、KCM ファイルで設定することにします。
 
-`LANGUAGE_SWITCH` や `ZENKAKU_HANKAKU` を有効にすれば `Termux` で `iWnn` が使用できるかと思いましたが、動作しませんでした。  
-`LANGUAGE_SWITCH` はキーボードのレイアウトを切り替える機能のようです。
-
 ### 環境
 
 - Fire Tablet 7
@@ -366,3 +363,7 @@ Product=7021
 Version=001b
 Name="iClever IC-BK03 Keyboard"
 ````
+
+### 日本語変換について
+`LANGUAGE_SWITCH` や `ZENKAKU_HANKAKU` を有効にすれば `Termux` で `iWnn` が使用できるかと思いましたが、動作しませんでした。  
+`LANGUAGE_SWITCH` はキーボードのレイアウトを切り替える機能のようです。
