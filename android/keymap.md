@@ -8,14 +8,17 @@
 キーの変更には、Android 4.1 以降で使用可能な [User-installable keymaps](https://developer.android.com/about/versions/jelly-bean) を使用します。  
 手順としては、カスタマイズした [Key Character Map Files](https://source.android.com/devices/input/key-character-map-files) (`KCM ファイル`) を作成し、それをアプリケーションにパッケージングして Android 端末にインストールします。  
 
+### メモ
+
 [Keyboard Layout Files](https://source.android.com/devices/input/key-layout-files) (`KL ファイル`) のインストールには root 権限が必要なため、KL ファイルは直接設定せず、KCM ファイルで設定することにします。
 
-追加で、別のキーに `LANGUAGE_SWITCH` と `ZENKAKU_HANKAKU` も割り当ててみます。  
-上手くすれば `Termux` で `iWnn` が使用できるかもしれません。
+`LANGUAGE_SWITCH` や `ZENKAKU_HANKAKU` を有効にすれば `Termux` で `iWnn` が使用できるかと思いましたが、動作しませんでした。  
+`LANGUAGE_SWITCH` はキーボードのレイアウトを切り替える機能のようです。
 
 ### 環境
 
 - Fire Tablet 7
+- Fire OS 5.3.6.4
 - iClever IC-BK03
 - Termux
 
@@ -40,22 +43,6 @@ Fire Tablet は以下のドキュメントを参照して、開発者オプシ�
 - https://blog.8796.jp/8796kanri/2018/06/gemini-pda用user-installable-keymapsのまとめ.html
 - http://ayati.cocolog-nifty.com/blog/2018/06/gemini-pdaroot-.html
 
-キーボードの `Vendor ID` と `Product ID` の確認方法は以下のページを参考にします。
-
-- http://www.cory.jp/android/kbd_hid.html
-
-### Vendor ID と Product ID を取得する
-
-`Termux` から `cat /proc/bus/input/devices` コマンドを実行して確認します。  
-結果は以下の通りでした。
-
-````
-Bus=0005
-Vendor=04e8
-Product=7021
-Version=001b
-Name="iClever IC-BK03 Keyboard"
-````
 
 ### デフォルトの Keylayout と Keychars を確認する
 
@@ -77,34 +64,15 @@ KCM ファイルの書き方は以下のドキュメントを参考にします�
 
 - https://source.android.com/devices/input/key-character-map-files
 
+type は OVELAY にしました。
+
 `CAPS_LOCK` は `key 58` なので、これを `CTRL_LEFT` に上書きします。  
 
-`ALT_RIGHT` は `key 100` なので、これを `ZENKAKU_HANKAKU` に割り当てます。  
-`META_RIGHT` (`key 126`) も `LANGUAGE_SWITCH` に割り当てます。
-
-`Ctrl-Space` は、デフォルトでは `fallback LANGUAGE_SWITCH` になっていますが、`fallback` を外します。
-
-設定はこんな感じになりそうです。
-
 ````
-type FULL
+type OVERLAY
 
 # CAPS_LOCK
 map key 58 CTRL_LEFT
-
-# ALT_RIGHT
-map key 100 ZENKAKU_HANKAKU
-
-# META_RIGHT
-map key 126 LANGUAGE_SWITCH
-
-# Ctrl-Space to always LANGUAGE_SWITCH
-key SPACE {
-    label:                              ' '
-    base:                               ' '
-    alt, meta:                          fallback SEARCH
-    ctrl:                               LANGUAGE_SWITCH
-}
 ````
 
 ### アプリケーションのファイルを実装する
@@ -145,36 +113,24 @@ res/xml/keyboard_layouts.xml
 
 KCM ファイルには先ほど作成した設定を記述します。
 
+res/raw/caps_as_ctrl_plus_ime.kcm:
 ````
-type FULL
+type OVERLAY
 
 # CAPS_LOCK
 map key 58 CTRL_LEFT
-
-# ALT_RIGHT
-map key 100 ZENKAKU_HANKAKU
-
-# META_RIGHT
-map key 126 LANGUAGE_SWITCH
-
-# Ctrl-Space to always LANGUAGE_SWITCH
-key SPACE {
-    label:                              ' '
-    base:                               ' '
-    alt, meta:                          fallback SEARCH
-    ctrl:                               LANGUAGE_SWITCH
-}
 ````
 
 #### strings.xml
 
 `app_name`、`keyboard_layouts_label`、`keyboard_layout_japanese_label` を設定します。
 
+res/values/strings.xml:
 ````xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="app_label">Caps as Ctrl plus IME Layout</string>
-    <string name="keyboard_layout_label">Caps as Ctrl plus IME Layout</string>
+    <string name="app_name">Caps as Ctrl plus IME Layout</string>
+    <string name="keyboard_layouts_label">Caps as Ctrl plus IME Layout</string>
     <string name="keyboard_layout_japanese_label">Japanese</string>
 </resources>
 ````
@@ -197,6 +153,7 @@ key SPACE {
 
 `caps_as_ctrl_plus_ime.kcm` および `strings.xml` への参照を設定します。
 
+res/xml/keyboard_layouts.xml:
 ````xml
 <?xml version="1.0" encoding="utf-8"?>
 <keyboard-layouts xmlns:android="http://schemas.android.com/apk/res/android">
@@ -209,3 +166,203 @@ key SPACE {
 ### パッケージを作成する
 
 Android Studio で APK ファイルを作成します。
+
+#### Android Studio のインストール
+
+- ダウンロード
+  - https://developer.android.com/studio/
+
+- dmg ファイルをダブルクリック
+- Android Studio.app を Applications フォルダにドラッグアンドドロップ
+- Android Studio.app をダブルクリック
+
+- `[Next]` をクリック
+- `[Next]` をクリック
+- `[Next]` をクリック
+- `[Finish]` をクリック
+
+`~/Library/Android/` 以下に色々とインストールされます。
+
+- Intel HAXM installer に関する警告が出るので、「セキュリティとプライバシー」から実行を許可
+- Intel HAXM はエミュレータの動作を高速化するためのもののようです。
+
+- [Finish] をクリック
+
+#### プロジェクトの作成
+
+インストーラからの流れでプロジェクトを作成します。
+
+- `Start a new Android Studio project` をクリック
+
+設定は以下にしました。
+
+````
+Application Name : Caps as Ctrl plus IME Layout
+Company domain : homma.github.com
+````
+
+- `[Next]` をクリック
+
+`Fire OS 5` は `Android 5` ベースなので、`API 21` を選択します。
+
+- `[Next]` をクリック
+- `Add No Activity` をクリック
+- `[Next]` をクリック
+- `[Finish]` をクリック
+
+#### AndroidManifest.xml の実装
+
+`app >> src >> main >> AndroidManifest.xml` をダブルクリックします。
+
+以下の部分を変更します。
+
+````xml
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" />
+````
+
+以下のように変更します。
+
+````
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+ <receiver android:name=".InputDeviceReceiver"
+         android:label="@string/keyboard_layouts_label">
+     <intent-filter>
+         <action android:name="android.hardware.input.action.QUERY_KEYBOARD_LAYOUTS" />
+     </intent-filter>
+     <meta-data android:name="android.hardware.input.metadata.KEYBOARD_LAYOUTS"
+             android:resource="@xml/keyboard_layouts" />
+ </receiver>
+
+    </application>
+````
+
+#### caps_as_ctrl_plus_ime.kcm
+
+`src >> main >> res` に `raw` ディレクトリを追加し、`caps_as_ctrl_plus_ime.kcm` ファイルを追加します。  
+ファイルの中身に以下を記載します。
+
+res/raw/caps_as_ctrl_plus_ime.kcm:
+````
+type FULL
+
+# CAPS_LOCK
+map key 58 CTRL_LEFT
+````
+
+#### strings.xml
+
+`src >> main >> res >> values >> strings.xml` をダブルクリックします。
+
+内容を以下のように変更します。
+
+````xml
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Caps as Ctrl plus IME Layout</string>
+    <string name="keyboard_layouts_label">Caps as Ctrl plus IME Layout</string>
+    <string name="keyboard_layout_japanese_label">Japanese</string>
+</resources>
+````
+
+#### caps_as_ctrl_plus_ime.kcm
+
+`src >> main >> res` に `xml` ディレクトリを追加し、`keyboard_layouts.xml` ファイルを追加します。  
+ファイルの内容は以下を記載します。
+
+res/xml/keyboard_layouts.xml:
+````xml
+<keyboard-layouts xmlns:android="http://schemas.android.com/apk/res/android">
+     <keyboard-layout android:name="keyboard_layout_japanese"
+             android:label="@string/keyboard_layout_japanese_label"
+             android:keyboardLayout="@raw/caps_as_ctrl_plus_ime" />
+</keyboard-layouts>
+````
+
+#### ビルド
+
+金槌アイコンをクリックしてビルドを実行します。  
+エラーが出なければ成功です。
+
+#### パッケージの作成
+
+メニューから `Build >> Build Bundle(s) / APK(s) >> Build APK(s)` を選択します。
+
+パッケージのビルドが完了すると、`~/AndoridStudioProjects/CapsasCtrlplusIMELayout/app/build/outputs/apk/debug/app-debug.apk` が作成されます。
+
+### パッケージの転送
+
+あらかじめ Android 側で `開発者オプション` から `ADB を有効にする` をオンにしておきます。
+
+- メニューから `Run >> Run` を選択
+- `Edit Configuration..` をクリック
+- `Launch Opitions` で `Launch:` に `Nothing` を指定
+- `[Run]` をクリック
+- `Connected Devices` で Android 端末が選択されていることを確認
+- `[OK]` をクリック
+
+### リリースビルドの作成
+
+メニューから `Build >> Generate Signed Bundle / APK` を選択します。
+
+- APK を選択
+- `[Next]` をクリック
+- `[Create new...]` をクリック
+- `Key store path` にキーファイルを保存する場所を指定
+- パスワードを設定
+- Certificate の情報を設定
+  - First and Last Name だけでも OK
+- `[OK]` をクリック
+- `Remember passwords` にチェックを入れる
+- `[Next]` をクリック
+- `Build Type` が `release` になっていることを確認
+- `Signature Versions` に `V2` を選択　
+- `[Finish]` をクリック
+
+### リリースビルドのインストール
+
+- メニューから `Run >> Run` を選択
+- 以下のエラーが表示される
+
+````
+Error: The apk for your currently selected variant (app-release.apk) is not signed. Please specify a signing configuration for this variant (release).
+````
+
+- `[Fix]` をクリック
+- `+` を押して、先ほど作成したキーファイルの設定を記入
+- `Build Types` で `release` を選択
+- `Signing config` に `config` と入力
+- `[OK]` をクリック
+
+## メモ
+
+### Vendor ID と Product ID を取得する（未使用）
+今回 `Vendor ID` と `Product ID` は使用しなかったため、この手順は実施しませんでした。
+
+キーボードの `Vendor ID` と `Product ID` の確認方法は以下のページを参考にします。
+
+- http://www.cory.jp/android/kbd_hid.html
+
+KCM ファイルの名前に `Vendor ID` と `Product ID` を入れることで、自動判別してくれるみたい。
+
+`Termux` から `cat /proc/bus/input/devices` コマンドを実行して確認します。  
+結果は以下の通りでした。
+
+````
+Bus=0005
+Vendor=04e8
+Product=7021
+Version=001b
+Name="iClever IC-BK03 Keyboard"
+````
