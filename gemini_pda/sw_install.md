@@ -19,6 +19,7 @@ Gemini PDA の Debian には 32bit 用の ld が入っていないため、32bit
 - https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
 - https://raw.githubusercontent.com/Linuxbrew/install/master/install-ruby
 - https://raw.githubusercontent.com/Linuxbrew/install/master/install
+- https://hub.docker.com/r/linuxbrew/portable/~/dockerfile/
 
 最初のコマンドを実行すると、`/home/linuxbrew` ディレクトリが作成されます。
 
@@ -33,8 +34,17 @@ export INFOPATH=$(brew --prefix)/share/info:${INFOPATH}
 
 $ . ~/.profile
 
-$ PREFIX=/home/linuxbrew/.linuxbrew/Library/Homebrew/vendor
-$ curl -L https://homebrew.bintray.com/bottles-portable-ruby/portable-ruby-2.3.7.armv6_linux.bottle.tar.gz | tar -xz -C ${PREFIX}
+$ PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH \
+HOMEBREW_BUILD_BOTTLE=1 \
+HOMEBREW_BUILD_FROM_SOURCE=1 \
+HOMEBREW_FORCE_VENDOR_RUBY=1 \
+HOMEBREW_NO_ANALYTICS=1 \
+HOMEBREW_NO_AUTO_UPDATE=1
+
+$ git clone --depth=1 https://github.com/Linuxbrew/brew /home/linuxbrew/.linuxbrew
+$ brew analytics off
+$ brew tap Homebrew/core
+$ brew tap Homebrew/portable-ruby
 ````
 
 ### git
