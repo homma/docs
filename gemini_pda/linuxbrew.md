@@ -88,6 +88,13 @@ Your system is ready to brew.
 
 ## メモ
 
+### Tips
+`HOMEBREW_VERBOSE` を設定すると冗長出力してくれます。
+
+````sh
+export HOMEBREW_VERBOSE=1
+````
+
 ### エラー
 
 これは結局わからず。  
