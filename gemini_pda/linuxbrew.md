@@ -42,8 +42,7 @@ $ make install
 $ cd ${INSTALL_DIR}
 $ cd ..
 $ ln -s 2.3.7 current
-$ PATH=/home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/portable\
--ruby/current/bin:${PATH}
+$ PATH=/home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/portable-ruby/current/bin:${PATH}
 $ which ruby
 $ ruby --version
 ````
