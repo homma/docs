@@ -1,75 +1,64 @@
 
 ## 追加ソフトウェアのインストール
 
-### linuxbrew
-- http://linuxbrew.sh
-
-````sh
-$ sudo apt-get install build-essential curl file git
-$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-````
-
-64bit Arm はサポートされていませんでした。  
-Gemini PDA の Debian には 32bit 用の ld が入っていないため、32bit 版の Ruby も使用できません。
-
-#### インストールメモ
-
-以下を参考にして手動でインストールします。
-
-- https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
-- https://raw.githubusercontent.com/Linuxbrew/install/master/install-ruby
-- https://raw.githubusercontent.com/Linuxbrew/install/master/install
-- https://hub.docker.com/r/linuxbrew/portable/~/dockerfile/
-
-最初のコマンドを実行すると、`/home/linuxbrew` ディレクトリが作成されます。
-
-````sh
-$ sudo mkdir -p /home/linuxbrew
-$ sudo chown ${USER}: /home/linuxbrew
-$ git clone https://github.com/Linuxbrew/brew.git ./.linuxbrew
-$ vi ~/.profile
-PATH=/home/linuxbrew/.linuxbrew/bin:${PATH}
-export MANPATH=$(brew --prefix)/share/man:${MANPATH}
-export INFOPATH=$(brew --prefix)/share/info:${INFOPATH}
-
-$ . ~/.profile
-
-$ PATH=/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:$PATH \
-HOMEBREW_BUILD_BOTTLE=1 \
-HOMEBREW_BUILD_FROM_SOURCE=1 \
-HOMEBREW_FORCE_VENDOR_RUBY=1 \
-HOMEBREW_NO_ANALYTICS=1 \
-HOMEBREW_NO_AUTO_UPDATE=1
-
-$ git clone --depth=1 https://github.com/Linuxbrew/brew /home/linuxbrew/.linuxbrew
-$ brew analytics off
-$ brew tap Homebrew/core
-$ brew tap Homebrew/portable-ruby
-````
-
 ### git
 - デフォルトではインストールされていない
-- linuxbrew のインストール時にインストール
+- linuxbrew のインストール時にインストールしました
+
+### nodebrew
+brew でインストール。
+
+````sh
+$ brew install nodebrew
+$ nodebrew setup_dirs
+````
+
+arm64 に変更。
+````sh
+$ chmod +w /home/linuxbrew/.linuxbrew/Cellar/nodebrew/1.0.1/bin/nodebrew
+$ vi /home/linuxbrew/.linuxbrew/Cellar/nodebrew/1.0.1/bin/nodebrew
+     } elsif ($machine =~ m/aarch64/) {
+-        $arch = 'armv7l';
++        $arch = 'arm64';
+     } elsif ($sysname =~ m/sunos/i) {
+
+$ chmod -w /home/linuxbrew/.linuxbrew/Cellar/nodebrew/1.0.1/bin/nodebrew
+````
+
+Issue でお知らせした方が良いかも。
+- https://github.com/hokaccha/nodebrew/blob/master/nodebrew
+
+### node.js
+nodebrew でインストール。
+
+````sh
+$ nodebrew install-binary latest
+$ nodebrew use latest
+$ export PATH=${HOME}/.nodebrew/current/bin:${PATH}
+$ node -v
+v11.2.0
+````
+
+### Roswell
+Lem のために必要。  
+brew でインストール。
+
+````sh
+$ brew install roswell
+````
+
+### Lem
+Roswell でインストール。
+
+````sh
+$ ros install cxxxr/lem
+$ export PATH=${PATH}:${HOME}/.roswell/bin
+$ lem
+````
+
+### Electron 動作確認
 
 ### 端末エミュレータ
 
 ### 日本語環境を整える
 - mozc
-
-### nodebrew
-- https://github.com/hokaccha/nodebrew
-
-````sh
-$ curl -L git.io/nodebrew | perl - setup
-````
-
-### node.js
-- nodebrew を使う
-
-### Lem
-
-````sh
-$ brew search roswell
-````
-
-### Electron 動作確認
