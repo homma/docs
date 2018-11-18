@@ -35,14 +35,15 @@ $ cd $_
 $ curl -# -O https://cache.ruby-lang.org/pub/ruby/2.3/ruby-2.3.7.tar.bz2
 $ tar xf ruby-2.3.7.tar.bz2
 $ cd ruby-2.3.7
-$ INSTALL_DIR=/home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/portable-ruby/2.3.7
+$ RUBY_VERSION="2.3.7"
+$ PREFIX=/home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/portable-ruby
+$ INSTALL_DIR=${PREFIX}/${RUBY_VERSION}
 $ ./configure --prefix=${INSTALL_DIR} --enable-load-relative --with-static-linked-ext --with-out-ext=tk,sdbm,gdbm,dbm --without-gmp --disable-install-doc --disable-install-rdoc --disable-dependency-tracking
 $ make
 $ make install
-$ cd ${INSTALL_DIR}
-$ cd ..
-$ ln -s 2.3.7 current
-$ PATH=/home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/vendor/portable-ruby/current/bin:${PATH}
+$ cd ${PREFIX}
+$ ln -s ${RUBY_VERSION} current
+$ PATH=${PREFIX}/current/bin:${PATH}
 $ which ruby
 $ ruby --version
 ````
