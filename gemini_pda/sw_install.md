@@ -49,6 +49,7 @@ brew でインストール。
 
 ````sh
 $ brew edit openssl
+# 以下の diff の内容を反映させる
 @@ -39,6 +39,7 @@ class Openssl < Formula
        :i386 => %w[linux-generic32],
        :x86_64 => %w[linux-x86_64],
@@ -76,7 +77,7 @@ $ brew install openssl
 $ brew install roswell
 ````
 
-brew を使用せずに、以下の手順でもインストール可能であると思われる。
+brew を使用せずに、以下の手順でもインストール可能であると思われます。
 
 ````sh
 $ git clone -b release https://github.com/roswell/roswell.git
