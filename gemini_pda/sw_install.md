@@ -124,10 +124,58 @@ apt でインストールした GCC を使用すると、`C_INCLUDE_PATH` の設
 $ brew install gcc
 ````
 
-### Electron 動作確認
+GCC のインストールには 3 時間以上かかりました。
 
-### 端末エミュレータ
+````sh
+==> Installing gcc
+==> Downloading https://ftp.gnu.org/gnu/gcc/gcc-5.5.0/gcc-5.5.0.tar.xz
+######################################################################## 100.0%
+==> ../configure --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugur
+==> make
+==> make install-strip
+==> Creating the GCC specs file: /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/l
+🍺  /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4: 1,252 files, 123.3MB, built in 193 minutes 16 seconds
+````
+
+途中で生成されるファイルなどでディスクスペースも数 GB 必要なようです。  
+最終的なディスク使用量は 0.3GB 程度のようでした。
+
+include search パスは正しく設定されています。
+
+````sh
+$ gcc -xc -E -v -
+...
+#include <...> search starts here:
+ /home/linuxbrew/.linuxbrew/include
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/aarch64-unknown-linux-gnu/5.5.0/include
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/include
+ /home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_4/lib/gcc/aarch64-unknown-linux-gnu/5.5.0/include-fixed
+ /usr/include/aarch64-linux-gnu
+ /usr/include
+````
 
 ### 日本語環境を整える
 - mozc
 
+Linuxbrew にはないので、以下のいずれかの手順が必要です。
+
+- Linuxbrew の formula を作成する
+- apt でインストールする
+- 自分でビルドする
+
+mozc はビルドツールが独特だったので、自前のビルドは大変かも。
+
+と思いましたが、そもそも `mozc` のパッケージがない。
+
+````
+$ apt search ibus-mozc
+Sorting... Done
+Full Text Search... Done
+$ apt search fcitx-mozc
+Sorting... Done
+Full Text Search... Done
+````
+
+### Electron 動作確認
+
+### 端末エミュレータ
