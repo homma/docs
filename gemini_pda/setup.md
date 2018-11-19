@@ -62,6 +62,16 @@ $ ip addr show
 $ ssh gemini@...
 ````
 
+### motd
+
+必要ないので消去します。
+
+````sh
+$ cd /etc
+$ sudo cp motd motd.bak
+$ sudo echo '' > motd
+````
+
 ### マウスなしで操作できるようにする
 - i3wm が良いらしい
 
