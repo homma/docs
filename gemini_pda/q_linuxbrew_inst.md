@@ -110,6 +110,7 @@ ad-hoc な対応ですが、以下の `diff` のように、OpenSSL のプラッ
 
 ````sh
 $ brew edit openssl
+# 以下の diff の内容を反映させる
 @@ -39,6 +39,7 @@ class Openssl < Formula
        :i386 => %w[linux-generic32],
        :x86_64 => %w[linux-x86_64],
