@@ -92,10 +92,17 @@ $ sudo make install
 
 ### Lem
 
-事前に ncurses のインストールが必要です。
+事前に ncurses のインストールが必要です。  
 
 ````sh
 $ brew install ncurses
+````
+
+`C_INCLUDE_PATH` を追加していない場合は設定します。  
+Linuxbrew で GCC をインストールした場合は、この設定は必要ないかもしれません。
+
+````sh
+$ export C_INCLUDE_PATH=/home/linuxbrew/.linuxbrew/include
 ````
 
 Lem は Roswell でインストールします。

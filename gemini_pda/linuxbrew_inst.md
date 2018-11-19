@@ -54,20 +54,30 @@ $ ruby --version
 
 ### Linuxbrew のインストール
 
-インストール:
+#### インストール
+
 ````sh
 $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 ````
 
-環境変数の設定:
+#### 環境変数の設定
+
 ````sh
-$ echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"' >>~/.profile
-$ echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"' >>~/.profile
-$ echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"' >>~/.profile
+$ echo 'export PATH="/home/linuxbrew/.linuxbrew/bin:${PATH}"' >> ~/.profile
+$ echo 'export MANPATH="/home/linuxbrew/.linuxbrew/share/man:${MANPATH}"' >> ~/.profile
+$ echo 'export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:{$INFOPATH}"' >> ~/.profile
 $ . ~/.profile
 ````
 
-環境の診断と修正:
+#### GCC 用の環境変数の設定
+Linuxbrew で GCC をインストールすれば必要ないかもしれません。
+
+````
+$ echo 'export C_INCLUDE_PATH=/home/linuxbrew/.linuxbrew/include' >> ~/.profile
+````
+
+#### 環境の診断と修正
+
 ````sh
 $ brew doctor
 $ sudo mkdir -p /home/linuxbrew/.linuxbrew/var/homebrew/linked
