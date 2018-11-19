@@ -113,6 +113,17 @@ $ export PATH=${PATH}:${HOME}/.roswell/bin
 $ lem
 ````
 
+起動時間は 1 秒程度でした。
+
+### GCC インストール
+
+Linuxbrew でインストールするソフトウェアのコンパイル用。  
+apt でインストールした GCC を使用すると、`C_INCLUDE_PATH` の設定が必要になりそうなので、トラブル避けのために専用の GCC をインストールしておきます。
+
+````sh
+$ brew install gcc
+````
+
 ### Electron 動作確認
 
 ### 端末エミュレータ
