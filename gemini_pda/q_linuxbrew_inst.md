@@ -93,10 +93,42 @@ Your system is ready to brew.
 
 ## その他
 
+### 冗長出力
+
 問題が発生した場合は、`HOMEBREW_VERBOSE` を設定すると冗長出力してくれます。
 
 ````sh
 export HOMEBREW_VERBOSE=1
+````
+
+### OpenSSL のインストール
+
+Linuxbrew の OpenSSL の formula は 64bit ARM Linux に対応していません。
+そのため、`brew edit` で formula を修正してからインストールを行います。
+
+ad-hoc な対応ですが、以下の `diff` のように、OpenSSL のプラットフォーム指定を追加することで、インストールが成功します。
+
+````sh
+$ brew edit openssl
+@@ -39,6 +39,7 @@ class Openssl < Formula
+       :i386 => %w[linux-generic32],
+       :x86_64 => %w[linux-x86_64],
+       :arm => %w[linux-armv4],
++      :arm64 => %w[linux-aarch64],
+     } if OS.linux?
+ 
+     {
+@@ -75,6 +76,8 @@ class Openssl < Formula
+       arch = Hardware::CPU.arch_32_bit
+     end
+ 
++    arch = :arm64
++
+     ENV.deparallelize
+     system "perl", "./Configure", *(configure_args + arch_args[arch])
+     system "make", "depend"
+
+$ brew install openssl
 ````
 
 ## おわりに
