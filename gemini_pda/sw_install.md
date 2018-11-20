@@ -155,26 +155,6 @@ $ gcc -xc -E -v -
 ````
 
 ### 日本語環境を整える
-- mozc
-
-Linuxbrew にはないので、以下のいずれかの手順が必要です。
-
-- Linuxbrew の formula を作成する
-- apt でインストールする
-- 自分でビルドする
-
-mozc はビルドツールが独特だったので、自前のビルドは大変かも。
-
-と思いましたが、そもそも `mozc` のパッケージがない。
-
-````
-$ apt search ibus-mozc
-Sorting... Done
-Full Text Search... Done
-$ apt search fcitx-mozc
-Sorting... Done
-Full Text Search... Done
-````
 
 ### Electron 動作確認
 
