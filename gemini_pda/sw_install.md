@@ -158,7 +158,21 @@ $ gcc -xc -E -v -
 
 - ime.md 参照
 
+### 端末エミュレータ
+
+デフォルトでインストールされている qterminal は日本語入力ができませんでした。  
+rxvt-unicode をインストールします。
+
+Linuxbrew に 256 color 版の rxvt-unicode があったので、これをインストールします。
+
+````
+$ brew install rxvt-unicode
+````
+
+aarch64 では、GCC 8 になるまで -march=native が使用できない。
+
+https://www.phoronix.com/scan.php?page=news_item&px=GCC-8-march-native-ARM
 
 ### Electron 動作確認
 
-### 端末エミュレータ
+
