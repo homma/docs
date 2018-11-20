@@ -176,3 +176,78 @@ uim-mozc/testing 2.23.2815.102+dfsg-2+b1 arm64
   Mozc engine for uim - Client of the Mozc input method
 
 ````
+
+### fcitx-moz のインストール
+
+150MB...
+
+```sh
+$ sudo apt install fcitx-mozc
+[sudo] password for gemini: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following additional packages will be installed:
+  aspell aspell-en enchant fcitx fcitx-bin fcitx-config-common
+  fcitx-config-gtk fcitx-data fcitx-frontend-all fcitx-frontend-gtk2
+  fcitx-frontend-gtk3 fcitx-frontend-qt4 fcitx-frontend-qt5 fcitx-module-dbus
+  fcitx-module-kimpanel fcitx-module-lua fcitx-module-x11 fcitx-modules
+  fcitx-ui-classic gettext-base gstreamer1.0-plugins-good
+  gstreamer1.0-pulseaudio gstreamer1.0-x im-config libaspell15 libdv4
+  libenchant1c2a libfcitx-config4 libfcitx-core0 libfcitx-gclient0
+  libfcitx-qt0 libfcitx-qt5-1 libfcitx-utils0 libgettextpo0
+  libgstreamer-plugins-bad1.0-0 libjavascriptcoregtk-4.0-18 libnotify4
+  libpresage-data libpresage1v5 libprotobuf17 libtinyxml2.6.2v5
+  libwebkit2gtk-4.0-37 mozc-data mozc-server presage tegaki-zinnia-japanese
+  zenity zenity-common
+Suggested packages:
+  aspell-doc spellutils fcitx-m17n fcitx-tools kdebase-bin
+  plasma-widgets-kimpanel libdv-bin libenchant-voikko
+  libwebkit2gtk-4.0-37-gtk2
+Recommended packages:
+  mozc-utils-gui
+The following NEW packages will be installed:
+  aspell aspell-en enchant fcitx fcitx-bin fcitx-config-common
+  fcitx-config-gtk fcitx-data fcitx-frontend-all fcitx-frontend-gtk2
+  fcitx-frontend-gtk3 fcitx-frontend-qt4 fcitx-frontend-qt5 fcitx-module-dbus
+  fcitx-module-kimpanel fcitx-module-lua fcitx-module-x11 fcitx-modules
+  fcitx-mozc fcitx-ui-classic gettext-base gstreamer1.0-plugins-good
+  gstreamer1.0-pulseaudio gstreamer1.0-x im-config libaspell15 libdv4
+  libenchant1c2a libfcitx-config4 libfcitx-core0 libfcitx-gclient0
+  libfcitx-qt0 libfcitx-qt5-1 libfcitx-utils0 libgettextpo0
+  libgstreamer-plugins-bad1.0-0 libjavascriptcoregtk-4.0-18 libnotify4
+  libpresage-data libpresage1v5 libprotobuf17 libtinyxml2.6.2v5
+  libwebkit2gtk-4.0-37 mozc-data mozc-server presage tegaki-zinnia-japanese
+  zenity zenity-common
+0 upgraded, 49 newly installed, 0 to remove and 151 not upgraded.
+Need to get 58.6 MB of archives.
+After this operation, 149 MB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+...
+````
+
+### fcitx-mozc の設定
+
+正しい手順は不明。  
+以下を実行したところ、`Ctrl+Space` で日本語変換ができるようになりました。
+
+````sh
+$ im-config
+=> fcitx を選択
+````
+
+再起動。
+
+````sh
+$ fcitx-configtool
+=> + ボタンを押して mozc を追加
+````
+
+### 日本語入力のテスト
+
+#### Chromium
+入力・表示ともに問題なし。
+
+#### qterminal
+日本語の表示は可能。  
+入力はできない。
