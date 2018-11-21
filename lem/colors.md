@@ -1,42 +1,6 @@
 
 ## Lem のカラーテーマに関するメモ
 
-### 256 色の配列
-
-`lem.term::*colors*` でアクセスできる。
-
-````lisp
-(print lem.term::*colors*)
-````
-
-### 256 色の色見本
-
-https://en.wikipedia.org/wiki/Xterm#/media/File:Xterm_256color_chart.svg
-
-### X11 Color の色見本
-
-https://en.wikipedia.org/wiki/X11_color_names
-
-### Solarized
-
-True Color でないと Solarized 的な色は表現できない。
-
-https://ethanschoonover.com/solarized/
-````
-SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
-````
-
-SOLARIZED : Solarized で使用される色名  
-HEX : True Color の 16 進数表現  
-TERMCOL : 16 色ターミナルカラーの色名（非公式名）  
-XTERM/HEX : 256 色ターミナルカラーの色番号と 16 進数表現  
-
-### Emacs
-
-`M-x list-colors-display` で色見本を確認できる。
-
-https://www.emacswiki.org/emacs/ListColors
-
 ## Lem
 
 ### Colors
@@ -44,6 +8,14 @@ https://www.emacswiki.org/emacs/ListColors
 端末の色は以下で登録している。
 
 https://github.com/cxxxr/lem/blob/master/frontends/ncurses/term.lisp
+
+### 256 色の配列
+
+`lem.term::*colors*` でアクセスできる。
+
+````lisp
+(print lem.term::*colors*)
+````
 
 ### 色指定の属性
 
@@ -96,3 +68,33 @@ _ _ _
 + foo
 0. foo
 ````
+
+## Lem 以外の情報
+
+### 256 色の色見本
+
+https://en.wikipedia.org/wiki/Xterm#/media/File:Xterm_256color_chart.svg
+
+### X11 Color の色見本
+
+https://en.wikipedia.org/wiki/X11_color_names
+
+### Solarized
+
+True Color でないと Solarized 的な色は表現できない。
+
+https://ethanschoonover.com/solarized/
+````
+SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
+````
+
+SOLARIZED : Solarized で使用される色名  
+HEX : True Color の 16 進数表現  
+TERMCOL : 16 色ターミナルカラーの色名（非公式名）  
+XTERM/HEX : 256 色ターミナルカラーの色番号と 16 進数表現  
+
+### Emacs
+
+`M-x list-colors-display` で色見本を確認できる。
+
+https://www.emacswiki.org/emacs/ListColors
