@@ -13,6 +13,10 @@
 
 https://en.wikipedia.org/wiki/Xterm#/media/File:Xterm_256color_chart.svg
 
+### X11 Color の色見本
+
+https://en.wikipedia.org/wiki/X11_color_names
+
 ### Solarized
 
 True Color でないと Solarized 的な色は表現できない。
