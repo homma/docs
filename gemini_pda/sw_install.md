@@ -163,14 +163,15 @@ $ gcc -xc -E -v -
 qterminal で日本語入力も問題ありませんでした。
 
 #### rxvt は Linuxbrew でインストールできず
-デフォルトでインストールされている qterminal は日本語入力ができませんでした。  
-rxvt-unicode をインストールします。
 
+rxvt-unicode をインストールします。  
 Linuxbrew に 256 color 版の rxvt-unicode があったので、これをインストールします。
 
 ````
 $ brew install rxvt-unicode
 ````
+
+configure のエラーが発生してビルド失敗。
 
 aarch64 では、GCC 8 になるまで -march=native が使用できない。
 
@@ -179,6 +180,8 @@ https://www.phoronix.com/scan.php?page=news_item&px=GCC-8-march-native-ARM
 #### mlterm
 
 インストールしましたが、qterminal で問題ありませんでした。
+
+mlterm, mlterm-common, mlterm-tools, mlterm-im-fcitx は削除しても良いかも。
 
 ````sh
 $ sudo apt install mlterm
@@ -211,16 +214,14 @@ After this operation, 20.5 kB of additional disk space will be used.
 ...
 ````
 
-### シェル
-
-bash の日本語入力ができないため。
-
 ### フォント
 
 絵文字のフォントが必要。
 
 - Linuxbrew cask : font-noto-color-emoji
 - apt : fonts-noto-color-emoji
+
+デフォルトで使用されているフォントの名前が分からない。
 
 ### Electron 動作確認
 

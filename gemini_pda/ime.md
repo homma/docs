@@ -250,8 +250,10 @@ $ fcitx-configtool
 
 #### qterminal
 入力・表示ともに問題なし。  
-ただし bash が日本語を受け付けない。
+以下の設定をしました。
 
-#### bash
-日本語の表示は可能。  
-入力はできない。
+````sh
+$ vi ~/.bashrc
+LANG=ja_JP.utf-8
+LC_ALL=ja_JP.utf-8
+````
