@@ -1,3 +1,21 @@
+
+### デフォルトで使用する Terminal の変更
+
+`update-alternatives` コマンドで変更します。
+
+````sh
+$ sudo update-alternatives --config x-terminal-emulator
+There are 2 choices for the alternative x-terminal-emulator (providing /usr/bin/x-terminal-emulator).
+
+  Selection    Path                Priority   Status
+------------------------------------------------------------
+* 0            /usr/bin/qterminal   40        auto mode
+  1            /usr/bin/mlterm      20        manual mode
+  2            /usr/bin/qterminal   40        manual mode
+
+Press <enter> to keep the current choice[*], or type selection number: 
+````
+
 ### rxvt
 
 Linuxbrew でインストールできませんでした。
