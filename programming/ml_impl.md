@@ -4,6 +4,8 @@
 
 List of small/mini/micro/tiny ML language implementations
 
+## Micro ML
+
 ### Micro ML
 https://github.com/pascallouisperez/mu-ml
 > Micro ML — Small, simple compiler in ML for a subset of ML. Meant for teaching.
@@ -36,6 +38,8 @@ https://bitbucket.org/microml/micro-ml/src
 - https://github.com/eliben/code-for-blog/tree/master/2018/type-inference
 - https://eli.thegreenplace.net/2018/type-inference/
 
+## Mini ML
+
 ### minml
 - https://github.com/melsman/sml-llvm/blob/master/test/miniml/miniml.sml
 > (* A Simple ML-like language ported to Standard ML from OCaml; see
@@ -53,14 +57,20 @@ https://bitbucket.org/microml/micro-ml/src
 - http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.html
 - http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.zip
 
-### MLComp
-- https://github.com/kentdlee/MLComp
+### MiniML Compiler
+- https://github.com/ichi-rika/miniml
 
 ### Min-Caml
 - https://github.com/esumii/min-caml
 - http://esumii.github.io/min-caml/tutorial-mincaml-4.htm
 
-## Not Small
+## Small ML
+
+### MLComp
+- https://github.com/kentdlee/MLComp
+> A Compiler and Type Inference System for a subset of Standard ML called Small.
+
+## Other
 
 ### SOSML - Online SML
 - https://github.com/SOSML/SOSML
