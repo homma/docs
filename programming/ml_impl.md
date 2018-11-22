@@ -44,7 +44,8 @@ https://bitbucket.org/microml/micro-ml/src
 ### minml
 - http://groups.google.com/group/fa.caml/msg/5aee553df34548e2
 
-### plzoo
+### plzoo miniml
+- https://github.com/andrejbauer/plzoo/tree/master/src/miniml
 
 ## Not Small
 
