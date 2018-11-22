@@ -1,3 +1,4 @@
+# Implementations of ML-like Languages
 
 ## Mini ML
 
@@ -46,6 +47,18 @@ https://bitbucket.org/microml/micro-ml/src
 
 ### plzoo miniml
 - https://github.com/andrejbauer/plzoo/tree/master/src/miniml
+- http://www.lexicallyscoped.com/2015/06/28/miniml-compiler-to-js.html
+
+### Mini-ML Compiler
+- http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.html
+- http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.zip
+
+### MLComp
+- https://github.com/kentdlee/MLComp
+
+### Min-Caml
+- https://github.com/esumii/min-caml
+- http://esumii.github.io/min-caml/tutorial-mincaml-4.htm
 
 ## Not Small
 
@@ -58,6 +71,9 @@ https://bitbucket.org/microml/micro-ml/src
 - https://gitlab.com/monnier/typer/blob/master/doc/primer.md
 - [Typer: ML boosted with type theory and Scheme](http://www.iro.umontreal.ca/~monnier/typer-jfla2019.pdf)
 - [Typer an ML sibling inheriting from Lisp and Coq](http://www.nlsde.buaa.edu.cn/__local/F/E6/0C/916233955997A7DB81C37FE703A_DBE3A4B8_68260.pdf)
+
+### 1ML
+- https://github.com/rossberg/1ml
 
 ## Incomplete
 
@@ -73,6 +89,9 @@ Rust で実装されており、nom を使っている。
 
 ## Compile to JS
 
+### SMLtoJs
+- https://github.com/melsman/mlkit/blob/master/README_SMLTOJS.md
+
 ### hamlet/compile-js
 - https://github.com/rossberg/hamlet/tree/master/compile-js
 
@@ -82,7 +101,17 @@ HaMLet には SML を JavaScript にコンパイルする機能がある。
 - https://people.mpi-sws.org/~rossberg/hamlet/
 > Added simple JavaScript compiler and runtime as a proof of concept, accessible via the newly added -j mode.
 
-## Standard
+## Standard ML
+
+### SML/NJ
+
+### MLton
+
+### PollyML
+
+### MLkit
+
+### Moscow ML
 
 ### MLWorks
 
