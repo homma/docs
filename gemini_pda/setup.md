@@ -74,4 +74,8 @@ $ sudo echo '' > motd
 
 ### マウスなしで操作できるようにする
 - i3wm が良いらしい
+- qterminal をフルスクリーンにして、tmux を使う方法で問題なさそう
 
+### PDF ビューワの動作確認
+- qpdfview がインストールされている
+- https://launchpad.net/qpdfview
