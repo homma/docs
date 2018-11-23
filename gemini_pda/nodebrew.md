@@ -1,4 +1,4 @@
-Title: can we update the $arch for aarch64 to have capability to choose arm64?
+Title: Can we update the $arch for aarch64 to have capability to choose arm64?
 
 Currently, $arch for aarch64 is set as "armv7l".
 
