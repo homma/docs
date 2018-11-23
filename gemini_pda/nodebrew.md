@@ -67,3 +67,11 @@ index 9f6da59..f1d7620 100755
          # SunOS $machine => 'i86pc'. but use 64bit kernel.
          # Solaris 11 not support 32bit kernel.
 ````
+
+### Addendum
+
+It might be better to use ptrsize instead of use64bitint.
+
+````perl
+perl -e 'use Config; print $Config{ptrsize}'
+````
