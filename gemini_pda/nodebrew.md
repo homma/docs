@@ -37,7 +37,7 @@ node-v11.2.0-linux-arm64/bin/node: ELF 64-bit LSB executable, ARM aarch64, versi
 I need this to use Nodebrew on aarch64 systems where the userland is also 64-bit such as Debian 9 on Gemini PDA.
 It may be the case for Raspberry Pi 64-bit OS as well.
 
-Here's the patch.  
+Here's a patch to resolve it.  
 
 It uses `use64bitint` to check the bitness of the userland binary by picking up the perl itself as a sample.
 
@@ -67,4 +67,3 @@ index 9f6da59..f1d7620 100755
          # SunOS $machine => 'i86pc'. but use 64bit kernel.
          # Solaris 11 not support 32bit kernel.
 ````
-
