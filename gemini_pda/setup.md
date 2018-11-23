@@ -79,3 +79,5 @@ $ sudo echo '' > motd
 ### PDF ビューワの動作確認
 - qpdfview がインストールされている
 - https://launchpad.net/qpdfview
+
+### Dropbox アクセス確認
