@@ -64,7 +64,7 @@ cl-user> (time (uiop:run-program "date" :output :string))
 ;;  1.004 seconds of real time
 ````
 
-### `start-lisp-repl` の REPL から実行しても速い:
+### `start-lisp-repl` の REPL から実行しても速い
 ````lisp
 cl-user> (time (uiop:run-program '("date") :output :string))
 ;;  0.003 seconds of real time

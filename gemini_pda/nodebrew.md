@@ -49,7 +49,7 @@ I hope it works well on the Chrome OS.
 
 ````diff
 diff --git a/nodebrew b/nodebrew
-index 9f6da59..f1d7620 100755
+index 9f6da59..0273107 100755
 --- a/nodebrew
 +++ b/nodebrew
 @@ -733,7 +733,12 @@ sub system_info {
@@ -58,7 +58,7 @@ index 9f6da59..f1d7620 100755
      } elsif ($machine =~ m/aarch64/) {
 -        $arch = 'armv7l';
 +        use Config;
-+        if(defined($Config{use64bitint})) {
++        if($Config{ptrsize} == 8) {
 +          $arch = 'arm64';
 +        } else {
 +          $arch = 'armv7l';
