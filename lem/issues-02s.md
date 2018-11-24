@@ -2,10 +2,10 @@ Title: additional latency on executing uiop:run-program on macOS
 
 ## Summary
 
-There is an additional latency observed on executing `uiop:run-program` inside Lem on macOS.
-I do not know why, but somehow it wastes one second for doing nothing when the function is called from Lem.
+There is an additional latency observed on executing `uiop:run-program` inside of Lem on macOS.
+I do not know why, but somehow it wastes one second for doing nothing.
 
-I have found that the problem is observed when the command argument is passed as a string.
+I have found that the problem occurs when the command argument is passed to `uiop:run-program`as a string.
 And it can be avoided by passing the command argument as a list.
 
 It would be helpful if you would consider passing commands as a list in `lib/core/command.lisp`.
@@ -25,7 +25,7 @@ macOS 上の Lem から `uiop:run-program` を呼び出すと、なぜか 1 秒�
 コマンドをリストにして渡した場合は、遅延は発生しません。
 
 Lem の `filter-buffer` や `pipe-command` などはこの影響を受けており、macOS で実行すると余計な時間がかかります。  
-内部で使用されている `uiop:run-program` の引数を文字列からリストに変更すると、遅延は解消されます。
+Lem 内部で使用されている `uiop:run-program` の引数を文字列からリストに変更すると、遅延は解消されます。
 
 原因は確認できていませんが、もし修正できるようでしたら、Lem の実装に使用されている `uiop:run-program` 関数の引数をリストに変更ください。
 
@@ -35,7 +35,7 @@ https://github.com/cxxxr/lem/issues/64
 
 ## Details
 
-When the following program is executed inside Lem on macOS, it takes additional one second before it returns.
+When the following program is executed inside of Lem on macOS, it takes additional one second before it returns.
 
 ```lisp
 (time (uiop:run-program "date" :output :string))
@@ -51,7 +51,7 @@ On the other hand, when the same program is executed outside of Lem, it finishes
 ;; fast!
 ```
 
-It seems that the problem occurs when it is called inside Lem.
+It seems that the problem occurs when it is called inside of Lem.
 
 The latency can be avoided by passing the command as list too.  
 
@@ -62,15 +62,15 @@ The latency can be avoided by passing the command as list too.
 ;; and it usess `%use-launch-program`
 ````
 
-This happens since it calls `%use-launch-program` inside `uiop:run-program`.
+This happens since it calls `%use-launch-program` inside of `uiop:run-program`.
 
 - https://github.com/fare/asdf/blob/master/uiop/run-program.lisp
 
-When the commands are passed as string, `%use-system` is used instead of `%use-launch-program`.
-It seems this makes it slow to execute the `uiop:run-program`.
+When the command is passed as a string, `%use-system` is used instead of `%use-launch-program`.
+It seems that this is introducing the latency on exection of the `uiop:run-program`.
 
 Another case which calls `%use-system` is  adding `:force-shell` keyword to the `uiop:run-program` call.
-It introduces a latency even if the commands are passed as a list.
+This causes a latency even if the command is passed as a list.
 
 ````lisp
 (uiop:run-program '("date") :output :string :force-shell t)

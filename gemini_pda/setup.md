@@ -72,6 +72,35 @@ $ sudo cp motd motd.bak
 $ sudo echo '' > motd
 ````
 
+### 画面解像度の設定
+- `xorg.conf` や `~/.xprofile` では設定変更できない
+- `/etc/sddm.conf` を変更する必要がある
+
+- `-dpi` は 145 がちょうど良かった
+  - 144 だとウィジェットのサイズが小さすぎる（144 から急に小さくなる）
+  - デフォルトの 192 だと大きすぎる（フォントのサイズが大きいため）
+
+/etc/sddm.conf
+````
+# Arguments passed to the X server invocation
+#ServerArguments=-nolisten tcp -dpi 192
+ServerArguments=-nolisten tcp -dpi 145
+````
+
+- 画面に収まりきらないウィンドウがあった場合は一時的に `xrandr` コマンドで解像度を変更可能
+
+````sh
+$ xrandr --dpi 130
+// 操作を行う
+$ xrandr --dpi 145
+````
+
+- 現在の設定は `xdpyinfo` で確認可能
+
+````sh
+$ xdpyinfo | grep -B2 resolution
+````
+
 ### マウスなしで操作できるようにする
 - i3wm が良いらしい
 - qterminal をフルスクリーンにして、tmux を使う方法で問題なさそう
