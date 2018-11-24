@@ -188,4 +188,12 @@ $ brew install tmux
 
 ### w3m
 
+Linuxbrew でインストール。
+
+````sh
+$ brew install w3m
+````
+
+- Configure でエラー発生
+
 ### Common Lisp HyperSpec
