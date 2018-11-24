@@ -166,13 +166,65 @@ $ gcc -xc -E -v -
 
 qterminal で日本語入力も問題ありませんでした。
 
+### w3m
+
+Linuxbrew でインストールします。
+
+`configure` が失敗するため、`superenv.rb` を修正します。
+
+````sh
+$ sudo vi /home/linuxbrew/.linuxbrew/Homebrew/Library/Homebrew/extend/ENV/super.rb
+// "-march=native" を削除する
+````
+
+変更内容は以下の通り。
+
+````diff
+$ git diff
+diff --git a/Library/Homebrew/extend/ENV/super.rb b/Library/Homebrew/extend/ENV/super.rb
+index 2b5951fef..a2e03093a 100644
+--- a/Library/Homebrew/extend/ENV/super.rb
++++ b/Library/Homebrew/extend/ENV/super.rb
+@@ -236,7 +236,7 @@ module Superenv
+     elsif Hardware::CPU.intel? && !Hardware::CPU.sse4?
+       Hardware::CPU.optimization_flags.fetch(Hardware.oldest_cpu)
+     elsif ![:gcc_4_0, :gcc_4_2].include?(compiler)
+-      "-march=native"
++      ""
+     # This is mutated elsewhere, so return an empty string in this case
+     else
+       ""
+````
+
+修正が完了したらインストールを行います。
+
+````sh
+$ brew install w3m
+==> Installing dependencies for w3m: libatomic_ops, bdw-gc, libbsd and gettext
+...
+````
+
+動作確認。
+
+````sh
+$ w3m -O utf8 www.google.com
+````
+
+### Common Lisp HyperSpec
+
+Linuxbrew でインストールします。
+
+````sh
+$ brew install hyperspec
+````
+
 ### tmux
 
 ターミナルをフルスクリーンにした状態で使うことが多いと思われるため tmux をインストールします。  
 Linuxbrew でインストール。
 
 ````sh
-$ brew install tmux
+$ brew install tmux --with-utf8proc
 ````
 
 ### フォント
@@ -185,15 +237,3 @@ $ brew install tmux
 デフォルトで使用されているフォントの名前が分からない。
 
 ### Electron 動作確認
-
-### w3m
-
-Linuxbrew でインストール。
-
-````sh
-$ brew install w3m
-````
-
-- Configure でエラー発生
-
-### Common Lisp HyperSpec
