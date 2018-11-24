@@ -16,7 +16,7 @@ https://github.com/Linuxbrew/brew/blob/master/Library/Homebrew/hardware.rb
 
 #### OpenSSL
 
-- linuxbrew_openssl.md 参照
+- [linuxbrew_openssl.md](./linuxbrew_openssl.md) 参照
 - ワークアラウンド確認済み
 
 #### rxvt-unicode
@@ -29,17 +29,17 @@ https://www.phoronix.com/scan.php?page=news_item&px=GCC-8-march-native-ARM
 - Linuxbrew の GCC は v5
 - Debian 9 の GCC は v6
 
-- ワークアラウンドは ./linuxbrew_march.md
+- ワークアラウンドは [linuxbrew_march.md](./linuxbrew_march.md)
 
 #### zsh
 
 - configure に -march=native が含まれているため失敗
 - rxvt-unicode と同じ状況
 
-- ワークアラウンドは ./linuxbrew_march.md
+- ワークアラウンドは [linuxbrew_march.md](./linuxbrew_march.md)
 
 #### w3m
 
 - 依存ライブラリ (libatomic_ops) の configure に -march=native が含まれているため失敗
 
-- ワークアラウンドは ./linuxbrew_march.md
+- ワークアラウンドは [linuxbrew_march.md](./linuxbrew_march.md)
