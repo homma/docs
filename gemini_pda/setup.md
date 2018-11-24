@@ -23,6 +23,11 @@ XKBOPTIONS="ctrl:nocaps"
 
 ### ターミナルの文字サイズを小さくする
 - Preference から実施
+- `Ctrl+-` でも設定可能
+
+### ターミナルをフルスクリーンにする
+
+- `Fn + Shift + F11`
 
 ### ウェブブラウザ動作確認
 - chromium ブラウザ
