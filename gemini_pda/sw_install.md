@@ -224,8 +224,12 @@ $ brew install hyperspec
 Linuxbrew でインストール。
 
 ````sh
-$ brew install tmux --with-utf8proc
+$ brew install tmux
+==> Installing dependencies for tmux: gdbm, readline, sqlite, bzip2, python@2, sphinx-doc, cmake, bison, help2man, flex, doxygen, libtool and libevent
+...
 ````
+
+ひとまず `--with-utf8proc` はなしでインストールしました。
 
 ### フォント
 

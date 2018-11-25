@@ -47,7 +47,21 @@ create かな。
 
 `Prefix + w`
 
-#### ウィンドウをまとめる
+#### ウィンドウを縦に均等な幅で並び替える
+
+`Prefix + Alt 1` : horizontal
+
+#### ウィンドウを横に均等な幅で並び替える
+
+`Prefix + Alt 2` : vertical
+
+### ウィンドウのレイアウトを変更する
+
+`Prefix + Alt 3` : `T` 字型 (main-horizontal)  
+`Prefix + Alt 4` : `E` 字型 (main-vertical)  
+`Prefix + Alt 5` : `田` 字型 (tiled)  
+
+#### ウィンドウを一つにする
 
 `Prefix + !`
 
