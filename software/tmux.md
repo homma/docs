@@ -11,6 +11,10 @@ $ brew install tmux
 
 `~/.tmux.conf`
 
+#### サンプル設定ファイル
+
+- /usr/local/opt/tmux/share/tmux/example_tmux.conf                                                                                                                  
+
 ### キーバインド
 
 #### プリフィックスキー
