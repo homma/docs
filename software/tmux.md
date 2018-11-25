@@ -1,5 +1,14 @@
 
+### インストール
+
+````sh
+$ brew install tmux
+==> Installing dependencies for tmux: libevent
+...
+````
+
 ### 設定ファイル
+
 `~/.tmux.conf`
 
 ### キーバインド
