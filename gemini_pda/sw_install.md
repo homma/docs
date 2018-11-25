@@ -240,4 +240,10 @@ $ brew install tmux
 
 デフォルトで使用されているフォントの名前が分からない。
 
+他の Noto フォントは apt でインストールされていたので、`fonts-noto-color-emoji` も apt でインストールしました。
+
+````sh
+$ sudo apt install fonts-noto-color-emoji
+````
+
 ### Electron 動作確認
