@@ -70,7 +70,7 @@ When the command is passed as a string, `%use-system` is used instead of `%use-l
 It seems that this introduces the latency on exection of the `uiop:run-program`.
 
 Another case which calls `%use-system` is  adding `:force-shell` keyword to the `uiop:run-program` call.  
-This causes a latency even if the command is passed as a list.
+This causes a latency even if the command is passed as a list since it goes through the `%use-system`.
 
 ````lisp
 (uiop:run-program '("date") :output :string :force-shell t)
