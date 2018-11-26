@@ -81,7 +81,7 @@ NotoColorEmoji.ttf: "Noto Color Emoji" "Regular"
 
 ````sh
 $ cd /etc/fonts/conf.d
-$ sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.con .
+$ sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf .
 ````
 
 パネルが削除されてしまっている場合は SDDM をリスタートして強制ログアウト。
