@@ -62,7 +62,7 @@ On the other hand, when the same program is executed outside of Lem, it finishes
 
 It seems that the problem occurs when it is called inside of Lem.
 
-The latency can be avoided by passing the command as list.  
+The latency can be avoided by passing the command as a list.  
 
 ````lisp
 (time (uiop:run-program '("date") :output :string))
