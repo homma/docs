@@ -5,7 +5,7 @@ Title: additional latency on executing uiop:run-program on macOS
 There is an additional latency observed on executing `uiop:run-program` inside of Lem on macOS.  
 I do not know why, but somehow it wastes one second for doing nothing.
 
-I have found that the problem occurs when the command argument is passed by string to `uiop:run-program`.  
+The problem occurs when the command argument is passed as a string to `uiop:run-program`.  
 And it can be avoided by passing the command argument as a list.
 
 It would be helpful if you would consider passing commands as a list in `lib/core/command.lisp`.  
