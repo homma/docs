@@ -95,7 +95,7 @@ cl-user> (time (uiop:run-program "date" :output :string))
 ;; slow!
 ````
 
-So, the problem may resides around the Lisp REPL implementation.
+So, the problem may reside around the Lisp REPL implementation.
 But I do not know how to test it.
 
 ## Other Info
