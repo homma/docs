@@ -22,7 +22,16 @@ The root cause is unknown so far.
 macOS 上の Lem から `uiop:run-program` を呼び出すと、なぜか 1 秒間の遅延が追加されるようです。  
 
 遅延が発生するのは、`uiop:run-program` に引数として渡されたコマンドが文字列の場合です。  
+
+````lisp
+(uiop:run-program "date" :output :string)
+````
+
 コマンドをリストにして渡した場合は、遅延は発生しません。
+
+````lisp
+(uiop:run-program '("date") :output :string)
+````
 
 Lem の `filter-buffer` や `pipe-command` などはこの影響を受けており、macOS で実行すると余計な時間がかかります。  
 Lem 内部で使用されている `uiop:run-program` の引数を文字列からリストに変更すると、遅延は解消されます。
