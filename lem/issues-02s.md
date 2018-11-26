@@ -8,7 +8,7 @@ I do not know why, but somehow it wastes one second for doing nothing.
 The problem occurs when the command argument is passed as a string to the function.  
 And it can be avoided by passing the command argument as a list.
 
-It would be helpful if you would consider passing commands as a list in `lib/core/command.lisp`.  
+It would be helpful if you would consider passing commands as a list when calling the function in `lib/core/command.lisp`.  
 It will speed up `filter-buffer` and `pipe-command` commands on macOS.
 
 Also, the following issue may be related to the above behavior.
