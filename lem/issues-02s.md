@@ -2,13 +2,13 @@ Title: additional latency on executing uiop:run-program on macOS
 
 ## Summary
 
-There is an additional latency observed on executing `uiop:run-program` inside of Lem on macOS.
+There is an additional latency observed on executing `uiop:run-program` inside of Lem on macOS.  
 I do not know why, but somehow it wastes one second for doing nothing.
 
-I have found that the problem occurs when the command argument is passed to `uiop:run-program`as a string.
+I have found that the problem occurs when the command argument is passed by string to `uiop:run-program`.  
 And it can be avoided by passing the command argument as a list.
 
-It would be helpful if you would consider passing commands as a list in `lib/core/command.lisp`.
+It would be helpful if you would consider passing commands as a list in `lib/core/command.lisp`.  
 It will speed up `filter-buffer` and `pipe-command` commands on macOS.
 
 Also, the following issue may be related to the above behavior.
@@ -66,10 +66,10 @@ This happens since it calls `%use-launch-program` inside of `uiop:run-program`.
 
 - https://github.com/fare/asdf/blob/master/uiop/run-program.lisp
 
-When the command is passed as a string, `%use-system` is used instead of `%use-launch-program`.
+When the command is passed as a string, `%use-system` is used instead of `%use-launch-program`.  
 It seems that this is introducing the latency on exection of the `uiop:run-program`.
 
-Another case which calls `%use-system` is  adding `:force-shell` keyword to the `uiop:run-program` call.
+Another case which calls `%use-system` is  adding `:force-shell` keyword to the `uiop:run-program` call.  
 This causes a latency even if the command is passed as a list.
 
 ````lisp
@@ -91,5 +91,5 @@ But I do not know how to test it.
 
 ## Other Info
 
-All the above test has been done on macOS.
+All the above test has been done on macOS.  
 The latency has not been seen on Linux.
