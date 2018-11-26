@@ -67,7 +67,7 @@ This happens since it calls `%use-launch-program` inside of `uiop:run-program`.
 - https://github.com/fare/asdf/blob/master/uiop/run-program.lisp
 
 When the command is passed as a string, `%use-system` is used instead of `%use-launch-program`.  
-It seems that this is introducing the latency on exection of the `uiop:run-program`.
+It seems that this introduces the latency on exection of the `uiop:run-program`.
 
 Another case which calls `%use-system` is  adding `:force-shell` keyword to the `uiop:run-program` call.  
 This causes a latency even if the command is passed as a list.
