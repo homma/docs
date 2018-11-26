@@ -36,11 +36,13 @@ macOS 上の Lem から `uiop:run-program` を呼び出すと、なぜか 1 秒�
 Lem の `filter-buffer` や `pipe-command` などはこの影響を受けており、macOS で実行すると余計な時間がかかります。  
 Lem 内部で使用されている `uiop:run-program` の引数を文字列からリストに変更すると、遅延は解消されます。
 
-原因は確認できていませんが、もし可能でしたら、Lem の実装に使用されている `uiop:run-program` 関数の引数をリストに変更ください。
+原因は分かっていませんが、もし可能でしたら、Lem の実装に使用されている uiop:run-program 関数の引数をリストに変更ください。
 
 以下の Issue で報告されている遅延もこれが原因かもしれません。
 
 https://github.com/cxxxr/lem/issues/64
+
+なお、`start-lisp-repl` して REPL から `uiop:run-program` 関数を実行した場合にも遅延が発生します。  
 
 ## Details
 
