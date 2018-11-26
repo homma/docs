@@ -14,6 +14,32 @@ $ fc-match monospace
 NotoSansCJK-Regular.ttc: "Noto Sans Mono CJK JP" "Regular"
 ````
 
+### lxqt のフォント
+
+`Noto Sans` が設定されています。  
+`Preferences` から変更可能。
+
+lxqt.conf:
+````
+[General]
+__userfile__=true
+icon_theme=breeze
+single_click_activate=false
+theme=frost
+tool_button_style=ToolButtonTextBesideIcon
+
+[Qt]
+doubleClickInterval=400
+font="Noto Sans,11,-1,5,50,0,0,0,0,0"
+style=Breeze
+wheelScrollLines=3
+````
+
+`Sans Serif` に変更する場合:
+````
+font="Sans Serif,11,-1,5,50,0,0,0,0,0"
+````
+
 ### Noto Color Emoji
 
 #### 絵文字フォントのインストール
