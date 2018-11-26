@@ -133,7 +133,10 @@ NotoColorEmoji.ttf: "Noto Color Emoji" "Regular"
 
 ### TwitterColorEmoji-SVGinOT
 
-モノクロ表示ですが、問題なく動作しました。
+モノクロ表示ですが、問題なく動作しました。  
+モノクロのフォントはアウトラインフォントなので、ビットマップフォントの問題は発生しない。
+
+とりあえずはこれで OK とします。
 
 #### フォントのインストール
 
@@ -150,3 +153,11 @@ $ fc-cache -f ~/.local/share/fonts/
 $ fc-match 'Twitter Color Emoji'
 TwitterColorEmoji-SVGinOT.ttf: "Twitter Color Emoji" "Regular"
 ````
+
+#### 動作確認
+
+- Chromium : OK
+- qterminal : 表示できない文字がある
+- mlterm : 表示できない
+
+vera フォントをインストールすれば良いのかな。
