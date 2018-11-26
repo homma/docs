@@ -5,8 +5,8 @@ Title: additional latency on executing uiop:run-program on macOS
 There is an additional latency observed on executing `uiop:run-program` inside of Lem on macOS.  
 I do not know why, but somehow it wastes one second for doing nothing.
 
-The problem occurs when the command argument is passed as a string.  
-It can be avoided by passing the command argument as a list.
+The problem occurs when the command argument is passed as a string to the function.  
+And it can be avoided by passing the command argument as a list.
 
 It would be helpful if you would consider passing commands as a list in `lib/core/command.lisp`.  
 It will speed up `filter-buffer` and `pipe-command` commands on macOS.
