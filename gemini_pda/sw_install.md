@@ -233,17 +233,6 @@ $ brew install tmux
 
 ### フォント
 
-絵文字のフォントが必要。
-
-- Linuxbrew cask : font-noto-color-emoji
-- apt : fonts-noto-color-emoji
-
-デフォルトで使用されているフォントの名前が分からない。
-
-他の Noto フォントは apt でインストールされていたので、`fonts-noto-color-emoji` も apt でインストールしました。
-
-````sh
-$ sudo apt install fonts-noto-color-emoji
-````
+- [移動](./fonts.md)
 
 ### Electron 動作確認
