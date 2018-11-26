@@ -124,5 +124,5 @@ NotoSansCJK-Medium.ttc: "Noto Sans CJK JP" "Medium"
 ````sh
 $ cd /etc/fonts/conf.d
 $ rm 70-no-bitmaps.conf
-$ sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.con .
+$ sudo ln -s /usr/share/fontconfig/conf.avail/70-no-bitmaps.conf .
 ````
