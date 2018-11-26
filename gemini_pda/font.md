@@ -131,6 +131,32 @@ $ fc-match 'Noto Color Emoji'
 NotoColorEmoji.ttf: "Noto Color Emoji" "Regular"
 ````
 
+#### 絵文字フォントの有効化（失敗 3）
+
+- fcitx では大きいカラー絵文字が表示される
+- chromium では正常なサイズのカラー絵文字が表示される
+- ウィンドウバーには正常なサイズのカラー絵文字が表示される
+  - 文字によってはウィンドウバーに表示されない
+- パネルは異常終了する
+
+01-noto-color-emoji.conf:
+````
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+
+  <match target="scan">
+    <test name="family">
+      <string>Noto Color Emoji</string>
+    </test>
+    <edit name="scalable" mode="assign">
+      <bool>true</bool>
+    </edit>
+  </match>
+
+</fontconfig>
+````
+
 ### TwitterColorEmoji-SVGinOT
 
 モノクロ表示ですが、問題なく動作しました。  
