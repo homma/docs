@@ -24,6 +24,16 @@ $ export PATH=${PATH}:${HOME}/.roswell/bin
 $ lem
 ````
 
+### 環境変数
+
+`LEM_HOME` で Lem のホームディレクトリを設定できます。
+
+### 初期化ファイル
+
+通常は、`~/.lem/init.lisp`。
+
+環境変数 `LEM_HOME` を設定している場合は `${LEM_HOME}/init.lisp`
+
 ### プログラムの出力をバッファ内に書き込む
 
 `current-point` でカーソル位置を取得し、`insert-string` で書き込みます。
