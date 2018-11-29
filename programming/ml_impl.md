@@ -81,6 +81,9 @@ List of small/mini/micro/tiny ML language implementations
 - https://github.com/nzyuzin/tamtaml
 > An implementation of a small ML-like language
 
+### miniML-Parser
+- https://github.com/IvanMalison/miniML-Parser
+
 ## Small ML
 
 ### MLComp
