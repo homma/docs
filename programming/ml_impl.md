@@ -7,18 +7,21 @@ List of small/mini/micro/tiny ML language implementations
 ## Micro ML
 
 ### Micro ML
-https://github.com/pascallouisperez/mu-ml
+- 実装言語 : SML
+- https://github.com/pascallouisperez/mu-ml
 > Micro ML — Small, simple compiler in ML for a subset of ML. Meant for teaching.
 
 - lex を使っている
 - パターンマッチなし
 
 ### microML
-https://github.com/kellino/microML
+- 実装言語 : Haskell
+- https://github.com/kellino/microML
 > a simple functional language for learners
 
 ### Micro ML
-https://bitbucket.org/microml/micro-ml/src
+- 実装言語 : C++
+- https://bitbucket.org/microml/micro-ml/src
 > a compiled, functional language with similar constructs as Standard ML, which can be run on a Teensy microcontroller.
 
 ### Micro ML
@@ -35,21 +38,29 @@ https://bitbucket.org/microml/micro-ml/src
 - http://www.cs.tsukuba.ac.jp/~kam/lecture/plm2016/5.pdf
 
 ### micro-ML
+- 実装言語 : Python
 - https://github.com/eliben/code-for-blog/tree/master/2018/type-inference
 - https://eli.thegreenplace.net/2018/type-inference/
 
 ## Mini ML
 
 ### minml
+- 実装言語 : SML
 - https://github.com/melsman/sml-llvm/blob/master/test/miniml/miniml.sml
 > (* A Simple ML-like language ported to Standard ML from OCaml; see
 >      http://groups.google.com/group/fa.caml/msg/5aee553df34548e2
 > *)
 
+- パーサーはない
+- パースずみの AST を LLVM アセンブラにコンパイルしているっぽい
+
 ### minml
+- 実装言語 : Ocaml
 - http://groups.google.com/group/fa.caml/msg/5aee553df34548e2
+- camlp4 を使っている
 
 ### plzoo miniml
+- 実装言語 : Ocaml
 - https://github.com/andrejbauer/plzoo/tree/master/src/miniml
 - http://www.lexicallyscoped.com/2015/06/28/miniml-compiler-to-js.html
 
@@ -58,31 +69,49 @@ https://bitbucket.org/microml/micro-ml/src
 - http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.zip
 
 ### MiniML Compiler
+- 実装言語 : C
 - https://github.com/ichi-rika/miniml
 
 ### Min-Caml
+- 実装言語 : OCaml
 - https://github.com/esumii/min-caml
 - http://esumii.github.io/min-caml/tutorial-mincaml-4.htm
+
+### TamTaML
+- https://github.com/nzyuzin/tamtaml
+> An implementation of a small ML-like language
 
 ## Small ML
 
 ### MLComp
+- 実装言語 : SML(SML/NJ), Prolog(SWI Prolog)
 - https://github.com/kentdlee/MLComp
 > A Compiler and Type Inference System for a subset of Standard ML called Small.
 
 ## Other
 
 ### SOSML - Online SML
+- 実装言語 : TS
 - https://github.com/SOSML/SOSML
 > SOSML is an online interpreter for the functional programming language Standard ML, written in TypeScript.
 
+### embedded-ml
+- https://github.com/andrewtron3000/embedded-ml
+
 ### Typer
+- 実装言語 : OCaml
 - https://gitlab.com/monnier/typer
 - https://gitlab.com/monnier/typer/blob/master/doc/primer.md
 - [Typer: ML boosted with type theory and Scheme](http://www.iro.umontreal.ca/~monnier/typer-jfla2019.pdf)
 - [Typer an ML sibling inheriting from Lisp and Coq](http://www.nlsde.buaa.edu.cn/__local/F/E6/0C/916233955997A7DB81C37FE703A_DBE3A4B8_68260.pdf)
 
+### LangF
+- https://github.com/chinmayjain18/Compiler-Construction-LangF
+
+- https://github.com/Markz2z/CPS-Translate-4SML
+
 ### 1ML
+- 実装言語 : OCaml
 - https://github.com/rossberg/1ml
 
 ## Incomplete
@@ -120,6 +149,7 @@ HaMLet には SML を JavaScript にコンパイルする機能がある。
 ### PollyML
 
 ### MLkit
+- https://github.com/melsman/mlkit
 
 ### Moscow ML
 
@@ -133,3 +163,9 @@ HaMLet には SML を JavaScript にコンパイルする機能がある。
 
 Linux で動作するみたい。
 Standard ML で実装されているため bootstrap が必要。
+
+### sml2c
+- http://www.nic.funet.fi/pub/languages/ml/sml2c/
+
+### TILT
+- https://github.com/RobertHarper/TILT-Compiler
