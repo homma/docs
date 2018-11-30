@@ -9,7 +9,7 @@
 
 1. branch name
 2. commit message
-3. title of the prull request
+3. title of the pull request
 4. summary of the pull request
 
 #### PR 手順
