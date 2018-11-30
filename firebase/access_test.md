@@ -49,7 +49,7 @@ const test = async () => {
 
   const db = firebase.firestore();
 
-  // surpress the Beta warning
+  // suppress the Beta warning
   const firestore = firebase.firestore();
   const settings = { timestampsInSnapshots: true };
   firestore.settings(settings);
