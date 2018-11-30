@@ -25,7 +25,10 @@ List of small/mini/micro/tiny ML language implementations
 > a compiled, functional language with similar constructs as Standard ML, which can be run on a Teensy microcontroller.
 
 ### Micro ML
-- Peter Sestoft さんの講義を書籍にしたものかな
+- 実装言語 : F#
+- OCaml-like
+
+- Peter Sestoft さんの講義を書籍にしたもの
 - https://www.itu.dk/~sestoft/plc/
 - [Programming Language Concepts](https://www.springer.com/jp/book/9783319607887)
 
@@ -42,10 +45,13 @@ List of small/mini/micro/tiny ML language implementations
 - https://github.com/eliben/code-for-blog/tree/master/2018/type-inference
 - https://eli.thegreenplace.net/2018/type-inference/
 
+- eval はないっぽい
+
 ## Mini ML
 
 ### plzoo miniml
 - 実装言語 : Ocaml
+- Ocaml-like
 - https://github.com/andrejbauer/plzoo/tree/master/src/miniml
 - http://www.lexicallyscoped.com/2015/06/28/miniml-compiler-to-js.html
 
@@ -83,6 +89,7 @@ List of small/mini/micro/tiny ML language implementations
 > A compiler for a subset of ML
 
 ### Mini-ML Compiler
+- 実装言語 : SML
 - 大学の講義
 - http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.html
 - http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.zip
@@ -93,6 +100,7 @@ List of small/mini/micro/tiny ML language implementations
 - http://esumii.github.io/min-caml/tutorial-mincaml-4.htm
 
 ### TamTaML
+- 実装言語 : OCaml
 - https://github.com/nzyuzin/tamtaml
 > An implementation of a small ML-like language
 
