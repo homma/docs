@@ -1,17 +1,22 @@
-## Firebase: アクセス確認
+## Firebase へのアクセス確認手順
 
 ### 事前準備
 
-### Firebase プロジェクトの作成
+#### Firebase プロジェクトの作成
 
 適当に名前をつけてプロジェクトを作成します。  
 詳細は省略。
 
-### プロジェクト ID と API キーの取得
+#### プロジェクト ID と API キーの取得
 
-`Project Overview` の右にある歯車アイコン（`Settings`）の「プロジェクトの設定」で確認できます。
+以下で確認します。
 
-### Firestore の作成
+- `Project Overview` の右にある歯車アイコン（`Settings`）
+- 「プロジェクトの設定」
+
+#### Firestore の作成
+
+以下の手順で作成します。
 
 - プロジェクトページ
 - `Database` ペイン
