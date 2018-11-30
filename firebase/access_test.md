@@ -50,9 +50,8 @@ const test = async () => {
   const db = firebase.firestore();
 
   // suppress the Beta warning
-  const firestore = firebase.firestore();
   const settings = { timestampsInSnapshots: true };
-  firestore.settings(settings);
+  db.settings(settings);
 
   console.log("add collection");
   const coll_name = "MyCollection";
