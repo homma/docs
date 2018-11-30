@@ -44,6 +44,11 @@ List of small/mini/micro/tiny ML language implementations
 
 ## Mini ML
 
+### plzoo miniml
+- 実装言語 : Ocaml
+- https://github.com/andrejbauer/plzoo/tree/master/src/miniml
+- http://www.lexicallyscoped.com/2015/06/28/miniml-compiler-to-js.html
+
 ### minml
 - 実装言語 : SML
 - https://github.com/melsman/sml-llvm/blob/master/test/miniml/miniml.sml
@@ -52,25 +57,35 @@ List of small/mini/micro/tiny ML language implementations
 > *)
 
 - パーサーはない
-- パースずみの AST を LLVM アセンブラにコンパイルしているっぽい
+- パース済みの AST を LLVM アセンブラにコンパイルしているっぽい
 
 ### minml
 - 実装言語 : Ocaml
 - http://groups.google.com/group/fa.caml/msg/5aee553df34548e2
 - camlp4 を使っている
 
-### plzoo miniml
-- 実装言語 : Ocaml
-- https://github.com/andrejbauer/plzoo/tree/master/src/miniml
-- http://www.lexicallyscoped.com/2015/06/28/miniml-compiler-to-js.html
+### Mini-ML
+- 実装言語 : F#
+- https://github.com/pjmlp/Mini-ML
+> An expression evaluator done in F#.
 
-### Mini-ML Compiler
-- http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.html
-- http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.zip
+### mini-ml
+- 実装言語 : OCaml
+- https://github.com/Aaylor/mini-ml
 
 ### MiniML Compiler
 - 実装言語 : C
 - https://github.com/ichi-rika/miniml
+
+### Mini ML
+- 実装言語 : Haskell
+- https://github.com/authchir/mini-ml
+> A compiler for a subset of ML
+
+### Mini-ML Compiler
+- 大学の講義
+- http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.html
+- http://www.cs.cornell.edu/courses/cs312/2002fa/hw/ps5/ps5.zip
 
 ### Min-Caml
 - 実装言語 : OCaml
