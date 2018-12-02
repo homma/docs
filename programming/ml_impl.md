@@ -1,5 +1,9 @@
 # Implementations of ML-like Languages
 
+## References
+- http://sml-family.org/sml97-defn.pdf
+- http://sml-family.org
+
 ## Mini ML
 
 List of small/mini/micro/tiny ML language implementations
