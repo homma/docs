@@ -280,6 +280,9 @@ UTF-8 は Standard-ML の範囲では表現できない。
 
 ### 2.7 Derived Forms
 
+`bare language` と `derived form` がある。  
+`derived form` は `bare language` に変換可能。  
+`derived form` については Apendix A を参照。
 
 ### 2.8 Grammar
 
