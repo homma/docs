@@ -307,9 +307,17 @@ long strid
 
 #### qualified identifiers
 
-よくわからず。
+`long` が付いている識別子は、`structure identifier` で修飾可能なもの。  
 
-ドキュメントの中で `identifier` と記載されているものは、`non-qualified identifier`。
+`structure identifier` と `identifier` はドットで接続する。
+
+````
+strid.id
+````
+
+structure identifier で修飾された identifier を `qualified identifiers` と呼ぶ。
+
+ドキュメントの中でただ `identifier` と記載されているものは、`non-qualified identifier`。
 
 #### 識別子の形式
 
@@ -389,6 +397,56 @@ $
 
 ### 2.6 Infixed operators
 
+#### fixity ディレクティブによる識別子の中置演算子化
+
+`infix`、`infixr`、`nonfix` は `fixity` ディレクティブ。
+
+以下の宣言で識別子を中置演算子に設定できる。
+
+````sml
+infix d vid1 ... vidn
+infixr d vid1 ... vidn
+nonfix vid1 ... vidn
+
+d : 演算子の優先順位（十進数）
+数値が高いほど優先順位が高い。
+オプションのため、設定しなくても良い。
+デフォルトの優先順位は 0。
+
+infix : 左結合
+infixr : 右結合
+````
+
+同じ優先順位の中置演算子に付いて、右結合と左結合のものを並べて使うことはできない (illegal)。
+
+`qualified identifier` は中置にできない。
+
+中置演算子化の設定は `nonfix` ディレクティブで打ち消せる。
+
+中置演算子の他の表現やパターンに対する優先順位は Apendix B 参照。
+
+#### op による中置演算子の前置化
+
+以下の宣言で中置演算子を前置できる。
+
+````sml
+opvid1
+````
+
+`op` は中置演算子を中置しない場合にのみ有効。
+
+#### `fixity` ディレクティブの有効範囲
+
+以下の `dec` の部分で `fixity` ディレクティブが使用された場合は、中置演算子の有効範囲は `end` まで。
+
+````
+let dec in ... end
+local dec in ... end
+````
+
+それ以外の場合は、`fixity` ディレクティブが使用された以降のプログラム全体が有効範囲。
+
+`fixity` ディレクティブと `op` は parsing が終わった後は使用されない。
 
 ### 2.7 Derived Forms
 
