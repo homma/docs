@@ -465,8 +465,88 @@ local dec in ... end
 
 ### 2.8 Grammar
 
+#### Core 言語のフレーズクラス
+
+````
+atexp : atomic expressions
+exprow : expression rows
+exp : expressions
+match : matches
+mrule : match rules
+
+dec : declarations
+valbind : value bindings
+typbind : type bindings
+datbind : datatype bindings
+conbind : constructor binding
+exbind : exception bindings
+
+atpat : atomic patterns
+patrow : pattern rows
+pat : patterns
+
+ty : type expressions
+tyrow : type-expression rows
+````
+
+#### 文法表現規則
+
+- optional
+````
+<>
+````
+
+- syntax class
+````
+xseq ::= x (singleton sequence)
+           (empty sequence)
+         (x1, ... ,xn) (sequence, n >= 1)
+````
+
+- alternative form precedence
+  - 後に記載されているほど優先順位が低い
+
+- associative
+````
+L : left associative
+R : right associative
+````
+
+- type bind は expression より優先順位が高い
+
+- match の中で match を使う場合は、括弧でくくる必要がある場合がある
+
+#### Grammar: Patterns and Type expressions
+
+````
+atpat  ::= _                       (wildcard)
+           scon                    (special constant)
+           <op>longvid             (value identifier)
+           { <patrow> }            (record)
+           ( pat )
+
+patrow ::= ...                     (wildcard)
+           lab = pat < , patrow>   (pattern row)
+
+pat    ::= atpat                   (atomic)
+           <op>longvid atpat       (constructed pattern)
+           pat1 vid pat2           (infixed value construction)
+           pat : ty                (typed)
+           <op>vid<: ty> as pat    (layered)
+
+ty     ::= tyvar                   (type variable)
+           { <tyrow> }             (record type expression)
+           tyseq longtycon         (type construction)
+           ty -> ty'               (function type expression (R))
+           ( ty )
+
+tyrow  ::= lab : ty < , tyrow>     (type-expression row)
+````
 
 ### 2.9 Syntactic Restrictions
+
+
+#### Grammar: Expressions, Matches, Declarations and Bindings
 
 
 ## 3 Syntax of Modules
