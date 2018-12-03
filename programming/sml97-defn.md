@@ -125,7 +125,7 @@ rec
 then
 type
 val
-width
+with
 withtype
 while
 (
