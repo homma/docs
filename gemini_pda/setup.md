@@ -119,7 +119,9 @@ $ xdpyinfo | grep -B2 resolution
   - 実際には、`Alt + Fn + Shift + F2` になり押しにくい
 
 - キーバインドは変更可能
-  - Preferences >> LXQt Settings >. Shortcut Keys
+  - `Preferences >> LXQt Settings >> Shortcut Keys`
+
+- `Super + r` とかが良いかもしれない
 
 ### PDF ビューワの動作確認
 
