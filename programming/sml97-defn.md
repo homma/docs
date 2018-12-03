@@ -307,7 +307,9 @@ strid : structure identifiers, long
 strid.id
 ````
 
-structure identifier で修飾された identifier を `qualified identifiers` と呼ぶ。
+structure identifier で修飾された identifier を `qualified identifiers` と呼ぶ。  
+qualified は FQDN の Q と同じ感じ。
+
 
 ドキュメントの中でただ `identifier` と記載されているものは、`non-qualified identifier`。
 
@@ -510,36 +512,117 @@ R : right associative
 
 #### Grammar: Patterns and Type expressions
 
+`row` は `record` と同じ意味で考えて良さそう。
+
 ````
+// atomic patterns
 atpat  ::= _                       (wildcard)
            scon                    (special constant)
            <op>longvid             (value identifier)
            { <patrow> }            (record)
            ( pat )
 
+// pattern rows
 patrow ::= ...                     (wildcard)
            lab = pat < , patrow>   (pattern row)
 
+// patterns
 pat    ::= atpat                   (atomic)
            <op>longvid atpat       (constructed pattern)
            pat1 vid pat2           (infixed value construction)
            pat : ty                (typed)
            <op>vid<: ty> as pat    (layered)
 
+// type expressions
 ty     ::= tyvar                   (type variable)
            { <tyrow> }             (record type expression)
            tyseq longtycon         (type construction)
            ty -> ty'               (function type expression (R))
            ( ty )
 
+// type-expression rows
 tyrow  ::= lab : ty < , tyrow>     (type-expression row)
 ````
 
 ### 2.9 Syntactic Restrictions
 
+新しい概念が説明もなしにたくさん出てきてよくわからない箇所。  
+
+- `expression row`、`pattern row`、`type-expression row` は同じ `lab` に 2 回バインドすることはできない
+- `valbind`、`typbind`、`datbind`、`exbind` は同じ識別子に 2 回バインドすることはできない
+  - `datbind` 内の `vid` に対しても同じ　
+- `tyvarseq` は同じ `tyvar` を 2 回含むことはできない
+- `rec` の中の `pat = exp` では、`exp` は `fn match` のフォームである必要がある
+  - Apendix A, p71 の `derived form` も同じ制約が課せられる
+- `datbind`、`valbind`、`exbind` は `true`、`false`、`nil`、`::`、`ref` にバインドできない
+- `datbind` と `exbind` は `it` にバインドできない
+- パターンの中で実数型 (`real`) の定数は使用できない
+
+- `val tyvarseq valbind` の `valbind` が他の定義 `val tyvarseq' valbind'` を含んでいた場合、`tyvarseq` と `tyvarseq'` は排他的である必要がある
+  - 一つの型変数は、入れ子になった二つの値定義の両方に出現してはいけない
+  - Section 4.6 参照
 
 #### Grammar: Expressions, Matches, Declarations and Bindings
 
+````
+// atomic expression
+atexp   ::= scon                        (special constant)
+            <op>longvid                 (value identifier)
+            { <exprow> }                (record)
+            let dec in exp end          (local declaration)
+            ( exp )
+
+// expression rows
+exprow  ::= lab = exp < , exprow>       (expression row)
+
+// expressions
+exp     ::= atexp                       (atomic)
+            exp atexp                   (application (L))
+            exp1 vid exp2               (infixed application)
+            exp : ty                    (typed (L))
+            exp handle match            (handle exception)
+            raise exp                   (raise exception)
+            fn match                    (function)
+
+// matches
+match   ::= mrule < | match>
+
+// match rules
+mrule   ::= pat => exp
+
+// declarations
+dec     ::= val tyvarseq valbind        (value declaration)
+            type typbind                (type declaration)
+            datatype datbind            (datatype declaration)
+            datatype tycon -=- datatype longtycon
+                                        (datatype replication)
+            abstype datbind with dec end
+                                        (abstype declaration)
+            exception exbind            (exception declaration)
+            local dec1 in dec2 end      (local declaration)
+            open longstrid1 ... longstridn
+                                        (open declaration (n >= 1)
+            infix <d> vid1 ... vidn     (infix (L) directive)
+            infixr <d> vid1 ... vidn    (infix (R) directive)
+            nonfix vid1 ... vidn        (nonfix directive)
+
+// value bindings
+valbind ::= pat = exp <and valbind>
+            rec valbind
+
+// type bindings
+typbind ::= tyvarseq tycon = ty <and typbind>
+
+// datatype bidings
+datbind ::= tyvarseq tycon = conbind <and datbind>
+
+// constructor bindings
+conbind ::= <op>vid <of ty> < | conbind>
+
+// exception bindings
+exbind  ::= <op>vid <of ty> <and exbind>
+            <op>vid = <op>longvid <and exbind>
+````
 
 ## 3 Syntax of Modules
 
