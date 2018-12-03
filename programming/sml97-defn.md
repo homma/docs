@@ -381,13 +381,15 @@ $
 字句解析で出現するアイテムは以下。
 
 - a reserved word  // 予約語
-- a numeric label  // これは何?
+- a numeric label  // これはタプル作成用のラベルかな?
 - a special constant  // リテラル
 - a long identifier  // なんで long だけ?
 - comment  // コメント (* .. *)
 - formatting characters  // フォーマット文字列 /f..f/
 
 それぞれ最長マッチで識別される。
+
+字句解析の説明が少ない。。
 
 ### 2.6 Infixed operators
 
