@@ -289,20 +289,12 @@ UTF-8 は Standard-ML の範囲では表現できない。
 #### 識別子の種類
 
 ````
-vid : VId : value identifiers
-long vid
-
-tyvar : TyVar : type variables
-
-EtyVar : equality type variables
-
-TyCon : type constructors
-long TyCon
-
-Lab : record labels
-
-strid : StrId : structure identifiers
-long strid
+vid : value identifiers, long
+tyvar : type variables
+etyvar : equality type variables
+tycon : type constructors, long
+lab : record labels
+strid : structure identifiers, long
 ````
 
 #### qualified identifiers
@@ -359,25 +351,25 @@ $
 
 #### 型変数の識別子の形式
 
-`'` で始まる識別子は、`tyvar` もしくは `EtyVar`。
+`'` で始まる識別子は、`tyvar` もしくは `etyvar`。
 
 `tyvar` は、`'` の後にアルファベットもしくは数字。  
-`EtyVar` は `'` が 2 つ以上続いた後にアルファベットまたは数字。
+`etyvar` は `'` が 2 つ以上続いた後にアルファベットまたは数字。
 
 #### 型変数以外の識別子の形式
 
-`'` で始まらない識別子には、`vid`、`TyCon`、`Lab`、`strid` がある。
+`'` で始まらない識別子には、`vid`、`tycon`、`lab`、`strid` がある。
 
 `vid` は `'` で始まらない。  
-識別子が、`TyCon`、`Lab`、`strid` 以外であった場合は、`vid`。
+識別子が、`tycon`、`lab`、`strid` 以外であった場合は、`vid`。
 
-`TyCon` は `'` で始まらない。  
+`tycon` は `'` で始まらない。  
 `*` を含まない（タプルと混同しないように）。
-識別子が、型の部分に出現した場合は `TyCon`。
+識別子が、型の部分に出現した場合は `tycon`。
 
-`Lab` は `'` で始まらない。  
+`lab` は `'` で始まらない。  
 0 以外の数字を指定可能（タプルの参照用）。  
-識別子が、レコード型の先頭、レコードパターン、レコード表現の中に出現した場合は `Lab`。
+識別子が、レコード型の先頭、レコードパターン、レコード表現の中に出現した場合は `lab`。
 
 `strid` は `'` で始まらない。  
 識別子が、`.` の前、もしくは `open` 宣言の中に出現した場合は `strid`。
