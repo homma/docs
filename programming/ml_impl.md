@@ -173,18 +173,26 @@ HaMLet には SML を JavaScript にコンパイルする機能がある。
 ## Standard ML
 
 ### SML/NJ
+- https://www.smlnj.org
+- https://smlnj-gforge.cs.uchicago.edu/scm/viewvc.php/?root=smlnj
 
 ### MLton
+- http://mlton.org
+- https://github.com/MLton/mlton
 
 ### PollyML
+- https://www.polyml.org/
+- https://github.com/polyml/polyml
 
 ### MLkit
+- http://www.elsman.com/mlkit/
 - https://github.com/melsman/mlkit
 
 ### Moscow ML
+- http://mosml.org
+- https://github.com/kfl/mosml
 
 ### MLWorks
-
 - https://github.com/Ravenbrook/mlworks
 > MLWorks is a Standard ML compiler and development environment.
 
@@ -199,3 +207,19 @@ Standard ML で実装されているため bootstrap が必要。
 
 ### TILT
 - https://github.com/RobertHarper/TILT-Compiler
+
+### HaMLet
+- https://people.mpi-sws.org/~rossberg/hamlet/
+- https://github.com/rossberg/hamlet
+
+### CakeML
+- https://cakeml.org
+- https://github.com/CakeML/cakeml
+- https://github.com/CakeML/cakeml/tree/master/compiler
+- https://github.com/CakeML/cakeml/tree/master/compiler/parsing
+
+### Alice ML
+- http://www.ps.uni-saarland.de/alice/
+
+### SML#
+- http://www.pllab.riec.tohoku.ac.jp/smlsharp/
