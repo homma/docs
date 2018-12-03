@@ -457,7 +457,7 @@ local dec in ... end
 - レコード参照 : `#foo` => `fn {foo=vid ...} => vid`
 - `if ... then ... else ...` => `case ... of true => ... | false => ...`
 - リスト : `[a, b, c]` => `a :: b :: c`
-- 関数 : `fun ... ...` => `val ... rec ...`
+- 関数 : `fun f a = ...` => `val rec f = fn a => ...`
 
 ### 2.8 Grammar
 
