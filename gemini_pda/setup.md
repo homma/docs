@@ -114,6 +114,13 @@ $ xdpyinfo | grep -B2 resolution
 - dmenu 的なものが欲しい
 - lxqt-runner というのがあるみたい
 
+#### lxqt-runner
+- `Alt-F2` で起動
+  - 実際には、`Alt + Fn + Shift + F2` になり押しにくい
+
+- キーバインドは変更可能
+  - Preferences >> LXQt Settings >. Shortcut Keys
+
 ### PDF ビューワの動作確認
 
 - qpdfview がインストールされている
