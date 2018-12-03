@@ -1,3 +1,6 @@
+## About
+
+- [The Definition of Standard ML (Revised)](http://sml-family.org/sml97-defn.pdf) を読んで、要点をまとめます
 
 ## Preface
 
@@ -272,9 +275,108 @@ UTF-8 は Standard-ML の範囲では表現できない。
 
 ### 2.4 Identifiers
 
+識別子。
+
+#### 識別子の種類
+
+````
+vid : VId : value identifiers
+long vid
+
+tyvar : TyVar : type variables
+
+EtyVar : equality type variables
+
+TyCon : type constructors
+long TyCon
+
+Lab : record labels
+
+strid : StrId : structure identifiers
+long strid
+````
+
+#### qualified identifiers
+
+よくわからず。
+
+ドキュメントの中で `identifier` と記載されているものは、`non-qualified identifier`。
+
+#### 識別子の形式
+
+- アルファベットか prime (`'`) かシンボル文字で開始される必要がある
+- 使用可能な文字は下記の通り
+- ただし、予約語と同じ文字は使用できない
+- ただし、`=` は予約語であるが識別子として使用可能
+
+使用可能な文字:
+- アルファベット
+- 数字
+- prime : `'`
+- 下線 : `_`
+- シンボル文字
+
+シンボル文字:
+````
+!
+%
+&
+$
+#
++
+-
+/
+:
+<
+=
+>
+?
+@
+\
+~
+`
+^
+|
+*
+````
+
+#### 型変数の識別子の形式
+
+`'` で始まる識別子は、`tyvar` もしくは `EtyVar`。
+
+`tyvar` は、`'` の後にアルファベットもしくは数字。  
+`EtyVar` は `'` が 2 つ以上続いた後にアルファベットまたは数字。
+
+#### 型変数以外の識別子の形式
+
+`'` で始まらない識別子には、`vid`、`TyCon`、`Lab`、`strid` がある。
+
+`vid` は `'` で始まらない。  
+識別子が、`TyCon`、`Lab`、`strid` 以外であった場合は、`vid`。
+
+`TyCon` は `'` で始まらない。  
+`*` を含まない（タプルと混同しないように）。
+識別子が、型の部分に出現した場合は `TyCon`。
+
+`Lab` は `'` で始まらない。  
+0 以外の数字を指定可能（タプルの参照用）。  
+識別子が、レコード型の先頭、レコードパターン、レコード表現の中に出現した場合は `Lab`。
+
+`strid` は `'` で始まらない。  
+識別子が、`.` の前、もしくは `open` 宣言の中に出現した場合は `strid`。
 
 ### 2.5 Lexical analysis
 
+字句解析で出現するアイテムは以下。
+
+- a reserved word  // 予約語
+- a numeric label  // これは何?
+- a special constant  // リテラル
+- a long identifier  // なんで long だけ?
+- comment  // コメント (* .. *)
+- formatting characters  // フォーマット文字列 /f..f/
+
+それぞれ最長マッチで識別される。
 
 ### 2.6 Infixed operators
 
@@ -285,7 +387,8 @@ UTF-8 は Standard-ML の範囲では表現できない。
 `derived form` は `bare language` に変換可能。  
 `derived form` については Apendix A を参照。
 
-以下はすべて `deribed form`。
+以下はすべて `deribed form`。  
+タプルはレコードの変形であることが分かる。
 
 - タプル : `(a, b, c)` => `{1=a, 2=b, 3=c}`
 - レコード参照 : `#foo` => `fn {foo=vid ...} => vid`
