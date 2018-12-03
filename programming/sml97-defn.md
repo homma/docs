@@ -594,7 +594,7 @@ mrule   ::= pat => exp
 dec     ::= val tyvarseq valbind        (value declaration)
             type typbind                (type declaration)
             datatype datbind            (datatype declaration)
-            datatype tycon -=- datatype longtycon
+            datatype tycon = datatype longtycon
                                         (datatype replication)
             abstype datbind with dec end
                                         (abstype declaration)
