@@ -112,7 +112,7 @@ $ xdpyinfo | grep -B2 resolution
 - qterminal をフルスクリーンにして、tmux を使う方法で問題なさそう
 
 - dmenu 的なものが欲しい
-- lxqt-runner というのがあるみたい
+  - lxqt-runner というのがあるみたい
 
 #### lxqt-runner
 - `Alt-F2` で起動
