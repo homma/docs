@@ -125,6 +125,15 @@ List of small/mini/micro/tiny ML language implementations
 - https://github.com/SOSML/SOSML
 > SOSML is an online interpreter for the functional programming language Standard ML, written in TypeScript.
 
+- https://sosml.github.io
+
+- DOM を弄れたりはしないっぽい
+- 偶然かもしれませんが、日本語にも対応している
+````sml
+String.size "あいうえお";
+> val it = 5: int;
+````
+
 ### embedded-ml
 - https://github.com/andrewtron3000/embedded-ml
 
