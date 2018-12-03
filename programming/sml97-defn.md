@@ -279,7 +279,7 @@ UTF-8 は Standard-ML の範囲では表現できない。
 `(*` が `*)` で閉じていない場合はコンパイラにチェックされる。
 
 ````
-(* this is comment *)
+(* this is a comment *)
 ````
 
 ### 2.4 Identifiers
