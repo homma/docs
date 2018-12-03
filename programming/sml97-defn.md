@@ -108,7 +108,8 @@ do
 else
 end
 exception
-fn fun
+fn
+fun
 handle
 if
 in
