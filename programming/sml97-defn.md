@@ -2,6 +2,15 @@
 
 - [The Definition of Standard ML (Revised)](http://sml-family.org/sml97-defn.pdf) を読んで、要点をまとめます
 
+### 仕様書のページ数
+- 本文が 120 ページほどなので、分量はそれほど多くない
+- [Haskell Report 1.0](https://www.haskell.org/definition/haskell-report-1.0.ps.gz) は 133 ページ
+- [Standard ECMA-262](https://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%201st%20edition,%20June%201997.pdf) が 95 ページ
+- [Revised6 Report on the Algorithmic Language Scheme](http://www.r6rs.org/final/r6rs.pdf) は 90 ページ（ただし分冊されており、他にライブラリのドキュメントなどがある）
+
+- [Haskell 2010 Language Report](https://www.haskell.org/definition/haskell2010.pdf) は 309 ページ
+- [ECMAScript® 2018 Language Specification](https://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf) は 801 ページ
+
 ## Preface
 
 ### B |- P => M
