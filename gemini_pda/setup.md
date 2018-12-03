@@ -107,11 +107,19 @@ $ xdpyinfo | grep -B2 resolution
 ````
 
 ### マウスなしで操作できるようにする
+
 - i3wm が良いらしい
 - qterminal をフルスクリーンにして、tmux を使う方法で問題なさそう
 
+- dmenu 的なものが欲しい
+- lxqt-runner というのがあるみたい
+
 ### PDF ビューワの動作確認
+
 - qpdfview がインストールされている
 - https://launchpad.net/qpdfview
+
+- 特に問題なし
+- F11 でフルスクリーン表示
 
 ### Dropbox アクセス確認
