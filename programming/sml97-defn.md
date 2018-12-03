@@ -284,6 +284,14 @@ UTF-8 は Standard-ML の範囲では表現できない。
 `derived form` は `bare language` に変換可能。  
 `derived form` については Apendix A を参照。
 
+以下はすべて `deribed form`。
+
+- タプル : `(a, b, c)` => `{1=a, 2=b, 3=c}`
+- レコード参照 : `#foo` => `fn {foo=vid ...} => vid`
+- `if ... then ... else ...` => `case ... of true => ... | false => ...`
+- リスト : `[a, b, c]` => `a :: b :: c`
+- 関数 : `fun ... ...` => `val ... rec ...`
+
 ### 2.8 Grammar
 
 
