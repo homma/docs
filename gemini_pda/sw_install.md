@@ -247,6 +247,10 @@ $ sudo apt install xdotool
 
 xdotool と libxdo3 がインストールされました。  
 
+````sh
+$ xdotool key Caps_Lock
+````
+
 Linuxbrew からインストールすると Xorg のビルドが必要なのでやめました。
 
 ### Electron 動作確認
