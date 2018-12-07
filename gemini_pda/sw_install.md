@@ -160,11 +160,13 @@ $ gcc -xc -E -v -
 
 ### 日本語環境を整える
 
-- ime.md 参照
+- ./ime.md 参照
 
 ### 端末エミュレータ
 
 qterminal で日本語入力も問題ありませんでした。
+
+- ./terminal.md 参照
 
 ### w3m
 
@@ -234,5 +236,17 @@ $ brew install tmux
 ### フォント
 
 - [移動](./fonts.md)
+
+### xdotool
+
+Caps Lock が有効になってしまい、解除する方法がなかったので、xdotool をインストールしました。
+
+````sh
+$ sudo apt install xdotool
+````
+
+xdotool と libxdo3 がインストールされました。  
+
+Linuxbrew からインストールすると Xorg のビルドが必要なのでやめました。
 
 ### Electron 動作確認
