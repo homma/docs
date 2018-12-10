@@ -22,3 +22,11 @@ package.json に以下のようなエントリーが追加されます。
     "electron": "^3.0.10"
   }
 ````
+
+
+### 後片付け
+
+````
+$ cd ~/Library/Application Support/
+$ rm -rf <App Name>
+````
