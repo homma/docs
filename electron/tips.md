@@ -20,3 +20,13 @@
 - contents.executeJavaScript
 
 ### ES6 Modules を使う
+
+- 使い方不明
+
+### アプリケーションのデータの格納場所
+
+クッキーやローカルストレージなどは以下の場所に格納されます。
+
+- `~/Library/Application Support/<App Name>`
+
+アプリケーションを削除する際は、ここに含まれるデータも削除する必要がある。
