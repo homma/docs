@@ -3,6 +3,7 @@
 ## References
 - http://sml-family.org/sml97-defn.pdf
 - http://sml-family.org
+- http://mosml.org/mosmlref.pdf
 
 ## Mini ML
 
