@@ -15,14 +15,28 @@
 > printfn "hello, world";;
 ````
 
-## 変数定義
+## 変数
+
+### 変数を定義する
 
 ````
 > let foo = "foo";;
 val foo : string = "foo"
 ````
 
-## 関数定義
+### 型を指定する
+
+````
+> let str : string = "foo";;
+val str : string = "foo"
+
+> let n : int = 2;;
+val n : int = 2
+````
+
+## 関数
+
+### 関数を定義する
 
 ````
 > let square x = x * x;;
@@ -35,13 +49,22 @@ val double : x:int -> int
 val times : x:int -> y:int -> int
 ````
 
-### クロージャを使用する
+### クロージャを使用して関数を定義する
 
 ````
 > let square = fun x -> x * x;;
 val square : x:int -> int
 
 > square 2;;
+val it : int = 4
+````
+
+## クロージャ
+
+### クロージャを使用する
+
+````
+> (fun x -> x * x) 2;;
 val it : int = 4
 ````
 
