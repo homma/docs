@@ -1,101 +1,141 @@
-## F# のインストール
 
-### dotnet-sdk のインストール
+## リファレンス
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/
 
-brew cask に dotnet-sdk があります。
-
-````
-% brew search dotnet-sdk
-==> Casks
-dotnet-sdk
-homebrew/cask-versions/dotnet-sdk-preview
-````
-
-これをインストールします。
+## Hello, World
 
 ````
-% brew cask install dotnet-sdk
-==> Satisfying dependencies
-==> Downloading https://download.visualstudio.microsoft.com/download/pr/4d0f3f47
-######################################################################## 100.0%
-==> Verifying SHA-256 checksum for Cask 'dotnet-sdk'.
-==> Installing Cask dotnet-sdk
-==> Running installer for dotnet-sdk; your password may be necessary.
-==> Package installers may write to any location; options such as --appdir are i
-Password:
-installer: Package name is Microsoft .NET Core SDK 2.2.106 (x64)
-installer: Installing at base path /
-installer: The install was successful.
-🍺  dotnet-sdk was successfully installed!
+> printf "hello, world\n";;
 ````
 
-起動確認
-
 ````
-% which dotnet
-/usr/local/share/dotnet/dotnet
-% dotnet --version
-2.2.106
+> printfn "hello, world";;
 ````
 
-dotnet コマンドに PATH が通っていない場合は、シェルの設定ファイル（.zshrc など）に以下を追加します。
+## 変数定義
 
 ````
-eval $(/usr/libexec/path_helper -s)
+> let foo = "foo";;
+val foo : string = "foo"
 ````
 
-## インタラクティブシェル (FSI) の実行
-
-### エイリアスの作成
-
-````sh
-% alias fsi="dotnet $(dirname $(which dotnet))/sdk/$(dotnet --version)/FSharp/fsi.exe --nologo"
-````
-
-### 実行
+## 関数定義
 
 ````
-% fsi
+> let square x = x * x;;
+val qsquare : x:int -> int
 
-> printf "hello,world\n";;
-hello,world
+> let double x = x + x;;
+val double : x:int -> int
+
+> let times x y = x * y;;
+val times : x:int -> y:int -> int
+````
+
+## 文字列操作
+
+### リファレンス
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/strings
+
+### 文字列定義
+
+````
+> let str = "あいうえお";;
+val str : string = "あいうえお"
+````
+
+### 文字列を出力する
+
+````
+> printf "foo\n";;
+foo
 val it : unit = ()
-
-> #q;;
 ````
 
-### Tips
-
-#### 履歴編集はできないっぽい
-
-`Ctrl-P` や `Ctrl-N` は効かない。
-
-#### FSI の終了は `Ctrl-C`
-
-`Ctrl-D` ではシェルを抜けられない
-
-#### FSI 実行時のヘルプは `--help`
-
 ````
-% fsi --help
-
-使い方: dotnet <オプション> [script.fsx [<引数>]]
-
-...
+> printfn "foo";;
+foo
+val it : unit = ()
 ````
 
-#### インタラクティブシェルのヘルプは `#help;;`
+### 変数に格納した文字列を出力する
+
+文字列を変数に格納した場合、`printf` や `printfn` では直接、文字列を出力できない。
 
 ````
-> #help;;
+> let foo = "foo";;
+val foo : string = "foo"
 
-  F# Interactive ディレクティブ:
+> printfn foo;;
 
-    #r "file.dll";;        指定された DLL を参照します (動的読み込み)
-    #I "path";;            参照されている DLL に対し、指定された検索パスを追加します
-    #load "file.fs" ...;;  コンパイルおよび参照されているように、指定されたファイルを読み込みます
-    #time ["on"|"off"];;   タイミングのオンとオフを切り替えます
-    #help;;                ヘルプの表示
-    #quit;;                終了
+  printfn foo;;
+  --------^^^
 ````
+
+````
+> printfn "%s" foo;;
+foo
+val it : unit = ()
+````
+
+````
+> System.Console.WriteLine foo;;
+foo
+val it : unit = ()
+````
+
+### 文字数
+
+````
+> String.length str;;
+val it : int = 5
+````
+
+````
+> str.Length;;
+val it : int = 5
+````
+
+### 文字列の連結
+
+````
+> let str1 = str + "かきくけこ";;
+val str1 : string = "あいうえおかきくけこ"
+````
+
+### n 番目の文字の取得
+
+````
+> str.[0];;
+val it : char = 'あ'
+````
+
+````
+> str.Chars(0);;
+val it : char = 'あ'
+````
+
+### 文字列変数の型を確認する
+
+````
+> str;;
+val it : string = "あいうえお"
+````
+
+`GetType()` で型情報を取得できる。
+
+````
+> printfn "%s" (str.GetType().Name);;
+String
+val it : unit = ()
+````
+
+- https://en.wikibooks.org/wiki/F_Sharp_Programming/Reflection
+- https://stackoverflow.com/questions/9440204/f-printf-string
+
+## 配列
+
+### リファレンス
+
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/arrays
 
