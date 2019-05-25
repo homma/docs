@@ -1,6 +1,8 @@
 ## FSI
 
-### FSI から C のライブラリを使用できない
+### 2.2.106 の問題
+
+#### FSI から C のライブラリを使用できない
 
 以下のエラーが発生する。
 
@@ -13,11 +15,13 @@ System.Security.SecurityException: ECall methods must be packaged into a system 
 
 ワークアラウンドはないっぽい。
 
-### 履歴編集はできないっぽい
+#### 履歴の編集ができない
 
 `Ctrl-P` や `Ctrl-N` は効かない。
 
-### Delete が正しく受け渡されていないみたい
+3.0.100-preview5-011568 では履歴編集が可能。
+
+#### Delete が正しく受け渡されていないみたい
 
 以下の例では、最初の `x` の前に間違えて `=` を入力してしまってから削除しています。
 
@@ -27,6 +31,8 @@ System.Security.SecurityException: ECall methods must be packaged into a system 
   let double =x = x * x;;
   ------------^
 ````
+
+3.0.100-preview5-011568 では直っている。
 
 ### FSI の終了は `Ctrl-C`
 
