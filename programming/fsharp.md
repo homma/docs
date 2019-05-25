@@ -142,3 +142,29 @@ val it : unit = ()
 
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/arrays
 
+## 参照
+
+````
+> let v1 = ref "foo";;
+val v1 : string ref = {contents = "foo";}
+
+> v1;;
+val it : string ref = {contents = "foo";}
+
+> !v1;;
+val it : string = "foo"
+
+> v1 := "bar";;
+val it : unit = ()
+
+> v1;;
+val it : string ref = {contents = "bar";}
+
+> !v1;;
+val it : string = "bar"
+````
+
+### リファレンス
+
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/reference-cells
+
