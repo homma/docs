@@ -34,6 +34,27 @@ val str : string = "foo"
 val n : int = 2
 ````
 
+### 変数の型を確認する
+
+````
+> let str = "あいうえお";;
+val str : string = "あいうえお"
+
+> str;;
+val it : string = "あいうえお"
+````
+
+`GetType()` で型情報を取得できる。
+
+````
+> printfn "%s" (str.GetType().Name);;
+String
+val it : unit = ()
+````
+
+- https://en.wikibooks.org/wiki/F_Sharp_Programming/Reflection
+- https://stackoverflow.com/questions/9440204/f-printf-string
+
 ## 関数
 
 ### 関数を定義する
@@ -108,11 +129,15 @@ val foo : string = "foo"
   --------^^^
 ````
 
+代わりに、書式指定して文字列を出力する。
+
 ````
 > printfn "%s" foo;;
 foo
 val it : unit = ()
 ````
+
+`WriteLine` を使用することも可能。
 
 ````
 > System.Console.WriteLine foo;;
@@ -120,7 +145,7 @@ foo
 val it : unit = ()
 ````
 
-### 文字数
+### 文字数をカウントする
 
 ````
 > String.length str;;
@@ -132,14 +157,14 @@ val it : int = 5
 val it : int = 5
 ````
 
-### 文字列の連結
+### 文字列を連結する
 
 ````
 > let str1 = str + "かきくけこ";;
 val str1 : string = "あいうえおかきくけこ"
 ````
 
-### n 番目の文字の取得
+### n 番目の文字を取得する
 
 ````
 > str.[0];;
@@ -150,24 +175,6 @@ val it : char = 'あ'
 > str.Chars(0);;
 val it : char = 'あ'
 ````
-
-### 文字列変数の型を確認する
-
-````
-> str;;
-val it : string = "あいうえお"
-````
-
-`GetType()` で型情報を取得できる。
-
-````
-> printfn "%s" (str.GetType().Name);;
-String
-val it : unit = ()
-````
-
-- https://en.wikibooks.org/wiki/F_Sharp_Programming/Reflection
-- https://stackoverflow.com/questions/9440204/f-printf-string
 
 ## 配列
 
