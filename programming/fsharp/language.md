@@ -1,9 +1,16 @@
 
-## リファレンス
+## ドキュメント
+
+### リファレンス
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/
 
 ### Cheat Sheet
 - http://dungpa.github.io/fsharp-cheatsheet/
+
+### Articles
+- [F# Programming](https://en.wikibooks.org/wiki/F_Sharp_Programming)
+- [Real-World F#](http://tomasp.net/blog/real-world-book-msdn.aspx/)
+- [F# for Fun and Profit](https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/)
 
 ## Hello, World
 
