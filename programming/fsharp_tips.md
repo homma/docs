@@ -2,6 +2,8 @@
 
 ### 2.2.106 の問題
 
+色々問題があるので、preview 版を使うのが無難かも。
+
 #### FSI から C のライブラリを使用できない
 
 以下のエラーが発生する。
@@ -34,11 +36,14 @@ System.Security.SecurityException: ECall methods must be packaged into a system 
 
 3.0.100-preview5-011568 では直っている。
 
-### FSI の終了は `Ctrl-C`
+#### `Ctrl-D` で終了できない
 
-`Ctrl-D` ではシェルを抜けられない。
-
+`Ctrl-D` ではシェルを抜けられません。  
 `Ctrl-D` + `Return` や `Ctrl-D` + `Ctrl-D` では抜けられる。
+
+3.0.100-preview5-011568 では直っている。
+
+### FSI の終了は `Ctrl-C` または `Ctrl-D`
 
 ### FSI 実行時のヘルプは `--help`
 
