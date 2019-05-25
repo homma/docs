@@ -142,3 +142,12 @@ val it : unit = ()
 
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/arrays
 
+## FFI
+
+`System.Runtime.InteropServices` と `DllImport` を使用するみたい。
+
+### 参考情報
+
+- https://qiita.com/cannorin/items/59d79cc9a3b64c761cd4#pinvoke-ffi
+- https://github.com/fsharp/fsharp/issues/886
+
