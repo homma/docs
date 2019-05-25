@@ -83,6 +83,24 @@ installer: The install was successful.
 3.0.100-preview5-011568
 ````
 
+## F# の更新
+
+### dotnet-sdk の更新
+
+これでできると思われる（未確認）。
+
+````
+% brew cask upgrade dotnet-sdk
+````
+
+### dotnet-sdk-preview の更新
+
+これでできると思われる（未確認）。
+
+````
+% brew cask upgrade dotnet-sdk-preview
+````
+
 ## F# のアンインストール
 
 ### dotnet-sdk のアンインストール
