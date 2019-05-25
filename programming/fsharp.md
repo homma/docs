@@ -2,6 +2,9 @@
 ## リファレンス
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/
 
+### Cheat Sheet
+- http://dungpa.github.io/fsharp-cheatsheet/
+
 ## Hello, World
 
 ````
