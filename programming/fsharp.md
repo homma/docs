@@ -11,7 +11,7 @@
 > printf "hello, world\n";;
 ````
 
-````
+````fsharp
 > printfn "hello, world";;
 ````
 
@@ -19,14 +19,14 @@
 
 ### 変数を定義する
 
-````
+````fsharp
 > let foo = "foo";;
 val foo : string = "foo"
 ````
 
 ### 型を指定する
 
-````
+````fsharp
 > let str : string = "foo";;
 val str : string = "foo"
 
@@ -36,7 +36,7 @@ val n : int = 2
 
 ### 変数の型を確認する
 
-````
+````fsharp
 > let str = "あいうえお";;
 val str : string = "あいうえお"
 
@@ -46,7 +46,7 @@ val it : string = "あいうえお"
 
 `GetType()` で型情報を取得できる。
 
-````
+````fsharp
 > printfn "%s" (str.GetType().Name);;
 String
 val it : unit = ()
@@ -59,7 +59,7 @@ val it : unit = ()
 
 ### 関数を定義する
 
-````
+```fsharp
 > let square x = x * x;;
 val square : x:int -> int
 
@@ -72,7 +72,7 @@ val times : x:int -> y:int -> int
 
 ### クロージャを使用して関数を定義する
 
-````
+````fsharp
 > let square = fun x -> x * x;;
 val square : x:int -> int
 
@@ -84,7 +84,7 @@ val it : int = 4
 
 ### クロージャを使用する
 
-````
+````fsharp
 > (fun x -> x * x) 2;;
 val it : int = 4
 ````
@@ -96,20 +96,20 @@ val it : int = 4
 
 ### 文字列定義
 
-````
+```fsharp
 > let str = "あいうえお";;
 val str : string = "あいうえお"
 ````
 
 ### 文字列を出力する
 
-````
+````fsharp
 > printf "foo\n";;
 foo
 val it : unit = ()
 ````
 
-````
+````fsharp
 > printfn "foo";;
 foo
 val it : unit = ()
@@ -119,7 +119,7 @@ val it : unit = ()
 
 文字列を変数に格納した場合、`printf` や `printfn` では直接、文字列を出力できない。
 
-````
+````fsharp
 > let foo = "foo";;
 val foo : string = "foo"
 
@@ -131,7 +131,7 @@ val foo : string = "foo"
 
 代わりに、書式指定して文字列を出力する。
 
-````
+````fsharp
 > printfn "%s" foo;;
 foo
 val it : unit = ()
@@ -139,7 +139,7 @@ val it : unit = ()
 
 `WriteLine` を使用することも可能。
 
-````
+````fsharp
 > System.Console.WriteLine foo;;
 foo
 val it : unit = ()
@@ -147,31 +147,31 @@ val it : unit = ()
 
 ### 文字数をカウントする
 
-````
+````fsharp
 > String.length str;;
 val it : int = 5
 ````
 
-````
+````fsharp
 > str.Length;;
 val it : int = 5
 ````
 
 ### 文字列を連結する
 
-````
+````fsharp
 > let str1 = str + "かきくけこ";;
 val str1 : string = "あいうえおかきくけこ"
 ````
 
 ### n 番目の文字を取得する
 
-````
+````fsharp
 > str.[0];;
 val it : char = 'あ'
 ````
 
-````
+````fsharp
 > str.Chars(0);;
 val it : char = 'あ'
 ````
@@ -184,7 +184,7 @@ val it : char = 'あ'
 
 ## 参照
 
-````
+````fsharp
 > let v1 = ref "foo";;
 val v1 : string ref = {contents = "foo";}
 
@@ -210,7 +210,7 @@ val it : string = "bar"
 
 ## 代入
 
-````
+````fsharp
 > let mutable v2 = "foo";;
 val mutable v2 : string = "foo"
 
