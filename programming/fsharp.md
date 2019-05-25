@@ -26,13 +26,23 @@ val foo : string = "foo"
 
 ````
 > let square x = x * x;;
-val qsquare : x:int -> int
+val square : x:int -> int
 
 > let double x = x + x;;
 val double : x:int -> int
 
 > let times x y = x * y;;
 val times : x:int -> y:int -> int
+````
+
+### クロージャを使用する
+
+````
+> let square = fun x -> x * x;;
+val square : x:int -> int
+
+> square 2;;
+val it : int = 4
 ````
 
 ## 文字列操作
@@ -167,4 +177,32 @@ val it : string = "bar"
 ### リファレンス
 
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/reference-cells
+
+## 代入
+
+````
+> let mutable v2 = "foo";;
+val mutable v2 : string = "foo"
+
+> v2 <- "bar";;
+val it : unit = ()
+
+> v2;;
+val it : string = "bar"
+
+> printfn "%s" v2;;
+bar
+val it : unit = ()
+
+````
+
+### リファレンス
+
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/values/
+
+## 演算子
+
+### リファレンス
+
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/symbol-and-operator-reference/
 
