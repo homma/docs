@@ -1,5 +1,18 @@
 ## FSI
 
+### FSI から C のライブラリを使用できない
+
+以下のエラーが発生する。
+
+````
+System.Security.SecurityException: ECall methods must be packaged into a system module.
+````
+
+- https://github.com/fsharp/fsharp/issues/886
+- https://github.com/dotnet/corefx/pull/31096
+
+ワークアラウンドはないっぽい。
+
 ### 履歴編集はできないっぽい
 
 `Ctrl-P` や `Ctrl-N` は効かない。
