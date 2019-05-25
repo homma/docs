@@ -7,7 +7,7 @@
 
 ## Hello, World
 
-````
+````fsharp
 > printf "hello, world\n";;
 ````
 
