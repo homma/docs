@@ -204,6 +204,14 @@ val it : char = 'あ'
 val it : char = 'あ'
 ````
 
+### String Interpolation
+
+未実装の模様。
+
+- https://github.com/dotnet/fsharp/pull/6770
+- https://github.com/fsharp/fslang-design/issues/6
+- https://github.com/fsharp/fslang-design/blob/master/RFCs/FS-1001-StringInterpolation.md
+
 ## 配列
 
 ### リファレンス
