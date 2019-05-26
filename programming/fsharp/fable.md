@@ -1,4 +1,8 @@
 
+## About
+
+- Better JavaScript として Fable を使用したい
+
 ## インストール
 
 ````sh
@@ -9,9 +13,15 @@ $ npm install fable-compiler
 
 - 出力される JavaScript の可読性も配慮されているとのこと
 
-## Online REPL
+## オンライン REPL
 
-- https://fable.io/repl/
+https://fable.io/repl/
+
+Fable を簡単に試すことができる。  
+補完やサジェスションが便利。  
+コンパイルされた JavaScript を参照できる。  
+コンソールのログも見られる。  
+生成されたウェブページはなぜか表示されなかった。
 
 ## 使い方
 
@@ -65,6 +75,20 @@ System.Console.WriteLine "hello, world"
 ````
 
 こちらは `console.log` になる。
+
+````javascript
+console.log("hello, world");
+````
+
+ウェブブラウザのみをターゲットとしている場合は、このように記載することも可能。
+
+````fsharp
+open Browser
+
+console.log "hello, world"
+````
+
+JavaScript にコンパイルするとこうなる。
 
 ````javascript
 console.log("hello, world");
