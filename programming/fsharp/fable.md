@@ -27,7 +27,7 @@ open Browser
 document.write "<div>foo</div>"
 ````
 
-コンパイルするとこうなる。
+JavaScript にコンパイルするとこうなる。
 
 ````javascript
 document.write("<h1>foo</h1>");
