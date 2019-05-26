@@ -30,7 +30,7 @@ document.write "<div>foo</div>"
 JavaScript にコンパイルするとこうなる。
 
 ````javascript
-document.write("<h1>foo</h1>");
+document.write("<div>foo</div>");
 ````
 
 完全修飾でも記述可能。
