@@ -14,6 +14,9 @@
 - [Real-World F#](http://tomasp.net/blog/real-world-book-msdn.aspx/)
 - [F# for Fun and Profit](https://swlaschin.gitbooks.io/fsharpforfunandprofit/content/)
 
+### Language Design Process
+- https://github.com/fsharp/fslang-design
+
 ## Hello, World
 
 ````fsharp
