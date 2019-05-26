@@ -37,6 +37,13 @@ hello, world
 val it : unit = ()
 ````
 
+````fsharp
+> open System
+- Console.WriteLine "hello, world";;
+hello, world
+val it : unit = ()
+````
+
 ## コメント
 
 ````fsharp
