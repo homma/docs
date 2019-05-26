@@ -50,7 +50,7 @@ Browser.Dom.document.write "<div>foo</div>"
 printfn "hello, world"
 ````
 
-この場合、`console.log` は使用されないみたい。
+この場合、`console.log` は使用されないみたい。  
 書式付き出力であるためだと思われる。
 
 ````javascript
