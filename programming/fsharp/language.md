@@ -18,10 +18,29 @@
 
 ````fsharp
 > printf "hello, world\n";;
+hello, world
+val it : unit = ()
 ````
 
 ````fsharp
 > printfn "hello, world";;
+hello, world
+val it : unit = ()
+````
+
+````fsharp
+> System.Console.WriteLine "hello, world";;
+hello, world
+val it : unit = ()
+````
+
+## コメント
+
+````fsharp
+// one line comment
+(*
+ * multi-line comment
+ *)
 ````
 
 ## 変数
