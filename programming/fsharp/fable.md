@@ -76,6 +76,7 @@ console.log("hello, world");
 
 ````fsharp
 printfn "%d" <| "日本語".Length
+// => 3
 ````
 
 JavaScript の `String#length` が呼ばれているので、分かってしまえば当然ではある。
