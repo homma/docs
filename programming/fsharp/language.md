@@ -239,6 +239,18 @@ val it : unit = ()
 
 ## 演算子
 
+### 関数パイプライン
+
+````fsharp
+> printfn "%d" <| String.length "日本語";;
+3
+val it : unit = ()
+
+> "日本語".Length |> printfn "%d";;
+3
+val it : unit = ()
+````
+
 ### リファレンス
 
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/symbol-and-operator-reference/
