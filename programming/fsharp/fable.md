@@ -176,7 +176,7 @@ export function square(x) {
 
 ### 文字列補完
 
-- F# にはまだ String Interpolation はないので、バッククォーとを使った文字列補完はできなさそう
+- F# にはまだ String Interpolation はないので、``` を使った文字列補完はできなさそう
 
 ### async / await
 
