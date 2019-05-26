@@ -131,3 +131,54 @@ console.log("日本語"[0]);
 // this is a comment.
 (* this is also a comment. *)
 ````
+
+### 変数
+
+変数に値を入れると `const` が使用される。
+
+F#
+````fsharp
+let foo = "foo"
+````
+
+JavaScript
+````javascript
+export const foo = "foo";
+````
+
+### クロージャ
+
+アロー演算子を使わないのは、Babel の設定のせいかな?
+
+F#
+````fsharp
+fun x -> x * x
+````
+
+JavaScript
+````javascript
+(function (x) {
+  return x * x;
+});
+````
+
+F#
+````fsharp
+let square = fun x -> x * x
+````
+
+JavaScript
+````javascript
+export function square(x) {
+  return x * x;
+}
+````
+
+### 文字列補完
+
+- F# にはまだ String Interpolation はないので、バッククォーとを使った文字列補完はできなさそう
+
+### async / await
+
+- 要調査
+
