@@ -93,6 +93,93 @@ val it : unit = ()
 - https://en.wikibooks.org/wiki/F_Sharp_Programming/Reflection
 - https://stackoverflow.com/questions/9440204/f-printf-string
 
+### 参照
+
+````fsharp
+> let v1 = ref "foo";;
+val v1 : string ref = {contents = "foo";}
+
+> v1;;
+val it : string ref = {contents = "foo";}
+
+> !v1;;
+val it : string = "foo"
+
+> v1 := "bar";;
+val it : unit = ()
+
+> v1;;
+val it : string ref = {contents = "bar";}
+
+> !v1;;
+val it : string = "bar"
+````
+
+### 代入可能な変数を作る
+
+````fsharp
+> let mutable v2 = "foo";;
+val mutable v2 : string = "foo"
+
+> v2 <- "bar";;
+val it : unit = ()
+
+> v2;;
+val it : string = "bar"
+
+> printfn "%s" v2;;
+bar
+val it : unit = ()
+
+````
+
+### シャドーイング
+
+関数のスコープ内で、let を使用して同じ名前の変数に値を束縛できる。  
+これは再代入ではなく、シャドーイング。
+
+````fsharp
+> let f =
+-   let ret = "foo"
+-   let ret = ret + "bar"
+-   ret
+- in
+-   f
+- ;;
+val f : string = "foobar"
+val it : string = "foobar"
+````
+
+Fable だとこんな感じ。
+
+F#
+````fsharp
+let f =
+  let a = "foo"
+  let a = a + "bar"
+  a
+in
+  Browser.Dom.console.log f
+````
+
+JavaScript
+````javascript
+export const f = (() => {
+  const a = "foo";
+  const a$$1 = a + "bar";
+  return a$$1;
+})();
+console.log(f);
+````
+
+#### リファレンス
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/functions/index#scope
+- https://stackoverflow.com/questions/32051233/why-multiple-let-bindings-are-possible-inside-a-method-in-f
+
+### リファレンス
+
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/values/
+
 ## 関数
 
 ### 関数を定義する
@@ -125,6 +212,15 @@ val it : int = 4
 ````fsharp
 > (fun x -> x * x) 2;;
 val it : int = 4
+````
+
+## 文字
+
+### リテラル
+
+````fsharp
+let a = 'あ';;
+val a : char = 'あ'
 ````
 
 ## 文字列操作
@@ -228,53 +324,9 @@ val it : char = 'あ'
 
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/arrays
 
-## 参照
-
-````fsharp
-> let v1 = ref "foo";;
-val v1 : string ref = {contents = "foo";}
-
-> v1;;
-val it : string ref = {contents = "foo";}
-
-> !v1;;
-val it : string = "foo"
-
-> v1 := "bar";;
-val it : unit = ()
-
-> v1;;
-val it : string ref = {contents = "bar";}
-
-> !v1;;
-val it : string = "bar"
-````
-
 ### リファレンス
 
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/reference-cells
-
-## 代入
-
-````fsharp
-> let mutable v2 = "foo";;
-val mutable v2 : string = "foo"
-
-> v2 <- "bar";;
-val it : unit = ()
-
-> v2;;
-val it : string = "bar"
-
-> printfn "%s" v2;;
-bar
-val it : unit = ()
-
-````
-
-### リファレンス
-
-- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/values/
 
 ## 演算子
 
