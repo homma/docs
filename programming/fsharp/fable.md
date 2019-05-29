@@ -54,7 +54,7 @@ Browser.Dom.document.write "<div>foo</div>"
 コンソール出力関数がそのまま使用可能。  
 使用する関数によって、出力される JavaScript が異なる。
 
-`printfn` の例。
+#### printfn
 
 ````fsharp
 printfn "hello, world"
@@ -68,7 +68,7 @@ import { toConsole, printf } from "fable-library/String.js";
 toConsole(printf("hello, world"));
 ````
 
-`System.Console.WriteLine` も可能。
+#### System.Console.WriteLine
 
 ````fsharp
 System.Console.WriteLine "hello, world"
@@ -79,6 +79,8 @@ System.Console.WriteLine "hello, world"
 ````javascript
 console.log("hello, world");
 ````
+
+#### Browser.Dom.console.log
 
 ウェブブラウザのみをターゲットとしている場合は、このように記載することも可能。
 
@@ -92,6 +94,18 @@ JavaScript にコンパイルするとこうなる。
 
 ````javascript
 console.log("hello, world");
+````
+
+こう書くことも可能。
+
+````fsharp
+Browser.Dom.console.log "hello, world"
+````
+
+数字を出力可能。
+
+````fsharp
+Browser.Dom.console.log 42
 ````
 
 ### 日本語
