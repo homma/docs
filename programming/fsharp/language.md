@@ -176,6 +176,13 @@ console.log(f);
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/functions/index#scope
 - https://stackoverflow.com/questions/32051233/why-multiple-let-bindings-are-possible-inside-a-method-in-f
 
+### アトリビュート
+
+トップレベルで `let` を使用する場合、`[<...>]` の形式でアトリビュートを記載できる。
+
+#### リファレンス
+- https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/functions/let-bindings
+
 ### リファレンス
 
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/values/
