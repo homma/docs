@@ -53,7 +53,7 @@ val it : unit = ()
  *)
 ````
 
-## 変数
+## 変数（束縛）
 
 ### 変数を定義する
 
@@ -203,6 +203,17 @@ val square : x:int -> int
 
 > square 2;;
 val it : int = 4
+````
+
+### do 束縛
+
+関数実行は `do` を使用する。  
+`do` は省略可能なため、通常は記述されない。
+
+````fsharp
+> do printfn "%d" <| String.length "あいうえお";;
+5
+val it : unit = ()
 ````
 
 ## クロージャ
