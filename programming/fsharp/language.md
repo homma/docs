@@ -346,6 +346,25 @@ val it : char = 'あ'
 
 - https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/reference-cells
 
+## 匿名レコード
+
+type を宣言せずに、ad-hoc に作成可能なレコード。
+
+````fsharp
+> {| a = 2 |}
+- ;;
+val it : {|a : int|} = {a = 2;}
+
+> let rcd = {| foo = "foo" |};;
+val rcd : {|foo : string|} = {foo = "foo";}
+
+> rcd.foo;;
+val it : string = "foo"
+````
+
+### リファレンス
+- https://github.com/fsharp/fslang-design/blob/master/FSharp-4.6/FS-1030-anonymous-records.md
+
 ## 演算子
 
 ### 関数パイプライン
