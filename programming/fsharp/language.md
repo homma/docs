@@ -362,6 +362,10 @@ val rcd : {|foo : string|} = {foo = "foo";}
 val it : string = "foo"
 ````
 
+### フィールドの値の更新
+- mutable には（まだ）できない
+- https://github.com/fsharp/fslang-suggestions/issues/732
+
 ### リファレンス
 - https://github.com/fsharp/fslang-design/blob/master/FSharp-4.6/FS-1030-anonymous-records.md
 
