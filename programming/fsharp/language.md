@@ -2,6 +2,7 @@
 ## ドキュメント
 
 ### リファレンス
+- [The F# Language Specification](https://fsharp.org/specs/language-spec/)
 - [F# のガイド](https://docs.microsoft.com/ja-jp/dotnet/fsharp/)
 - [F# 言語リファレンス](https://docs.microsoft.com/ja-jp/dotnet/fsharp/language-reference/index)
 - [F# Core Library Reference](https://msdn.microsoft.com/visualfsharpdocs/conceptual/fsharp-core-library-reference)
