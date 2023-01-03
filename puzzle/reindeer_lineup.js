@@ -92,8 +92,6 @@ rudolph.add_after(dasher, dancer, donder);
 dasher.add_before(prancer);
 dasher.add_after(blitzen, dancer, vixen);
 
-let lineup = Array.from(reindeers);
-
 const reorder = (reindeers, reindeer) => {
   // console.log("b---");
   // print_reindeers_name(reindeers);
@@ -103,8 +101,8 @@ const reorder = (reindeers, reindeer) => {
   //// divide list
   // [...before], reindeer, [...after]
   const idx = reindeers.indexOf(reindeer);
-  let before = lineup.slice(0, idx);
-  let after = lineup.slice(idx + 1);
+  let before = reindeers.slice(0, idx);
+  let after = reindeers.slice(idx + 1);
   const b_len = before.length;
   const a_len = after.length;
 
@@ -157,6 +155,8 @@ const reorder = (reindeers, reindeer) => {
   return ordered_list;
 };
 
+let lineup = Array.from(reindeers);
+
 // 4 times loop resolves the quiz
 // should check if the array has been chenged for each loop
 for (let i = 0; i < 5; i++) {
@@ -169,4 +169,3 @@ for (let i = 0; i < 5; i++) {
   console.log(`${i} ----`);
   print_reindeers_name(lineup);
 }
-
