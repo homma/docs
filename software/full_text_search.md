@@ -25,12 +25,14 @@
 ## Apache Lucene
 - デファクト的な位置付けで信頼できる
 - 開発終了になる可能性はほとんどなく、安心して使える
-- そのままでは全文検索ツールとして使用できない
+- 日本語にも対応しているみたい
+- ソフトウェアの性質的に、そのままでは全文検索ツールとして使用できない
 - 情報もそれほどない
 - 実行に Java VM が必要
+- インデックスの作成自体はコマンドで実行可能
 - https://lucene.apache.org/core/9_4_2/demo/index.html
 - https://lucene.apache.org/core/9_4_2/queryparser/org/apache/lucene/queryparser/flexible/standard/StandardQueryParser.html
-- Kotolin でプログラムを書いて使うのはあり
+- Kotlin でプログラムを書いて使うのはあり
 - Apache Lucene を使いこなせたら楽しそう
 
 ## Tantivy
@@ -52,7 +54,9 @@
 - https://github.com/google/codesearch
 - https://swtch.com/~rsc/regexp/regexp4.html
 - Trigram でインデックスを作成
+- Go 製
 - ripgrep が自分の用途に合わなかったら試す
+- 実装を調べるのが楽しそう
 
 ## Hound
 - https://github.com/hound-search/hound
@@ -62,7 +66,7 @@
 ## CodeSearch
 - https://medium.com/@colin353/code-search-74a6a0a74789
 - https://github.com/colin353/universe/tree/master/tools/search
-- ↑↑のものとは別
+- ↑↑の Code Search とは別物
 - Rust 製
 - これも Trigram を使用
 - VIM からも使用可能
@@ -72,16 +76,23 @@
 - これは空白区切りのため、別途形態素解析ツールが必要と思われる
 
 ## ripgrep
+- https://github.com/BurntSushi/ripgrep
 - grep を並列実行するため、マルチコア・スレッド環境では高速
 - それ以外にも高速化されている
 - 全文検索エンジンの使用例が少ないのは、この系統の grep で間に合っているからなのかもしれない
+- 情報もたくさんある
+- インストールも簡単
+
+````
+$ brew install ripgrep
+````
 
 - grep なのでインデックスは作成しないが、高速とのこと
 - インデックスを作成しなくても高速なのであれば、使いやすそう
 - そのくらい高速かは使ってみないとわからない
 
 - インデックスを作成する全文検索エンジンは、インデックス作成の手間と時間が必要
-- インデックスのサイズも気になる
+- インデックスを作成するタイプのものはインデックスのサイズも気になる
 
 ## その他
 - https://gitlab.gnome.org/GNOME/tracker
