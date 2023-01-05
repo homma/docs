@@ -29,7 +29,7 @@
 - ソフトウェアの性質的に、そのままでは全文検索ツールとして使用できない
 - 情報もそれほどない
 - 実行に Java VM が必要
-- インデックスの作成自体はコマンドで実行可能
+- インデックスの作成や検索はコマンドで実行可能
 - https://lucene.apache.org/core/9_4_2/demo/index.html
 - https://lucene.apache.org/core/9_4_2/queryparser/org/apache/lucene/queryparser/flexible/standard/StandardQueryParser.html
 - Kotlin でプログラムを書いて使うのはあり
@@ -64,9 +64,9 @@
 - Code Search をベースにしている
 
 ### CodeSearch
+- ↑↑の Code Search とは別物
 - https://medium.com/@colin353/code-search-74a6a0a74789
 - https://github.com/colin353/universe/tree/master/tools/search
-- ↑↑の Code Search とは別物
 - Rust 製
 - これも Trigram を使用
 - VIM からも使用可能
