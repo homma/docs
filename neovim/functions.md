@@ -1,38 +1,41 @@
 
+`:lua` は Lua のプログラムを実行する  
+`:luado` はバッファ内の各行に対して Lua プログラムを実行する
+
 # バッファの名前を取得する
 
 現在のバッファ
 ````
-luado print(vim.fn.bufname())
+lua print(vim.fn.bufname())
 ````
 
 バッファ番号を指定
 ````
-luado print(vim.fn.bufname(1))
+lua print(vim.fn.bufname(1))
 ````
 
 # カーソルが位置する列を取得する
 
 ````
-vim.fn.col('.')
+lua vim.fn.col('.')
 ````
 
 # カーソルが位置する行を取得する
 
 ````
-luado print(vim.fn.line('.'))
+lua print(vim.fn.line('.'))
 ````
 
 # カーソル行のバイト数を取得する
 
 ````
-vim.fn.col('$')
+lua vim.fn.col('$')
 ````
 
 # ビジュアルモードの開始位置を取得する
 
 ````
-vim.fn.col('v')
+lua vim.fn.col('v')
 ````
 
 # 選択ダイアログを表示する
@@ -40,54 +43,54 @@ vim.fn.col('v')
 戻り値はインデックスの数字
 
 ````
-luado print(vim.fn.confirm('msg', 'yes\nno\ncanncel'))
+lua print(vim.fn.confirm('msg', 'yes\nno\ncanncel'))
 ````
 
 # カーソルを移動する
 
 n 行目の m バイト目に移動する場合
 ````
-luado vm.fn.cursor(n, m)
+lua vm.fn.cursor(n, m)
 ````
 
 # 環境変数を確認する
 
 環境変数が存在するか確認する
 ````
-luado print(vim.fn.has_key(vim.fn.environ(), 'HOME'))
+lua print(vim.fn.has_key(vim.fn.environ(), 'HOME'))
 ````
 
 値の取得
 ````
-luado print(vim.fn.getenv('HOME'))
+lua print(vim.fn.getenv('HOME'))
 ````
 
 # 外部コマンドのパスを確認する
 
 ````
-luado print(vim.fn.exepath('ls')) 
+lua print(vim.fn.exepath('ls')) 
 ````
 
 # バッファの情報を確認する
 
 ````
-luado print(vim.fn.getbufinfo(1)[1].name)
+lua print(vim.fn.getbufinfo(1)[1].name)
 ````
 
 # バッファ内の指定行の文字列を取得する
 
 ````
-luado print(vim.fn.getbufline(1, 2, '$')[1])
+lua print(vim.fn.getbufline(1, 2, '$')[1])
 ````
 
 バッファと行数を指定
 ````
-luado print(vim.fn.getbufoneline(1, 2))
+lua print(vim.fn.getbufoneline(1, 2))
 ````
 
 カレントバッファを対象とする
 ````
-luado print(vim.fn.getline(10))
+lua print(vim.fn.getline(10))
 ````
 
 # バッファ変数を取得する
@@ -95,18 +98,18 @@ luado print(vim.fn.getline(10))
 使用方法不明
 
 ````
-luado print(vim.fn.getbufvar(1, '')[1])  
+lua print(vim.fn.getbufvar(1, '')[1])  
 ````
 
 # コマンドラインでユーザの入力を 1 文字読み込む
 
 ````
-luado print(vim.fn.getchar())
+lua print(vim.fn.getchar())
 ````
 
 # コマンドラインでユーザの入力を一行読み込む
 ````
-luado print(vim.fn.input('> '))
+lua print(vim.fn.input('> '))
 ````
 
 # コマンドラインの情報を取得する
@@ -122,38 +125,38 @@ end, kopt)
 # カーソルの位置を取得する
 
 ````
-luado print(vim.fn.getcurpos()[3])
+lua print(vim.fn.getcurpos()[3])
 ````
 
 # カレントディレクトリを取得する
 
 ````
-luado print(vim.fn.getcwd()) 
+lua print(vim.fn.getcwd()) 
 ````
 
 # ロードしたスクリプトの情報を取得する
 
 ````
-luado print(vim.fn.getscriptinfo()[1].name)
+lua print(vim.fn.getscriptinfo()[1].name)
 ````
 
 # ウィンドウの情報を確認する
 
 ````
-luado print(vim.fn.getwininfo()[1].winid)
+lua print(vim.fn.getwininfo()[1].winid)
 ````
 
 # フィーチャーの確認
 
 macOS 上で動作しているかの確認
 ````
-luado print(vim.fn.has('mac'))
+lua print(vim.fn.has('mac'))
 ````
 
 # キーマップが存在するかの確認
 
 ````
-luado if(vim.fn.hasmapto('<C-e>', 'i') == 0) then print('yes') else print('no')
+lua if(vim.fn.hasmapto('<C-e>', 'i') == 0) then print('yes') else print('no')
  end
 ````
 
@@ -162,13 +165,13 @@ luado if(vim.fn.hasmapto('<C-e>', 'i') == 0) then print('yes') else print('no')
 以下は 46 行目のインデントのスペースの数を表示する
 
 ````
-luado print(vim.fn.indent(46))
+lua print(vim.fn.indent(46))
 ````
 
 # シェルのコマンドを実行する
 
 ````
-luado vim.fn.jobstart('echo foo')
+lua vim.fn.jobstart('echo foo')
 ````
 
 
@@ -176,12 +179,12 @@ luado vim.fn.jobstart('echo foo')
 
 現在のバッファ
 ````
-luado print(vim.fn.bufname())
+lua print(vim.fn.bufname())
 ````
 
 バッファ番号を指定
 ````
-luado print(vim.fn.bufname(1))
+lua print(vim.fn.bufname(1))
 ````
 
 # カーソルが位置する列を取得する
@@ -207,54 +210,54 @@ vim.fn.col('v')
 戻り値はインデックスの数字
 
 ````
-luado print(vim.fn.confirm('msg', 'yes\nno\ncanncel'))
+lua print(vim.fn.confirm('msg', 'yes\nno\ncanncel'))
 ````
 
 # カーソルを移動する
 
 n 行目の m バイト目に移動する場合
 ````
-luado vm.fn.cursor(n, m)
+lua vm.fn.cursor(n, m)
 ````
 
 # 環境変数を確認する
 
 環境変数が存在するか確認する
 ````
-luado print(vim.fn.has_key(vim.fn.environ(), 'HOME'))
+lua print(vim.fn.has_key(vim.fn.environ(), 'HOME'))
 ````
 
 値の取得
 ````
-luado print(vim.fn.getenv('HOME'))
+lua print(vim.fn.getenv('HOME'))
 ````
 
 # 外部コマンドのパスを確認する
 
 ````
-luado print(vim.fn.exepath('ls')) 
+lua print(vim.fn.exepath('ls')) 
 ````
 
 # バッファの情報を確認する
 
 ````
-luado print(vim.fn.getbufinfo(1)[1].name)
+lua print(vim.fn.getbufinfo(1)[1].name)
 ````
 
 # バッファ内の指定行の文字列を取得する
 
 ````
-luado print(vim.fn.getbufline(1, 2, '$')[1])
+lua print(vim.fn.getbufline(1, 2, '$')[1])
 ````
 
 バッファと行数を指定
 ````
-luado print(vim.fn.getbufoneline(1, 2))
+lua print(vim.fn.getbufoneline(1, 2))
 ````
 
 カレントバッファを対象とする
 ````
-luado print(vim.fn.getline(10))
+lua print(vim.fn.getline(10))
 ````
 
 # バッファ変数を取得する
@@ -262,18 +265,18 @@ luado print(vim.fn.getline(10))
 使用方法不明
 
 ````
-luado print(vim.fn.getbufvar(1, '')[1])  
+lua print(vim.fn.getbufvar(1, '')[1])  
 ````
 
 # コマンドラインでユーザの入力を 1 文字読み込む
 
 ````
-luado print(vim.fn.getchar())
+lua print(vim.fn.getchar())
 ````
 
 # コマンドラインでユーザの入力を一行読み込む
 ````
-luado print(vim.fn.input('> '))
+lua print(vim.fn.input('> '))
 ````
 
 # コマンドラインの情報を取得する
@@ -289,38 +292,38 @@ end, kopt)
 # カーソルの位置を取得する
 
 ````
-luado print(vim.fn.getcurpos()[3])
+lua print(vim.fn.getcurpos()[3])
 ````
 
 # カレントディレクトリを取得する
 
 ````
-luado print(vim.fn.getcwd()) 
+lua print(vim.fn.getcwd()) 
 ````
 
 # ロードしたスクリプトの情報を取得する
 
 ````
-luado print(vim.fn.getscriptinfo()[1].name)
+lua print(vim.fn.getscriptinfo()[1].name)
 ````
 
 # ウィンドウの情報を確認する
 
 ````
-luado print(vim.fn.getwininfo()[1].winid)
+lua print(vim.fn.getwininfo()[1].winid)
 ````
 
 # フィーチャーの確認
 
 macOS 上で動作しているかの確認
 ````
-luado print(vim.fn.has('mac'))
+lua print(vim.fn.has('mac'))
 ````
 
 # キーマップが存在するかの確認
 
 ````
-luado if(vim.fn.hasmapto('<C-e>', 'i') == 0) then print('yes') else print('no')
+lua if(vim.fn.hasmapto('<C-e>', 'i') == 0) then print('yes') else print('no')
  end
 ````
 
@@ -329,7 +332,7 @@ luado if(vim.fn.hasmapto('<C-e>', 'i') == 0) then print('yes') else print('no')
 以下は 46 行目のインデントのスペースの数を表示する
 
 ````
-luado print(vim.fn.indent(46))
+lua print(vim.fn.indent(46))
 ````
 
 # シェルのコマンドを実行する
@@ -340,7 +343,7 @@ luado print(vim.fn.indent(46))
 `vim.fn.system` は動作した。
 
 ````
-luado print(vim.fn.system('ls /'))
+lua print(vim.fn.system('ls /'))
 ````
 
 `systemlist` という API もある。
