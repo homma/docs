@@ -9,6 +9,12 @@
 lua print(vim.fn.bufname())
 ````
 
+以下の記法でも同じ処理を実行できる
+
+````
+=vim.fn.bufname()
+````
+
 バッファ番号を指定
 ````
 lua print(vim.fn.bufname(1))
