@@ -28,7 +28,7 @@ $ swift ./main.swift
 
 ### Darwin について
 
-以下の modulemap に定義されているから import できるものと思われる
+以下の modulemap に定義されているので import できるものと思われます
 
 - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/module.modulemap 
 
@@ -67,7 +67,7 @@ $ swift ./main.swift
 
 ### Darwin.ncurses について
 
-以下の modulemap に定義されているから import できるものと思われる
+以下の modulemap に定義されているので import できるものと思われます
 
 - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ncurses.modulemap
 
@@ -75,7 +75,7 @@ $ swift ./main.swift
 
 ## modulemap を使用して C ライブラリの関数を呼び出す
 
-既存の modulemap が用意されていないライブラリを呼び出す例
+modulemap が用意されていないライブラリを呼び出します
 
 ### ファイル
 
@@ -153,8 +153,8 @@ $ ./main
 `./Sources/curses/module.modulemap` は C のライブラリを呼び出すためのマッピングファイル  
 `./Sources/myapp/main.swift` は C の関数を呼び出す Swift プログラム  
 
-`Package.swift` はパッケージのルートディレクトリに配置する  
-それ以外は `Sources/<ターゲット名>` のディレクトリを作成して配置する
+`Package.swift` はパッケージのルートディレクトリに配置します
+それ以外は `Sources/<ターゲット名>` のディレクトリを作成して配置します
 
 ### Package.swift
 
@@ -186,7 +186,7 @@ let package = Package(
 `.executableTarget` の `myapp` は `.systemLibrary` の `curses` に依存  
 `linkerSettings` で `curses` をリンク
 
-`.systemLibrary` は使用するライブラリの内、システムにインストール済みの物に使用する
+`.systemLibrary` は使用するライブラリの内、システムにインストール済みの物に使用します
 
 ### module.modulemap
 
@@ -199,7 +199,7 @@ module curses [system] {
 ````
 
 `curses` ライブラリを使用するための `modulemap`  
-この場合のファイル名は `module.map` ではなく `module.modulemap` にする必要がある
+この場合のファイル名は `module.map` ではなく `module.modulemap` にする必要があります
 
 ### main.swift
 
@@ -229,13 +229,13 @@ $ swift run
 ````
 
 `swift build` は build するだけ  
-`swift run` の場合は build してからプログラムを実行する
+`swift run` の場合は build してからプログラムを実行します
 
 ## Package.swift について
 
 - https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html
 
-ただの Swift のプログラムなので、以下のように記述することもできる
+ただの Swift のプログラムなので、以下のように記述することもできます
 
 ````swift
 // swift-tools-version: 5.9
