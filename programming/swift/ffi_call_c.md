@@ -159,12 +159,26 @@ $ ./main
 ./Sources/myapp/main.swift
 ````
 
-`./Package.swift` はパッケージの設定ファイル  
-`./Sources/curses/module.modulemap` は C のライブラリを呼び出すためのマッピングファイル  
-`./Sources/myapp/main.swift` は C の関数を呼び出す Swift プログラム  
+`./Package.swift` はパッケージの設定ファイルです  
+`./Sources/curses/module.modulemap` は C のライブラリを呼び出すためのマッピングファイルです  
+`./Sources/myapp/main.swift` は C の関数を呼び出す Swift プログラムです  
 
 `Package.swift` はパッケージのルートディレクトリに配置します  
 それ以外は `Sources/<ターゲット名>` のディレクトリを作成して配置します
+
+### セットアップ
+
+必要なディレクトリとファイルを用意します
+
+````sh
+$ mkdir proj
+$ cd proj
+$ touch Package.swift
+$ mkdir -p Sources/myapp
+$ touch Sources/myapp/main.swift
+$ mkdir -p Sources/curses
+$ touch Sources/curses/module.modulemap
+````
 
 ### Package.swift
 
@@ -226,7 +240,7 @@ endwin();
 print(a);
 ````
 
-### build command
+### ビルド
 
 ````sh
 $ swift build
@@ -317,6 +331,8 @@ $ ln -s $(brew --prefix hidapi)/lib .
 ビルドしたものを配布するのであればコピー、自分で使用するだけであればリンクが良いかもしれません  
 コピーもリンクもしたくない場合は、Homebrew でインストールした場所を modulemap や Package.swift にそのまま記載します  
 
+`pkg-config` コマンドでパスの設定を綺麗にできないか試してみましたが、今回テストした環境ではできませんでした  
+
 ### Package.swift
 
 ````swift
@@ -336,8 +352,7 @@ let package = Package(
                       linkerSettings: [
                         .linkedLibrary("hidapi"),
                         .unsafeFlags(["-LSources/hidapi/lib"])
-                      ]
-                      ),
+                      ]),
     .systemLibrary(name: "hidapi",
                    providers: [
                      .brew(["hidapi"])
@@ -366,7 +381,7 @@ module hidapi [system] {
 }
 ````
 
-### build
+### ビルド
 
 ````sh
 $ swift build
