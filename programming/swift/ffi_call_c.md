@@ -123,7 +123,7 @@ module curses [system] {
 ````swift
 import curses
 
-initscr()
+initscr();
 cbreak();
 noecho();
 
@@ -234,7 +234,7 @@ module curses [system] {
 ````swift
 import curses
 
-initscr()
+initscr();
 cbreak();
 noecho();
 
