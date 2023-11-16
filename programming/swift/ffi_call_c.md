@@ -163,7 +163,7 @@ $ ./main
 `./Sources/curses/module.modulemap` は C のライブラリを呼び出すためのマッピングファイル  
 `./Sources/myapp/main.swift` は C の関数を呼び出す Swift プログラム  
 
-`Package.swift` はパッケージのルートディレクトリに配置します
+`Package.swift` はパッケージのルートディレクトリに配置します  
 それ以外は `Sources/<ターゲット名>` のディレクトリを作成して配置します
 
 ### Package.swift
