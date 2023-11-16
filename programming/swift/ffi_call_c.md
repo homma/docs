@@ -11,6 +11,8 @@ status: draft
 
 ### main.swift
 
+`import Darwin` を記載すると `libc` の関数を呼び出せるようになります
+
 ````swift
 import Foundation
 import Darwin
@@ -26,15 +28,15 @@ print(Date());
 $ swift ./main.swift
 ````
 
-### Darwin について
+### `import Darwin` について
 
-以下の modulemap に定義されているので import できるものと思われます
+以下の `modulemap` に定義されているので import できるものと思われます
 
 - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/module.modulemap 
 
-### modulemap について
+### `modulemap` について
 
-Clang が提供している仕組みです
+`modulemap` は Clang が提供している仕組みです
 
 - https://clang.llvm.org/docs/Modules.html
 
@@ -45,6 +47,8 @@ Clang が提供している仕組みです
 `libc` の代わりに `ncurses` の関数を呼び出します
 
 ### main.swift
+
+`import Darwin.ncurses` で `ncurses` の関数を呼び出せるようになります
 
 ````swift
 import Darwin.ncurses
@@ -65,9 +69,9 @@ print(a);
 $ swift ./main.swift
 ````
 
-### Darwin.ncurses について
+### `import Darwin.ncurses` について
 
-以下の modulemap に定義されているので import できるものと思われます
+以下の `modulemap` に定義されているので import できるものと思われます
 
 - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ncurses.modulemap
 
@@ -75,7 +79,7 @@ $ swift ./main.swift
 
 ## modulemap を使用して C ライブラリの関数を呼び出す
 
-modulemap が用意されていないライブラリを呼び出します
+`modulemap` が用意されていないライブラリを呼び出します
 
 ### ファイル
 
@@ -86,9 +90,11 @@ main.swift
 module.map
 ````
 
-module.map は module.modulemap と同じように扱われます
+`module.map` は `module.modulemap` と同じように扱われます
 
 ### module.map 
+
+`module.map` ファイルに `curses` という名前のモジュールを定義します
 
 `header` にヘッダーファイルのパスを指定します  
 `link` にライブラリのパスを指定します  
@@ -108,6 +114,8 @@ module curses [system] {
 
 ### main.swift
 
+`module.map` で定義した `curses` モジュールは `import curses` で呼び出すことができます
+
 ````swift
 import curses
 
@@ -124,7 +132,7 @@ print(a);
 ### コンパイル
 
 ````sh
-$ swiftc main.swift -I . -lcurses
+$ swiftc main.swift -I. -lcurses
 ````
 
 `-lcurses` でリンクしないと `ld: warning: Could not find or use auto-linked library` エラーが発生します
@@ -138,6 +146,8 @@ $ ./main
 --------------------------------------------------------------------------------
 
 ## Package.swift を使用して C ライブラリの関数を呼び出す
+
+`Package.swift` を用意するとビルド設定をファイルに保存することができます
 
 ### ファイル
 
@@ -180,15 +190,18 @@ let package = Package(
 )
 ````
 
-実行ファイルを作成するため、`products` に `.executable` を記述  
-実行ファイルの作成に使用するターゲットは `.executableTarget` の `myapp`
+実行ファイルを作成するため、`products` に `.executable` を記述します  
+実行ファイルの作成に使用するターゲットは `.executableTarget` の `myapp` です  
 
-`.executableTarget` の `myapp` は `.systemLibrary` の `curses` に依存  
-`linkerSettings` で `curses` をリンク
+`.executableTarget` の `myapp` は `.systemLibrary` の `curses` に依存しています  
+`linkerSettings` で `curses` をリンクします  
 
 `.systemLibrary` は使用するライブラリの内、システムにインストール済みの物に使用します
 
 ### module.modulemap
+
+`curses` ライブラリを使用するための `modulemap` です  
+この場合のファイル名は `module.map` ではなく `module.modulemap` にする必要があります
 
 ````
 module curses [system] {
@@ -197,9 +210,6 @@ module curses [system] {
   export *
 }
 ````
-
-`curses` ライブラリを使用するための `modulemap`  
-この場合のファイル名は `module.map` ではなく `module.modulemap` にする必要があります
 
 ### main.swift
 
@@ -228,7 +238,7 @@ $ swift build
 $ swift run
 ````
 
-`swift build` は build するだけ  
+`swift build` は build するだけです  
 `swift run` の場合は build してからプログラムを実行します
 
 ## Package.swift について
