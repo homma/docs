@@ -7,43 +7,94 @@ status: draft
 
 ## libc の関数を呼び出す
 
+`libc` の `sleep(3)` を呼び出す例
+
 ### main.swift
 
 ````swift
+import Foundation
 import Darwin
+
+print(Date());
+sleep(1);
+print(Date());
 ````
+
+### 実行
+
+````sh
+$ swift ./main.swift
+````
+
+### Darwin について
+
+以下の modulemap に定義されているから import できるものと思われる
+
+- /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/module.modulemap 
+
+### modulemap について
+
+Clang が提供している仕組みです
+
+- https://clang.llvm.org/docs/Modules.html
 
 --------------------------------------------------------------------------------
 
 ## ncurses の関数を呼び出す
 
+`libc` の代わりに `ncurses` の関数を呼び出します
+
 ### main.swift
 
 ````swift
 import Darwin.ncurses
+
+initscr();
+cbreak();
+noecho();
+
+let a = getch();
+endwin();
+
+print(a);
 ````
 
-### modulemap
+### 実行
+
+````sh
+$ swift ./main.swift
+````
+
+### Darwin.ncurses について
 
 以下の modulemap に定義されているから import できるものと思われる
 
 - /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ncurses.modulemap
 
-
 --------------------------------------------------------------------------------
 
 ## modulemap を使用して C ライブラリの関数を呼び出す
 
+既存の modulemap が用意されていないライブラリを呼び出す例
+
 ### ファイル
+
+以下の二つのファイルを用意します
 
 ````
 main.swift
 module.map
 ````
 
-module.map は module.modulemap と同じ
+module.map は module.modulemap と同じように扱われます
 
 ### module.map 
+
+`header` にヘッダーファイルのパスを指定します  
+`link` にライブラリのパスを指定します  
+
+パスは絶対パスまたは相対パスで指定する必要があり、環境変数などを読み込むことはできないようです  
+ファイルには C 言語風のコメントを含めることができます
 
 ````
 module curses [system] {
@@ -53,7 +104,7 @@ module curses [system] {
 }
 ````
 
-`/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk` 以下のヘッダーファイルを指定すると `redefinition of module` エラーが発生する
+`header` に `/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk` 以下のヘッダーファイルを指定すると `redefinition of module` エラーが発生します
 
 ### main.swift
 
@@ -70,25 +121,19 @@ endwin();
 print(a);
 ````
 
-### compile
+### コンパイル
 
 ````sh
 $ swiftc main.swift -I . -lcurses
 ````
 
-`-lcurses` でリンクしないと `ld: warning: Could not find or use auto-linked library` エラーが発生する
+`-lcurses` でリンクしないと `ld: warning: Could not find or use auto-linked library` エラーが発生します
 
-#### run
+#### 実行
 
 ````sh
 $ ./main
 ````
-
-### modulemap について
-
-- https://clang.llvm.org/docs/Modules.html
-
-C 風のコメントを記載できる
 
 --------------------------------------------------------------------------------
 
@@ -96,7 +141,7 @@ C 風のコメントを記載できる
 
 ### ファイル
 
-以下の 3 つのファイルを用意する
+以下の 3 つのファイルを用意します
 
 ````
 ./Package.swift
@@ -258,6 +303,9 @@ $ cp -Rp (brew --prefix hidapi)/ .
 $ ln -s $(brew --prefix hidapi)/include .
 $ ln -s $(brew --prefix hidapi)/lib .
 ````
+
+ビルドしたものを配布するのであればコピー、自分で使用するだけであればリンクが良いかもしれません  
+コピーもリンクもしたくない場合は、Homebrew でインストールした場所を modulemap や Package.swift にそのまま記載します  
 
 ### Package.swift
 
