@@ -302,10 +302,11 @@ endwin();
 print(a);
 ````
 
-### ビルド
+### ビルドと実行
 
 ````sh
 $ swift build -c release
+$ swift run --skip-build
 ````
 
 または
@@ -314,8 +315,10 @@ $ swift build -c release
 $ swift run -c release
 ````
 
-`swift build` は build するだけです  
-`swift run` の場合は build してからプログラムを実行します  
+`swift build` コマンドはパッケージをビルドします
+`swift run --skip-build` コマンドはビルドされたプログラムを実行します
+
+`swift run` コマンドは build してからプログラムを実行します  
 `-c release` オプションを付けないとデバッグビルドになります
 
 --------------------------------------------------------------------------------
@@ -447,10 +450,11 @@ module hidapi [system] {
 }
 ````
 
-### ビルド
+### ビルドと実行
 
 ````sh
 $ swift build -c release
+$ swift run --skip-build
 ````
 
 または
