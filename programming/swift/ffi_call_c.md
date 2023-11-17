@@ -124,11 +124,14 @@ module.map
 ````
 module curses [system] {
   umbrella header "umbrella.h"
+  link "curses"
   export *
 }
 ````
 
-`umbrella header` に `umbrella.h` へのパスを指定します
+`link` に `curses` を記載して、`curses` ライブラリがリンクされるようにします  
+
+`umbrella header` に `umbrella.h` へのパスを指定します  
 
 パスは絶対パスまたは相対パスで指定する必要があり、環境変数などを読み込むことはできないようです  
 そのため、`modulemap` ファイルをヘッダーファイルの近くに配置するか、長いパスを記載する必要があります  
@@ -140,6 +143,7 @@ module curses [system] {
 ````
 module curses [system] {
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/curses.h"
+  link "curses"
   export *
 }
 ````
@@ -166,13 +170,11 @@ print(a);
 ### コンパイル
 
 ````sh
-$ swiftc main.swift -I. -lcurses
+$ swiftc main.swift -I.
 ````
 
 `modulemap` ファイルは `-I` オプションに指定したディレクトリから検索されるようです  
 `-I.` オプションを指定すると、カレントディレクトリの `modulemap` ファイルを参照することができます
-
-`-lcurses` でリンクしないと `ld: warning: Could not find or use auto-linked library` エラーが発生します
 
 #### 実行
 
