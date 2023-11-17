@@ -103,9 +103,6 @@ module.map
 `header` にヘッダーファイルのパスを指定します  
 `link` にライブラリのパスを指定します  
 
-パスは絶対パスまたは相対パスで指定する必要があり、環境変数などを読み込むことはできないようです  
-ファイルには C 言語風のコメントを含めることができます
-
 ````
 module curses [system] {
   header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/curses.h"
@@ -113,6 +110,11 @@ module curses [system] {
   export *
 }
 ````
+
+パスは絶対パスまたは相対パスで指定する必要があり、環境変数などを読み込むことはできないようです  
+そのため、ヘッダーファイルなどの近くに配置するか、長いパスを記載する必要があります  
+
+ファイルには C 言語風のコメントを含めることができます
 
 `header` に `/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk` 以下のヘッダーファイルを指定すると `redefinition of module` エラーが発生します
 
@@ -138,6 +140,9 @@ print(a);
 ````sh
 $ swiftc main.swift -I. -lcurses
 ````
+
+`modulemap` ファイルは `-I` オプションに指定したディレクトリから検索されるようです  
+`-I.` オプションを指定すると、カレントディレクトリの `modulemap` ファイルを参照することができます
 
 `-lcurses` でリンクしないと `ld: warning: Could not find or use auto-linked library` エラーが発生します
 
