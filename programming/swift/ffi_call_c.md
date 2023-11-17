@@ -305,17 +305,18 @@ print(a);
 ### ビルド
 
 ````sh
-$ swift build
+$ swift build -c release
 ````
 
 または
 
 ````sh
-$ swift run
+$ swift run -c release
 ````
 
 `swift build` は build するだけです  
-`swift run` の場合は build してからプログラムを実行します
+`swift run` の場合は build してからプログラムを実行します  
+`-c release` オプションを付けないとデバッグビルドになります
 
 --------------------------------------------------------------------------------
 
@@ -449,13 +450,13 @@ module hidapi [system] {
 ### ビルド
 
 ````sh
-$ swift build
+$ swift build -c release
 ````
 
 または
 
 ````sh
-$ swift run
+$ swift run -c release
 ````
 
 --------------------------------------------------------------------------------
@@ -548,7 +549,7 @@ module hidapi [system] {
 ### ビルド
 
 ````sh
-$ swift build
+$ swift build -c release
 ````
 
 --------------------------------------------------------------------------------
