@@ -121,9 +121,6 @@ module.map
 
 `module.map` ファイルに `curses` という名前のモジュールを定義します
 
-`header` にヘッダーファイルのパスを指定します  
-`link` にライブラリのパスを指定します  
-
 ````
 module curses [system] {
   umbrella header "umbrella.h"
@@ -131,8 +128,10 @@ module curses [system] {
 }
 ````
 
+`umbrella header` に `umbrella.h` へのパスを指定します
+
 パスは絶対パスまたは相対パスで指定する必要があり、環境変数などを読み込むことはできないようです  
-そのため、ヘッダーファイルなどの近くに配置するか、長いパスを記載する必要があります  
+そのため、`modulemap` ファイルをヘッダーファイルの近くに配置するか、長いパスを記載する必要があります  
 今回は `umbrella.h` を用意し、ヘッダーファイルの近くに `module.map` を作成しています
 
 `umbrella.h` を用意しない場合は、以下のように長いパスを記述した `module.map` ファイルを用意する必要があります  
