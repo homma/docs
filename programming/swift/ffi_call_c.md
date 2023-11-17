@@ -7,11 +7,14 @@ status: draft
 
 Swift から C の関数を呼び出す方法をまとめます
 
+現状の Swift は C の関数を簡単に呼び出すことができます  
+繋ぎのコードをほとんど書く必要がないため、とても便利です
+
 --------------------------------------------------------------------------------
 
 ## libc の関数を呼び出す
 
-`libc` の `sleep(3)` を呼び出す例
+以下は、`libc` の `sleep(3)` を呼び出す例です
 
 ### main.swift
 
@@ -36,11 +39,14 @@ $ swift ./main.swift
 
 以下の `modulemap` に定義されているので import できるものと思われます
 
-- /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/module.modulemap 
+````
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/module.modulemap 
+````
 
 ### `modulemap` について
 
-`modulemap` は Clang が提供している仕組みです
+`modulemap` は Clang が提供している仕組みです  
+C のライブラリをモジュール化して、Swift から呼び出せるようにすることができます
 
 - https://clang.llvm.org/docs/Modules.html
 
@@ -77,7 +83,9 @@ $ swift ./main.swift
 
 以下の `modulemap` に定義されているので import できるものと思われます
 
-- /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ncurses.modulemap
+````
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ncurses.modulemap
+````
 
 --------------------------------------------------------------------------------
 
