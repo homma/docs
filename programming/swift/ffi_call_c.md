@@ -240,16 +240,15 @@ import PackageDescription
 let package = Package(
   name: "myapp",
   products: [
-    .executable(name: "myapp",
+    .executable(
+      name: "myapp",
       targets: ["myapp"])
   ],
   targets: [
     .executableTarget(
       name: "myapp",
-      dependencies: ["curses"],
-      linkerSettings: [
-        .linkedLibrary("curses")
-      ]),
+      dependencies: ["curses"]
+    ),
     .systemLibrary(name: "curses")
   ]
 )
@@ -259,8 +258,6 @@ let package = Package(
 実行ファイルの作成に使用するターゲットは `.executableTarget` の `myapp` です  
 
 `.executableTarget` の `myapp` は `.systemLibrary` の `curses` に依存しています  
-`linkerSettings` で `curses` をリンクします  
-
 `.systemLibrary` は使用するライブラリの内、システムにインストール済みの物に使用します
 
 ### Sources/curses/umbrella.h
@@ -275,10 +272,12 @@ let package = Package(
 
 `curses` ライブラリを使用するための `modulemap` です  
 `umbrella.h` を参照しています  
+`curses` ライブラリをリンクするため、`link` に `curses` を指定しています
 
 ````
 module curses [system] {
   umbrella header "umbrella.h"
+  link "curses"
   export *
 }
 ````
