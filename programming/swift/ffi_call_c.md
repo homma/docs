@@ -324,7 +324,7 @@ $ swift run -c release
 
 - https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html
 
-`Package.swift` は、普通の Swift のプログラムです
+`Package.swift` は、普通の Swift のプログラムです  
 そのため、以下のように記述することもできます
 
 ````swift
