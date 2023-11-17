@@ -177,7 +177,7 @@ $ ./main
 
 ### セットアップ
 
-必要なディレクトリとファイルを用意します
+必要なディレクトリとファイルを用意します  
 
 ````sh
 $ mkdir proj
@@ -264,11 +264,14 @@ $ swift run
 `swift build` は build するだけです  
 `swift run` の場合は build してからプログラムを実行します
 
+--------------------------------------------------------------------------------
+
 ## Package.swift について
 
 - https://docs.swift.org/package-manager/PackageDescription/PackageDescription.html
 
-ただの Swift のプログラムなので、以下のように記述することもできます
+`Package.swift` は、普通の Swift のプログラムです
+そのため、以下のように記述することもできます
 
 ````swift
 // swift-tools-version: 5.9
@@ -304,6 +307,117 @@ let package = Package(name: name, products: products, targets: targets);
 ````
 ./Package.swift
 ./Sources/myapp/main.swift
+./Sources/hidapi/umbrella.h
+./Sources/hidapi/module.modulemap
+````
+
+### セットアップ
+
+あらかじめ Homebrew および Swift から呼び出したい C ライブラリをインストールしておきます
+
+````sh
+$ brew install hidapi
+````
+
+必要なディレクトリとファイルを用意します
+
+````sh
+$ mkdir proj
+$ cd proj
+$ touch Package.swift
+$ mkdir -p Sources/myapp
+$ touch Sources/myapp/main.swift
+$ mkdir -p Sources/hidapi
+$ touch Sources/hidapi/umbrella.h
+$ touch Sources/hidapi/module.modulemap
+````
+
+### Package.swift
+
+`Package.swift` ファイルにビルドの設定を記述します
+
+````swift
+// swift-tools-version: 5.9
+
+import PackageDescription
+
+let package = Package(
+  name: "myapp",
+  products: [
+    .executable(
+      name: "myapp",
+      targets: ["myapp"])
+  ],
+  targets: [
+    .executableTarget(
+      name: "myapp",
+      dependencies: ["hidapi"]),
+    .systemLibrary(
+      name: "hidapi",
+      pkgConfig: "hidapi",
+      providers: [
+        .brew(["hidapi"])
+      ])
+  ]
+)
+````
+
+`pkgConfig` と `providers` により、Homebrew でインストールした `hidapi` ライブラリが参照されます
+
+### Sources/myapp/main.swift
+
+````swift
+import hidapi
+
+hid_init()
+hid_darwin_set_open_exclusive(0)
+````
+
+### Sources/hidapi/umbrella.h
+
+`umbrella.h` は参照するライブラリを使用するために必要となるヘッダーファイルをまとめたものです
+
+````
+#include "hidapi.h"
+#include "hidapi_darwin.h"
+````
+
+### Sources/hidapi/module.modulemap
+
+`modulemap` からは `umbrella.h` を参照します
+
+````
+module hidapi [system] {
+  umbrella header "umbrella.h"
+  export *
+}
+````
+
+### ビルド
+
+````sh
+$ swift build
+````
+
+または
+
+````sh
+$ swift run
+````
+
+--------------------------------------------------------------------------------
+
+## Homebrew でインストールした C ライブラリを含むパッケージを作成する
+
+例として、Swift から `hidapi` ライブラリの関数を呼び出します
+
+### ファイル
+
+以下のようなファイル構成を使用します
+
+````
+./Package.swift
+./Sources/myapp/main.swift
 ./Sources/hidapi/module.modulemap
 ./Sources/hidapi/<hidapi のファイル一式>
 ````
@@ -329,18 +443,6 @@ $ cd Sources/hidapi
 $ touch module.modulemap
 $ cp -Rp (brew --prefix hidapi)/ .
 ````
-
-`cp` でコピーする代わりにシンボリックリンクを作成することもできます
-
-````
-$ ln -s $(brew --prefix hidapi)/include .
-$ ln -s $(brew --prefix hidapi)/lib .
-````
-
-ビルドしたものを配布するのであればコピー、自分で使用するだけであればリンクが良いかもしれません  
-コピーもリンクもしたくない場合は、Homebrew でインストールした場所を modulemap や Package.swift にそのまま記載します  
-
-`pkg-config` コマンドでパスの設定を綺麗にできないか試してみましたが、今回テストした環境では実現できませんでした  
 
 ### Package.swift
 
@@ -394,12 +496,6 @@ module hidapi [system] {
 
 ````sh
 $ swift build
-````
-
-または
-
-````sh
-$ swift run
 ````
 
 --------------------------------------------------------------------------------
