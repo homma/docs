@@ -87,14 +87,27 @@ $ swift ./main.swift
 
 ### ファイル
 
-以下の二つのファイルを用意します
+以下の三つのファイルを用意します
 
 ````
 main.swift
+umbrella.h
 module.map
 ````
 
+`main.swift` は `curses` ライブラリを呼び出す Swift のプログラムです  
+`umbrella.h` は `curses` ライブラリのヘッダーファイルを参照するためのファイルです  
+`module.map` は `curses` ライブラリをモジュール化して Swift から呼び出せるようにするファイルです  
+
 `module.map` は `module.modulemap` と同じように扱われます
+
+### umbrella.h
+
+`curses` ライブラリのヘッダーファイルを参照するためのヘッダーファイルを用意します
+
+````c
+#include "curses.h"
+````
 
 ### module.map 
 
@@ -105,18 +118,26 @@ module.map
 
 ````
 module curses [system] {
-  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/curses.h"
-  link "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libcurses.tbd"
+  umbrella header "umbrella.h"
   export *
 }
 ````
 
 パスは絶対パスまたは相対パスで指定する必要があり、環境変数などを読み込むことはできないようです  
 そのため、ヘッダーファイルなどの近くに配置するか、長いパスを記載する必要があります  
+今回は `umbrella.h` を用意し、ヘッダーファイルの近くに `module.map` を作成しています
 
-ファイルには C 言語風のコメントを含めることができます
+`umbrella.h` を用意しない場合は、以下のように長いパスを記述した `module.map` ファイルを用意する必要があります  
+パスの記述を間違えると、`redefinition of module` エラーが発生する場合があります  
 
-`header` に `/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk` 以下のヘッダーファイルを指定すると `redefinition of module` エラーが発生します
+````
+module curses [system] {
+  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/curses.h"
+  export *
+}
+````
+
+`module.map` ファイルには C 言語風のコメントを含めることができます
 
 ### main.swift
 
@@ -186,6 +207,7 @@ $ touch Package.swift
 $ mkdir -p Sources/myapp
 $ touch Sources/myapp/main.swift
 $ mkdir -p Sources/curses
+$ touch Sources/curses/umbrella.h
 $ touch Sources/curses/module.modulemap
 ````
 
@@ -200,14 +222,15 @@ let package = Package(
   name: "myapp",
   products: [
     .executable(name: "myapp",
-                targets: ["myapp"])
+      targets: ["myapp"])
   ],
   targets: [
-    .executableTarget(name: "myapp",
-                      dependencies: ["curses"],
-                      linkerSettings: [
-                        .linkedLibrary("curses")
-                      ]),
+    .executableTarget(
+      name: "myapp",
+      dependencies: ["curses"],
+      linkerSettings: [
+        .linkedLibrary("curses")
+      ]),
     .systemLibrary(name: "curses")
   ]
 )
@@ -221,18 +244,27 @@ let package = Package(
 
 `.systemLibrary` は使用するライブラリの内、システムにインストール済みの物に使用します
 
-### module.modulemap
+### Sources/curses/umbrella.h
+
+`curses` ライブラリのヘッダーファイルを参照するヘッダーファイルを作成します
+
+````c
+#include "curses.h"
+````
+
+### Sources/curses/module.modulemap
 
 `curses` ライブラリを使用するための `modulemap` です  
-この場合のファイル名は `module.map` ではなく `module.modulemap` にする必要があります
+`umbrella.h` を参照しています  
 
 ````
 module curses [system] {
-  header "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/curses.h"
-  link "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/libcurses.tbd"
+  umbrella header "umbrella.h"
   export *
 }
 ````
+
+`Package.swift` を使用する場合のファイル名は `module.map` ではなく `module.modulemap` にする必要があります
 
 ### main.swift
 
@@ -377,7 +409,7 @@ hid_darwin_set_open_exclusive(0)
 
 `umbrella.h` は参照するライブラリを使用するために必要となるヘッダーファイルをまとめたものです
 
-````
+````c
 #include "hidapi.h"
 #include "hidapi_darwin.h"
 ````
