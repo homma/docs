@@ -15,7 +15,7 @@ Swift から C の関数を呼び出す方法をまとめます
 
 ## libc の関数を呼び出す
 
-以下は、`libc` の `sleep(3)` を呼び出す例です
+以下は、`libc` の `sleep(3)`、`puts(3)` を呼び出す例です
 
 ### main.swift
 
@@ -25,9 +25,9 @@ Swift から C の関数を呼び出す方法をまとめます
 import Foundation
 import Darwin
 
-print(Date());
+puts(Date().description);
 sleep(1);
-print(Date());
+puts(Date().description);
 ````
 
 ### 実行
