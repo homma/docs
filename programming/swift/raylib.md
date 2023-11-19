@@ -26,7 +26,7 @@ umbrella.h
 ````
 
 `umbrella.h` は `Raylib` のヘッダーファイルを読み込むために必要となります  
-`module.modulemap` は `Raylib` ライブラリを Swift から使用するためのモジュールを作成するために必要となります  
+`module.modulemap` は `Raylib` ライブラリを Swift から使用するためのモジュールの作成に必要となります  
 `main.swift` は `Raylib` ライブラリを使用する Swift のプログラムです  
 `build.sh` は実行ファイルをビルドするために使用します
 
@@ -42,7 +42,9 @@ umbrella.h
 
 ### module.modulemap
 
-`Raylib` をモジュール化するために必要となります  
+`module.modulemap` は `Raylib` をモジュール化するために必要となります  
+モジュール化することで Swift からライブラリを呼び出すことができるようになります
+
 `umbrella header` で `"umbrella.h"` を指定します  
 `link` で `"raylib"` を指定し、`libraylib.dylib` がリンクされるようにします
 
