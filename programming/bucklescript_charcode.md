@@ -42,4 +42,4 @@ Or in Node.js:
 Newly created HTML files are encouraged to use UTF-8 as its encoding.  
 JavaScript uses UTF-16 as its String encoding.  
 
-I hope BuckleScript handles this difference propery.
+I hope BuckleScript handles this difference.
