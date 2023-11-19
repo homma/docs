@@ -66,7 +66,8 @@ module Raylib [system] {
 
 ### main.swift
 
-`raylib` を使用する Swift のプログラムです
+`raylib` を使用する Swift のプログラムです  
+ウィンドウを開いて文字列を表示するだけの簡単なプログラムです  
 
 ````swift
 import Raylib
