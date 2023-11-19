@@ -96,7 +96,7 @@ main()
 
 `import raylib` で `raylib` のモジュールを呼び出します
 
-`Color(r:, g:, b:, a:` は `Raylib` ライブラリが用意している構造体です  
+`Color(r:, g:, b:, a:` は `Raylib` ライブラリが用意している C の構造体です  
 Swift からは `Color(r: 255, g: 255, b: 255, a: 255)` のように呼び出せます
 
 それ以外は通常の `Raylib` の使い方と変わりありません
