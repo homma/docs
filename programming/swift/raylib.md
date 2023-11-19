@@ -1,12 +1,12 @@
 ---
-title: Swift で Raylib のプログラムを作成する
+title: Swift で raylib のプログラムを作成する
 status: draft
 author: homma
 ---
 
 --------------------------------------------------------------------------------
 
-### Raylib のインストール
+### raylib のインストール
 
 Homebrew でインストールします
 
@@ -25,14 +25,14 @@ module.modulemap
 umbrella.h
 ````
 
-`umbrella.h` は `Raylib` のヘッダーファイルを読み込むために必要となります  
-`module.modulemap` は `Raylib` ライブラリを Swift から使用するためのモジュールの作成に必要となります  
-`main.swift` は `Raylib` ライブラリを使用する Swift のプログラムです  
+`umbrella.h` は `raylib` のヘッダーファイルを読み込むために必要となります  
+`module.modulemap` は `raylib` ライブラリを Swift から使用するためのモジュールの作成に必要となります  
+`main.swift` は `raylib` ライブラリを使用する Swift のプログラムです  
 `build.sh` は実行ファイルをビルドするために使用します
 
 ### umbrella.h
 
-`umbrella.h` で `Raylib` のヘッダーファイルをインクルードします
+`umbrella.h` で `raylib` のヘッダーファイルをインクルードします
 
 ````c
 #include "raylib.h"
@@ -42,14 +42,14 @@ umbrella.h
 
 ### module.modulemap
 
-`module.modulemap` は `Raylib` をモジュール化するために必要となります  
+`module.modulemap` は `raylib` をモジュール化するために必要となります  
 モジュール化することで Swift からライブラリを呼び出すことができるようになります
 
 `umbrella header` で `"umbrella.h"` を指定します  
 `link` で `"raylib"` を指定し、`libraylib.dylib` がリンクされるようにします
 
 ````
-module raylib [system] {
+module Raylib [system] {
   umbrella header "umbrella.h"
   link "raylib"
   export *
@@ -58,10 +58,10 @@ module raylib [system] {
 
 ### main.swift
 
-`Raylib` を使用する Swift のプログラムです
+`raylib` を使用する Swift のプログラムです
 
 ````swift
-import raylib
+import Raylib
 
 func update() {
   BeginDrawing()
@@ -94,7 +94,7 @@ func main() {
 main()
 ````
 
-`import raylib` で `raylib` のモジュールを呼び出します
+`import Raylib` で `raylib` のモジュールを呼び出します
 
 `Color(r:, g:, b:, a:` は `Raylib` ライブラリが用意している C の構造体です  
 Swift からは `Color(r: 255, g: 255, b: 255, a: 255)` のように呼び出せます
@@ -111,7 +111,7 @@ swiftc main.swift -I. -I $(brew --prefix raylib)/include -L $(brew --prefix rayl
 ````
 
 `-I.` オプションでカレントディレクトリにある `module.modulemap` ファイルを読み込んでいます  
-`-I` と `-L` オプションで Homebrew によりインストールされた `Raylib` ライブラリの位置を参照しています
+`-I` と `-L` オプションで Homebrew によりインストールされた `raylib` ライブラリの位置を参照しています
 
 `chmod +x build.sh` で実行権限を付与しておきます
 
