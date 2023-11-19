@@ -43,14 +43,14 @@ umbrella.h
 `umbrella.h` で `raylib` のヘッダーファイルをインクルードします
 
 ````c
-#include "raylib.h"
-#include "raymath.h"
-#include "rlgl.h"
+#include <raylib.h>
+#include <raymath.h>
+#include <rlgl.h>
 ````
 
 ### module.modulemap
 
-`module.modulemap` は `raylib` をモジュール化するために必要となります  
+`module.modulemap` は `raylib` ライブラリをモジュール化するために必要となります  
 モジュール化することで Swift からライブラリを呼び出すことができるようになります
 
 `umbrella header` で `"umbrella.h"` を指定します  
