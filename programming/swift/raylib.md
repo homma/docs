@@ -58,6 +58,8 @@ module raylib [system] {
 
 ### main.swift
 
+`Raylib` を使用する Swift のプログラムです
+
 ````swift
 import raylib
 
