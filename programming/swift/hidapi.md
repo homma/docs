@@ -72,7 +72,7 @@ func wchar_to_string(_ string: UnsafeMutablePointer<Int32>?) -> String {
     return "nil"
   }
   let length = wcslen(s) + 1
-  var buf = [CChar](repeating: 0, count: length * 4)
+  var buf = Array(repeating: CChar(0), count: length * 4)
   wcstombs(&buf, s, length)
 
   return String(cString: buf)
