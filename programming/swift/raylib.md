@@ -72,19 +72,22 @@ module Raylib [system] {
 ````swift
 import Raylib
 
+let white = Color(r: 255, g: 255, b: 255, a: 255)
+let black = Color(r: 0, g: 0, b: 0, a: 255)
+
 func update() {
   BeginDrawing()
 
-  let white = Color(r: 255, g: 255, b: 255, a: 255)
   ClearBackground(white)
 
-  let x: Int32 = 110
-  let y: Int32 = 170
-  let h: Int32 = 30
-  let black = Color(r: 0, g: 0, b: 0, a: 255)
-  let t = "This is a raylib window"
-
-  DrawText(t, x, y, h, black)
+  let msg = (
+    text: "This is a raylib window",
+    x: Int32(110),
+    y: Int32(170),
+    h: Int32(30),
+    color: black
+  )
+  DrawText(msg.text, msg.x, msg.y, msg.h, msg.color)
 
   EndDrawing()
 }
