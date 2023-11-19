@@ -36,6 +36,8 @@ puts(Date().description);
 $ swift ./main.swift
 ````
 
+--------------------------------------------------------------------------------
+
 ### `import Darwin` について
 
 以下の `modulemap` に定義されているので import できるものと思われます
@@ -80,6 +82,8 @@ print(a);
 $ swift ./main.swift
 ````
 
+--------------------------------------------------------------------------------
+
 ### `import Darwin.ncurses` について
 
 以下の `modulemap` に定義されているので import できるものと思われます
@@ -87,6 +91,12 @@ $ swift ./main.swift
 ````
 /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ncurses.modulemap
 ````
+
+### C のマクロについて
+
+定数のマクロについてはインポートされるようです
+
+- https://github.com/apple/swift/blob/main/docs/HowSwiftImportsCAPIs.md
 
 --------------------------------------------------------------------------------
 
