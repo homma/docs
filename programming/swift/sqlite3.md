@@ -17,7 +17,8 @@ sqlite3 は modulemap が作成されており、デフォルトの状態で swi
 SQLite3 ライブラリには `import SQLite3` でアクセスすることができます
 
 ### main.swift
-````
+
+````swift
 import SQLite3
 
 if let version = sqlite3_libversion() {
@@ -27,7 +28,7 @@ if let version = sqlite3_libversion() {
 
 ### 実行
 
-````
+````sh
 $ swift main.swift
 ````
 
