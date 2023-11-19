@@ -72,10 +72,10 @@ func update() {
   let x:Int32 = 110
   let y:Int32 = 170
   let h:Int32 = 30
-  let c = Color(r: 0, g: 0, b: 0, a: 255)
+  let black = Color(r: 0, g: 0, b: 0, a: 255)
   let t = "This is a raylib window"
 
-  DrawText(t, x, y, h, c)
+  DrawText(t, x, y, h, black)
 
   EndDrawing()
 }
@@ -106,6 +106,7 @@ Swift からは `Color(r: 255, g: 255, b: 255, a: 255)` のように呼び出せ
 ````
 #!/bin/sh -x
 
+rm main
 swiftc main.swift -I. -I $(brew --prefix raylib)/include -L $(brew --prefix raylib)/lib
 ````
 
