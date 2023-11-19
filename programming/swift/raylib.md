@@ -103,7 +103,7 @@ Swift からは `Color(r: 255, g: 255, b: 255, a: 255)` のように呼び出せ
 
 ### build.sh
 
-````
+````sh
 #!/bin/sh -x
 
 rm main
@@ -117,13 +117,13 @@ swiftc main.swift -I. -I $(brew --prefix raylib)/include -L $(brew --prefix rayl
 
 ### ビルド
 
-````
+````sh
 $ ./build.sh
 ````
 
 ### 実行
 
-````
+````sh
 $ ./main
 ````
 
