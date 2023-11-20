@@ -18,6 +18,8 @@ author: homma
 
 ## NSSound を使用した最小限の音楽ファイル再生プログラム
 
+### main.swift
+
 ````swift
 import AppKit
 
@@ -32,6 +34,13 @@ else {
 sound.play()
 
 Thread.sleep(forTimeInterval: sound.duration)
+````
+
+### ビルドと実行
+
+````sh
+$ swiftc main.swift
+$ ./main
 ````
 
 --------------------------------------------------------------------------------
@@ -63,10 +72,12 @@ sound.play()
 Thread.sleep(forTimeInterval: sound.duration)
 ````
 
+`isPlaying()` が上手く動作しなかったため、`.duration` の期間スリープしています
+
 ### ビルドと実行
 
 ````sh
-$ swift main.swift
+$ swiftc main.swift
 $ ./main /System/Library/Sounds/Ping.aiff
 ````
 
@@ -129,7 +140,80 @@ while true {
 ### ビルドと実行
 
 ````sh
-$ swift main.swift
+$ swiftc main.swift
+$ ./main /System/Library/Sounds/Ping.aiff
+````
+
+--------------------------------------------------------------------------------
+
+## AVFAudio を使用した最小限の音楽ファイル再生プログラム
+
+### main.swift
+
+````swift
+import AVFAudio
+
+let url = URL(fileURLWithPath: "/System/Library/Sounds/Ping.aiff")
+
+let audio: AVAudioPlayer
+do {
+  audio = try AVAudioPlayer.init(contentsOf: url)
+} catch {
+  print("cannot create audio player: \(error)")
+  exit(1)
+}
+
+audio.play()
+
+while audio.isPlaying {
+  Thread.sleep(forTimeInterval: 0.1)
+}
+````
+
+### ビルドと実行
+
+````sh
+$ swiftc main.swift
+$ ./main
+````
+
+--------------------------------------------------------------------------------
+
+## AVFAudio で任意の音声ファイルを再生する
+
+### main.swift
+
+````swift
+import AVFAudio
+
+let args = CommandLine.arguments
+
+guard args.count == 2 else {
+  print("Usage: ./main <FILE>")
+  exit(1)
+}
+
+let url = URL(fileURLWithPath: args[1])
+
+let audio: AVAudioPlayer
+do {
+  audio = try AVAudioPlayer.init(contentsOf: url)
+} catch {
+  print("cannot create audio player: \(error)")
+  exit(1)
+}
+
+audio.play()
+
+while audio.isPlaying {
+  Thread.sleep(forTimeInterval: 0.1)
+}
+````
+
+### ビルドと実行
+
+````sh
+$ swiftc main.swift
 $ ./main /System/Library/Sounds/Ping.aiff
 ````
 
