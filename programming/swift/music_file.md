@@ -218,3 +218,68 @@ $ ./main /System/Library/Sounds/Ping.aiff
 ````
 
 --------------------------------------------------------------------------------
+
+## curses を使用して機能を追加する
+
+### main.swift
+````swift
+import AVFAudio
+import Darwin.ncurses
+
+let args = CommandLine.arguments
+
+guard args.count == 2 else {
+  print("Usage: ./main <FILE>")
+  exit(1)
+}
+
+let url = URL(fileURLWithPath: args[1])
+
+let audio: AVAudioPlayer
+do {
+  audio = try AVAudioPlayer.init(contentsOf: url)
+} catch {
+  print("cannot create audio player: \(error)")
+  exit(1)
+}
+
+audio.play()
+
+initscr()
+cbreak()
+noecho()
+
+addstr("q: quit, p: pause, r: resume, b: back, f: forward ")
+
+while true {
+  let ch = getch()
+
+  let key = UnicodeScalar(UInt8(ch))
+  switch key {
+  case "q":
+    endwin()
+    print("quit.")
+    audio.stop()
+    exit(0)
+  case "p":
+    audio.pause()
+  case "r":
+    audio.play()
+  case "b":
+    audio.currentTime = (audio.currentTime < 10) ? 0 : audio.currentTime - 10
+  case "f":
+    audio.currentTime = audio.currentTime + 10
+  default:
+    break
+  }
+}
+````
+
+### ビルドと実行
+
+````sh
+$ swiftc main.swift
+$ ./main /System/Library/Sounds/Ping.aiff
+````
+
+--------------------------------------------------------------------------------
