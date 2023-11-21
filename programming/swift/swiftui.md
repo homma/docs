@@ -78,7 +78,7 @@ MyApp.main()
 
 ### ビルドと実行
 
-````
+````sh
 $ swiftc main.swift
 $ ./main
 ````
