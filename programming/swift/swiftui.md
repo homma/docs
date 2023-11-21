@@ -63,6 +63,13 @@ MyApp.main()
 
 最後に `main()` スタティックメソッドを呼び出してアプリケーションを起動します
 
+### ビルドと実行
+
+````sh
+$ swiftc main.swift
+$ ./main
+````
+
 ### applicationDidFinishLaunching
 - https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428385-applicationdidfinishlaunching
 
@@ -75,12 +82,5 @@ MyApp.main()
 
 ### activate
 - https://developer.apple.com/documentation/appkit/nsapplication/4168336-activate
-
-### ビルドと実行
-
-````sh
-$ swiftc main.swift
-$ ./main
-````
 
 --------------------------------------------------------------------------------
