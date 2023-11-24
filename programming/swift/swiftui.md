@@ -8,9 +8,9 @@ author: homma
 
 ## SwiftUI の構成
 
-`SwiftUI` のアプリケーションには `App` が必要です  
+`SwiftUI` のアプリケーションには `App` プロトコルに適合したオブジェクトが必要です  
 
-`swiftc` のみでアプリケーションを作成する場合は `appDelegate` も必要になります  
+また、`swiftc` のみでアプリケーションを作成する場合は `appDelegate` の指定も必要になります  
 macOS の場合は、`NSApplicationDelegateAdaptor` を使用して `appDelegate` を設定します  
 
 ### App
