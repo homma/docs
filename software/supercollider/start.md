@@ -319,8 +319,6 @@ https://doc.sccode.org/Classes/Pbind.html
 () は `Event` データです  
 https://doc.sccode.org/Classes/Event.html
 
-`Event` はアクションを実行する際に使用するパラメータの値をまとめたものです  
-
 ````
 // () は Event
 > ().class
@@ -331,6 +329,13 @@ https://doc.sccode.org/Classes/Event.html
 // () は Event
 > ().species
 -> Event
+````
+
+`Event` はアクションを実行する際に使用するパラメータの値をまとめたものです  
+以下の例では、`freq` に `440` を設定したイベントを `play` で実行しています
+
+````
+> (freq: 440).play
 ````
 
 `Event` データはキーと値のペアを格納するデータ型としても使用することができます
