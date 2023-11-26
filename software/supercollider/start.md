@@ -295,9 +295,9 @@ https://doc.sccode.org/Classes/Pbind.html
 ## () は何なのか
 
 () は `Event` データです  
+https://doc.sccode.org/Classes/Event.html
 
 `Event` はアクションを実行する際に使用するパラメータの値をまとめたものです  
-https://doc.sccode.org/Classes/Event.html
 
 ````
 // () は Event
