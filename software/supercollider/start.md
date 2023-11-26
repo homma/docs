@@ -1,8 +1,8 @@
-----
+---
 title: SuperCollider の始め方
 status: draft
 author: homma
-----
+---
 
 ## リファレンス
 - https://doc.sccode.org/Reference/Literals.html
