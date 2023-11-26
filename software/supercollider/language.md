@@ -1,8 +1,8 @@
-----
+---
 title: sclang の言語仕様
 status: draft
 author: homma
-----
+---
 
 ## プログラミング言語仕様
 - https://cs.wellesley.edu/~cs203/lecture_materials/sclang_basics/sclang_basics.pdf
