@@ -266,7 +266,7 @@ https://doc.sccode.org/Classes/Pseq.html
 `Pbind` を使用するとよりコンパクトに記述することができます  
 https://doc.sccode.org/Classes/Pbind.html
 
-以下の例では `Pseq` に指定した配列が `Pbind` により展開されて音のシークエンスが作成されています
+以下の例では `Pseq` に指定した配列の要素数と同じサイズのシークエンスが作成され、 `Pbind` によりそれぞれの `degree` に値が設定されます  
 
 ````
 // Pbind を使ってより簡潔に記述
@@ -274,7 +274,25 @@ https://doc.sccode.org/Classes/Pbind.html
 > Pbind('degree',Pseq([0,1,2,3,4,5,6,7])).play
 ````
 
-以下の例では、`degree` のみ `Pseq` に指定した配列内の値を適用し、他のパラメータには固定の値を設定します
+`Pbind` を展開した結果は以下のコマンドで確認できます
+
+````
+// Pbind の結果を表示する
+> p = Pbind('degree',Pseq([0,1,2,3,4,5,6,7]))
+> t = p.asStream
+> while { n = t.next(()); n != nil } { n.postln }
+( 'degree': 0 )
+( 'degree': 1 )
+( 'degree': 2 )
+( 'degree': 3 )
+( 'degree': 4 )
+( 'degree': 5 )
+( 'degree': 6 )
+( 'degree': 7 )
+-> nil
+````
+
+以下の例では、`degree` にのみ `Pseq` に指定した配列内の値を適用し、他のパラメータには固定の値を設定しています
 
 ````
 // 音の大きさ、長さ、間隔を変更する
@@ -284,15 +302,6 @@ https://doc.sccode.org/Classes/Pbind.html
 // 音の長さ (sustain): 0.1
 // 音の間隔 (dur): 0.1
 > Pbind('degree',Pseq([0,1,2,3,4,5,6,7]), 'amp',1, 'sustain',0.1, 'dur', 0.1).play
-````
-
-`Pbind` を展開した結果は以下のコマンドで確認できます
-
-````
-// Pbind の結果を表示する
-> p = Pbind('degree',Pseq([0,1,2,3,4,5,6,7]), 'amp',1, 'sustain',0.1, 'dur', 0.1)
-> s = p.asStream
-> while { n = s.next(()); n != nil } { n.postln }
 ````
 
 ## () は何なのか
