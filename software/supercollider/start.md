@@ -261,7 +261,9 @@ https://doc.sccode.org/Classes/Pseq.html
 ````
 
 `Pbind` を使用するとよりコンパクトに記述することができます  
-`Pseq` に指定された配列が展開されて音のシークエンスが作成されます
+https://doc.sccode.org/Classes/Pbind.html
+
+以下の例では `Pseq` に指定した配列が `Pbind` により展開されて音のシークエンスが作成されています
 
 ````
 // Pbind を使ってより簡潔に記述
