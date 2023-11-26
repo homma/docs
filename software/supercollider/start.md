@@ -179,6 +179,8 @@ MIDI ノート番号では、`60` が `note: 0` に対応します
 > (midinote: 72).play
 ````
 
+#### 音と周波数の変換
+
 `midicps` で MIDI ノート番号を周波数に変換できます  
 `cps` は `Cycles Per Second` です
 
@@ -196,6 +198,17 @@ MIDI ノート番号では、`60` が `note: 0` に対応します
 // 周波数 (freq) を MIDI ノート番号に変換して出力
 > (midinote: 440.cpsmidi).play
 ````
+
+`note` を `freq` に変換したい場合は、`60` を足して `midinote` にしてから `midicps` を実行します
+
+````
+// note から freq への変換
+> (0 + 60).midicps
+> (-1 + 60).midicps
+> (9 + 60).midicps
+````
+
+#### 変数
 
 グローバル変数に格納してから音を出力することも可能です  
 グローバル変数には一文字のアルファベットを使用できます
