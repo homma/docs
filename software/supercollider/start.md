@@ -310,7 +310,8 @@ https://doc.sccode.org/Classes/Pbind.html
 ````
 // Pbind を使ってより簡潔に記述
 // ドレミ
-> Pbind('degree',Pseq([0,1,2,3,4,5,6,7])).play
+> ~music = [0,1,2,3,4,5,6,7]
+> Pbind('degree',Pseq(~music)).play
 ````
 
 `Pbind` を展開した結果は以下のコマンドで確認できます
@@ -411,28 +412,34 @@ GUI の画面に波形を表示することができます
 
 - https://doc.sccode.org/Classes/Pluck.html
 
-`Pluck` を使用してギター音を鳴らすことができます
+`Pluck` を使用して弦楽器を爪弾くような音を鳴らすことができます
 
 ````
 > { Pluck.ar(WhiteNoise.ar(1.0),1.0,1/440,1/440,10.0,0.01) }.play
 ````
 
 ````
-> SynthDef('guitar1', { |out, freq = 440, dur = 3.0|
-  var in, trig, maxdelaytime, delaytime, decaytime, coef, mul, add, pluck;
-  in = WhiteNoise.ar(1.0);
-  trig = 1.0;
-  maxdelaytime = freq.reciprocal;
-  delaytime = freq.reciprocal;
-  decaytime = dur;
-  coef = 0.01;
-  mul = 1.0;
-  add = 1.0;
-  pluck = Pluck.ar(in, trig, maxdelaytime, delaytime,
-                   decaytime, coef, mul, add);
+> SynthDef('guitar1', { |out, freq, dur|
+  // Pluck
+  var in = WhiteNoise.ar(1.0);
+  var trig = 1.0;
+  var maxdelaytime = freq.reciprocal;
+  var delaytime = freq.reciprocal;
+  var decaytime = dur * 4.0;
+  var coef = 0.1;
+  var mul = 1.0;
+  var add = 0.0;
+  var pluck = Pluck.ar(in, trig, maxdelaytime, delaytime,
+                       decaytime, coef, mul, add);
+  // Envelope
+  var attack = 0.0;
+  var level = 1.0;
+  var release = 0.0;
+  Linen.kr(attack, level, release, Done.freeSelf);
   Out.ar(out, pluck)
 }).add
-> (instrument: 'guitar1', freq: 60.midicps).play
+> (instrument: 'guitar1').play
+> (instrument: 'guitar1', freq: 67.midicps).play
 ````
 
 ## instrument を作成する
