@@ -34,9 +34,12 @@ built in 4 minutes 59 seconds
 ### コンパイル発生の有無
 
 #### コンパイルが発生したパッケージ
+`brew upgrade` などでパッケージのアップグレードをする際もコンパイルが発生する
+
 - rsync
    - openssl のコンパイルが必要
 - pkg-config
+   - uninstall 済み
 
 #### コンパイルが発生しなかったパッケージ
 - ripgrep
