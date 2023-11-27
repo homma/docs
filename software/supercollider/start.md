@@ -284,6 +284,13 @@ https://doc.sccode.org/Classes/Pseq.html
 > Pseq([(note:0), (note:4), (note:7), (note:[0,4,7])]).play
 ````
 
+演奏する部分を環境変数に格納してから実行することも可能です
+
+````
+> ~music = [(note:0), (note:4), (note:7), (note:[0,4,7])]
+> Pseq(~music).play
+````
+
 `sustain` と `dur` を指定して、再生する音の長さを変化させることができます
 
 ````
