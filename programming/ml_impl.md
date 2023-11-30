@@ -104,6 +104,9 @@ List of small/mini/micro/tiny ML language implementations
 - https://github.com/esumii/min-caml
 - http://esumii.github.io/min-caml/tutorial-mincaml-4.htm
 
+### Mini OCaml
+- http://logic.cs.tsukuba.ac.jp/jikken/index.html
+
 ### TamTaML
 - 実装言語 : OCaml
 - https://github.com/nzyuzin/tamtaml
@@ -111,6 +114,10 @@ List of small/mini/micro/tiny ML language implementations
 
 ### miniML-Parser
 - https://github.com/IvanMalison/miniML-Parser
+
+## Core ML
+- OCaml 
+- https://caml.inria.fr/pub/docs/u3-ocaml/ocaml-ml.html
 
 ## Small ML
 
