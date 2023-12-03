@@ -9,31 +9,42 @@ author: homma
 `posix_spawn(2)` で使用するため、C の文字列を配列に格納したいという要件がありました  
 Swift 文字列の配列 `[String]` から C 文字列のアドレスの配列 `[UnsafeMutablePointer<CChar>]` を作成する必要がありました  
 
-`for` 文を使用して Swift の文字列から C 文字列のアドレスを取り出そうとすると、ループが回るとアドレスがスコープから外れて自動的に削除されてしまい、C 文字列のアドレスの配列を取り出して保持することができませんでした  
+`malloc` を使って C 側でアドレスを確保することも可能だと思いますが、メモリ管理を自前で行う必要が発生するため、可能な限り Swift 側で実装したいと考えました  
+
+試してみたところ、以下のようにポインターを取得しつつ、バッファの参照も別途保存することで実現することができました  
 
 ````swift
-// これは上手くいかない
-
 import Foundation
 
 let str = ["foo", "bar", "baz"]
-var cs : [UnsafeMutablePointer<CChar>?] = []
+
+var keep: [[CChar]] = []
+var cstr: [UnsafeMutablePointer<CChar>?] = []
 
 for s in str {
+  // allocate a buffer
   var buf = Array(repeating: CChar(0), count: s.count + 1)
+
+  // copy C string in s into buf
   (s as NSString).getCString(&buf, maxLength: buf.count, encoding: NSUTF8StringEncoding)
-  cs.append(&buf)
+
+  // save the pointer
+  buf.withUnsafeMutableBufferPointer { ptr in
+    cstr.append(ptr.baseAddress)
+  }
+
+  // save the array object
+  keep.append(buf)
 }
 
-puts(cs[0])
+puts(cstr[0])
 ````
-
-`malloc` を使って C 側でアドレスを確保することも可能だと思いますが、メモリ管理を自前で行う必要が発生するため、可能な限り Swift 側で実装したいと考えました  
 
 --------------------------------------------------------------------------------
 
 ### 作成した class
 
+必要な処理を抜き出して class を作成します  
 以下の class を作成することで、C 言語の文字列のアドレスを取り出しつつ、Swift 側のメモリ管理の恩恵も受けることができるようになりました  
 
 ````swift
@@ -47,12 +58,15 @@ class CStringBuffer {
     // allocate a buffer
     var buf = Array(repeating: CChar(0), count: str.count + 1)
 
-    // copy cString in str into buf
+    // copy C string in str into buf
     (str as NSString).getCString(
       &buf, maxLength: buf.count,
       encoding: NSUTF8StringEncoding)
 
+    // save the array object
     self.cString = buf
+
+    // save the pointer
     self.cString.withUnsafeMutableBufferPointer { ptr in
       self.address = ptr.baseAddress
     }
@@ -86,12 +100,15 @@ class CStringBuffer {
     // allocate a buffer
     var buf = Array(repeating: CChar(0), count: str.count + 1)
 
-    // copy cString in str into buf
+    // copy C string in str into buf
     (str as NSString).getCString(
       &buf, maxLength: buf.count,
       encoding: NSUTF8StringEncoding)
 
+    // save the array object
     self.cString = buf
+
+    // save the pointer
     self.cString.withUnsafeMutableBufferPointer { ptr in
       self.address = ptr.baseAddress
     }
