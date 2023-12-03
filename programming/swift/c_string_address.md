@@ -41,7 +41,7 @@ import Foundation
 
 class CStringBuffer {
   var cString: [CChar]
-  var address = UnsafeMutableBufferPointer<CChar>(_empty: ())
+  var address = UnsafeMutablePointer<CChar>(nil)
 
   init(_ str: String) {
     // allocate a buffer
@@ -54,7 +54,7 @@ class CStringBuffer {
 
     self.cString = buf
     self.cString.withUnsafeMutableBufferPointer { ptr in
-      self.address = ptr
+      self.address = ptr.baseAddress
     }
   }
 }
@@ -66,7 +66,7 @@ class CStringBuffer {
 続いて `buf` をインスタンス変数として保存しています  
 `self.cString` は Swift の配列のため、Swift 側でメモリが管理されます  
 
-最後にバッファのアドレスを `self.address` に格納し、外部からアクセス可能にしています
+最後にバッファのベースアドレスを `self.address` に格納し、外部からアクセス可能にしています
 
 --------------------------------------------------------------------------------
 
@@ -80,7 +80,7 @@ import Foundation
 
 class CStringBuffer {
   var cString: [CChar]
-  var address = UnsafeMutableBufferPointer<CChar>(_empty: ())
+  var address = UnsafeMutablePointer<CChar>(nil)
 
   init(_ str: String) {
     // allocate a buffer
@@ -93,7 +93,7 @@ class CStringBuffer {
 
     self.cString = buf
     self.cString.withUnsafeMutableBufferPointer { ptr in
-      self.address = ptr
+      self.address = ptr.baseAddress
     }
   }
 }
@@ -108,7 +108,7 @@ func test() {
     let cs = CStringBuffer(s)
 
     keep.append(cs)
-    cstr.append(cs.address.baseAddress)
+    cstr.append(cs.address)
   }
 
   // direct access to cString
