@@ -12,8 +12,10 @@ Swift の文字列は C の関数に渡される際に自動的に C の文字�
 ````swift
 import Darwin
 
-// 自動で変換される
+// String
 let s = "foo"
+
+// 自動で変換される
 puts(s)
 
 // [UInt8]
