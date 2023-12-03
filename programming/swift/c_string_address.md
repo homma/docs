@@ -14,19 +14,15 @@ Swift 文字列の配列 `[String]` から C 文字列のアドレスの配列 `
 試してみたところ、以下のようにポインターを取得しつつ、バッファの参照も別途保存することで実現することができました  
 
 ````swift
-import Foundation
+import Darwin
 
 let str = ["foo", "bar", "baz"]
 
-var keep: [[CChar]] = []
-var cstr: [UnsafeMutablePointer<CChar>?] = []
+var keep: [[UInt8]] = []
+var cstr: [UnsafeMutablePointer<UInt8>?] = []
 
 for s in str {
-  // allocate a buffer
-  var buf = Array(repeating: CChar(0), count: s.utf8.count + 1)
-
-  // copy C string in s into buf
-  (s as NSString).getCString(&buf, maxLength: buf.count, encoding: NSUTF8StringEncoding)
+  var buf = Array(s.utf8)
 
   // save the pointer
   buf.withUnsafeMutableBufferPointer { ptr in
@@ -48,39 +44,18 @@ puts(cstr[0])
 以下の class を作成することで、C 言語の文字列のアドレスを取り出しつつ、Swift 側のメモリ管理の恩恵も受けることができるようになりました  
 
 ````swift
-import Foundation
-
 class CStringBuffer {
-  var cString: [CChar]
-  var address = UnsafeMutablePointer<CChar>(nil)
+  var cString: [UInt8]
+  var address = UnsafeMutablePointer<UInt8>(nil)
 
   init(_ str: String) {
-    // allocate a buffer
-    var buf = Array(repeating: CChar(0), count: str.utf8.count + 1)
-
-    // copy C string in str into buf
-    (str as NSString).getCString(
-      &buf, maxLength: buf.count,
-      encoding: NSUTF8StringEncoding)
-
-    // save the array object
-    self.cString = buf
-
-    // save the pointer
+    self.cString = Array(str.utf8)
     self.cString.withUnsafeMutableBufferPointer { ptr in
       self.address = ptr.baseAddress
     }
   }
 }
 ````
-
-`init` の中では、まず、`buf` 変数に C 文字列用のバッファを確保しています  
-次に `getCString` でバッファに文字列を C の文字列としてコピーしています  
-
-続いて `buf` をインスタンス変数として保存しています  
-`self.cString` は Swift の配列のため、Swift 側でメモリが管理されます  
-
-最後にバッファのベースアドレスを `self.address` に格納し、外部からアクセス可能にしています
 
 --------------------------------------------------------------------------------
 
@@ -90,25 +65,14 @@ C 文字列のアドレスの配列が作りたかったので、`cstr` を `[Un
 `CStringBuffer` オブジェクトを保持するため、`keep` を別途作成しています  
 
 ````swift
-import Foundation
+import Darwin
 
 class CStringBuffer {
-  var cString: [CChar]
-  var address = UnsafeMutablePointer<CChar>(nil)
+  var cString: [UInt8]
+  var address = UnsafeMutablePointer<UInt8>(nil)
 
   init(_ str: String) {
-    // allocate a buffer
-    var buf = Array(repeating: CChar(0), count: str.utf8.count + 1)
-
-    // copy C string in str into buf
-    (str as NSString).getCString(
-      &buf, maxLength: buf.count,
-      encoding: NSUTF8StringEncoding)
-
-    // save the array object
-    self.cString = buf
-
-    // save the pointer
+    self.cString = Array(str.utf8)
     self.cString.withUnsafeMutableBufferPointer { ptr in
       self.address = ptr.baseAddress
     }
@@ -119,7 +83,7 @@ func test() {
   let str = ["foo", "bar", "baz"]
 
   var keep: [CStringBuffer] = []
-  var cstr: [UnsafeMutablePointer<CChar>?] = []
+  var cstr: [UnsafeMutablePointer<UInt8>?] = []
 
   for s in str {
     let cs = CStringBuffer(s)
