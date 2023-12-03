@@ -6,7 +6,7 @@ author: homma
 
 #### Swift の String を C 文字列に変換する
 
-Swift の文字列は C の関数に渡す際に自動で変換が行われます  
+Swift の文字列は C の関数に渡される際に自動的に C の文字列への変換が行われます  
 `.utf8` や `.utf8CString` を使用して明示的に変換することも可能です  
 
 ````swift
