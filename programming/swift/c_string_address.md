@@ -23,7 +23,7 @@ var cstr: [UnsafeMutablePointer<CChar>?] = []
 
 for s in str {
   // allocate a buffer
-  var buf = Array(repeating: CChar(0), count: s.count + 1)
+  var buf = Array(repeating: CChar(0), count: s.utf8.count + 1)
 
   // copy C string in s into buf
   (s as NSString).getCString(&buf, maxLength: buf.count, encoding: NSUTF8StringEncoding)
@@ -56,7 +56,7 @@ class CStringBuffer {
 
   init(_ str: String) {
     // allocate a buffer
-    var buf = Array(repeating: CChar(0), count: str.count + 1)
+    var buf = Array(repeating: CChar(0), count: str.utf8.count + 1)
 
     // copy C string in str into buf
     (str as NSString).getCString(
@@ -98,7 +98,7 @@ class CStringBuffer {
 
   init(_ str: String) {
     // allocate a buffer
-    var buf = Array(repeating: CChar(0), count: str.count + 1)
+    var buf = Array(repeating: CChar(0), count: str.utf8.count + 1)
 
     // copy C string in str into buf
     (str as NSString).getCString(
