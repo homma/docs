@@ -16,12 +16,12 @@ import Darwin
 let s = "foo"
 puts(s)
 
-// UInt8
-let sa: [UInt8] = Array(s.utf8)
+// [UInt8]
+let sa = Array(s.utf8)
 puts(sa)
 
-// Int8, CChar
-let sa2: [CChar] = Array(s.utf8CString)
+// [Int8], [CChar]
+let sa2 = Array(s.utf8CString)
 puts(sa2)
 ````
 
