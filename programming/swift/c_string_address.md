@@ -18,11 +18,11 @@ import Darwin
 
 let str = ["foo", "bar", "baz"]
 
-var keep: [[UInt8]] = []
-var cstr: [UnsafeMutablePointer<UInt8>?] = []
+var keep: [[CChar]] = []
+var cstr: [UnsafeMutablePointer<CChar>?] = []
 
 for s in str {
-  var buf = Array(s.utf8)
+  var buf = Array(s.utf8CString)
 
   // save the pointer
   buf.withUnsafeMutableBufferPointer { ptr in
@@ -45,11 +45,11 @@ puts(cstr[0])
 
 ````swift
 class CStringBuffer {
-  var cString: [UInt8]
-  var address = UnsafeMutablePointer<UInt8>(nil)
+  var cString: [CChar]
+  var address = UnsafeMutablePointer<CChar>(nil)
 
   init(_ str: String) {
-    self.cString = Array(str.utf8)
+    self.cString = Array(str.utf8CString)
     self.cString.withUnsafeMutableBufferPointer { ptr in
       self.address = ptr.baseAddress
     }
@@ -68,11 +68,11 @@ C 文字列のアドレスの配列が作りたかったので、`cstr` を `[Un
 import Darwin
 
 class CStringBuffer {
-  var cString: [UInt8]
-  var address = UnsafeMutablePointer<UInt8>(nil)
+  var cString: [CChar]
+  var address = UnsafeMutablePointer<CChar>(nil)
 
   init(_ str: String) {
-    self.cString = Array(str.utf8)
+    self.cString = Array(str.utf8CString)
     self.cString.withUnsafeMutableBufferPointer { ptr in
       self.address = ptr.baseAddress
     }
@@ -83,7 +83,7 @@ func test() {
   let str = ["foo", "bar", "baz"]
 
   var keep: [CStringBuffer] = []
-  var cstr: [UnsafeMutablePointer<UInt8>?] = []
+  var cstr: [UnsafeMutablePointer<CChar>?] = []
 
   for s in str {
     let cs = CStringBuffer(s)
