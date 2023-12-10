@@ -1,5 +1,5 @@
 ---
-title: pushd/popd について
+title: pushd, popd について
 author: homma
 status: draft
 ---
