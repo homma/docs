@@ -94,7 +94,7 @@ upload_github() {
   git checkout main
   git add ${SCRIPT_DIR}
   git commit -a -m "${MESSAGE}"
-  git push origin main
+  git push origin master
 }
 
 # usage
