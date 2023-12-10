@@ -51,6 +51,7 @@ built in 4 minutes 59 seconds
 - swift-format
 - sdl2
 - gh
+- shfmt
 
 #### 未インストール
 - Neovim

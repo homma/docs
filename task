@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# @author Daisuke Homma
+
+# build
+task_b() {
+  build_swift
+}
+
+build_swift() {
+  echo "building swift program ..."
+  set -x
+
+  swiftc main.swift
+}
+
+# clean up
+task_c() {
+  echo "cleaning up ..."
+  set -x
+}
+
+# format
+task_f() {
+  format_shell $@
+}
+
+format_swift() {
+  echo "formating swift program ..."
+  set -x
+
+  swift-format -i *.swift
+}
+
+format_shell() {
+  echo "formating shell script ..."
+  set -x
+
+  shfmt -i 2 -w $@ *.sh
+}
+
+format_lua() {
+  echo "formating lua program ..."
+  set -x
+
+  INDENT_TYPE=Spaces
+  INDENT_WIDTH=2
+  QUOTE_STYLE=AutoPreferSingle
+  CALL_PARENTHESES=None
+  COLUMN_WIDTH=80
+
+  stylua -v ${PWD}/$@ \
+    --indent-type ${INDENT_TYPE} \
+    --indent-width ${INDENT_WIDTH} \
+    --quote-style ${QUOTE_STYLE} \
+    --call-parentheses ${CALL_PARENTHESES} \
+    --column-width ${COLUMN_WIDTH}
+}
+
+# init
+task_i() {
+  echo "initializing ..."
+  set -x
+}
+
+# run
+task_r() {
+  run_swift
+}
+
+run_swift() {
+  echo "running swift program ..."
+  set -x
+
+  swift main.swift
+}
+
+# upload
+task_u() {
+  upload_github
+}
+
+upload_github() {
+  echo "uploading to github ..."
+  set -x
+
+  DATE=$(date '+%Y/%m/%d %H:%M')
+  MESSAGE="committed on ${DATE}."
+  SCRIPT_DIR=$(dirname $0)
+
+  if [ $# -eq 1 ]; then MESSAGE=$1; fi
+
+  git pull
+  git checkout main
+  git add ${SCRIPT_DIR}
+  git commit -a -m "${MESSAGE}"
+  git push origin main
+}
+
+# usage
+task_help() {
+  echo "usage: ${0} <command>"
+  echo ""
+  echo "available commands:"
+  echo ""
+  declare -F | awk '{print "  "$3}' | sed 's/task_//' | grep -v "^  $"
+  echo ""
+}
+
+task_() {
+  task_help
+}
+
+task_$@
