@@ -105,7 +105,7 @@ task_help() {
   echo ""
   echo "available commands:"
   echo ""
-  declare -F | awk '{print "  "$3}' | sed 's/task_//' | grep -v "^  $"
+  declare -F | awk '{print "  "$3}' | grep 'task_' | sed 's/task_//' | grep -v '^  $'
   echo ""
 }
 
