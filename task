@@ -77,7 +77,7 @@ run_swift() {
 
 # upload
 task_u() {
-  upload_github
+  upload_github $@
 }
 
 upload_github() {
@@ -87,14 +87,16 @@ upload_github() {
   DATE=$(date '+%Y/%m/%d %H:%M')
   MESSAGE="committed on ${DATE}."
   SCRIPT_DIR=$(dirname $0)
+  MAIN=master
 
-  if [ $# -eq 1 ]; then MESSAGE=$1; fi
+  # if [ $# -eq 1 ]; then MESSAGE=$1; fi
+  if [ $# -eq 1 ]; then echo $1; fi
 
   git pull
-  git checkout main
+  git checkout ${MAIN}
   git add ${SCRIPT_DIR}
   git commit -a -m "${MESSAGE}"
-  git push origin master
+  git push origin ${MAIN}
 }
 
 # usage
