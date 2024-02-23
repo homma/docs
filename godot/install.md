@@ -46,7 +46,7 @@ Automator を使用して Finder からダブルクリックで起動できる�
 ````sh
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_ROOT=~/.dotnet
-export GODOT_DIR=<godot install dir>
+export GODOT_DIR=<Godot install dir>
 
 ${GODOT_DIR}/Godot_mono.app/Contents/MacOS/Godot
 
